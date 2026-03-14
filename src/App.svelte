@@ -180,15 +180,23 @@ function startPresentation() {
 
   <!-- Slide 9: Auto-animate -->
   <Slide h={8} v={0} autoAnimate>
-    <div data-id="box" style="width: 100px; height: 100px; background: var(--ds-accent, #42affa); border-radius: 8px; margin: 0 auto;"></div>
-    <h2 data-id="title" style="margin-top: 1em;">Auto-Animate</h2>
-    <p data-id="desc">Elements morph between slides</p>
+    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 2em;">
+      <div data-id="box" style="width: 120px; height: 120px; background: var(--ds-accent, #42affa); border-radius: 16px; flex-shrink: 0;"></div>
+      <div style="text-align: right; flex: 1;">
+        <h2 data-id="title">Auto-Animate</h2>
+        <p data-id="desc" style="margin-top: 0.5em; opacity: 0.7;">Navigate forward to see it</p>
+      </div>
+    </div>
   </Slide>
 
   <Slide h={9} v={0} autoAnimate>
-    <div data-id="box" style="width: 200px; height: 200px; background: var(--ds-accent, #42affa); border-radius: 50%; margin: 0 auto;"></div>
-    <h2 data-id="title" style="margin-top: 1em; font-size: 2.5em;">Auto-Animate</h2>
-    <p data-id="desc">Watch the box and text transform!</p>
+    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 2em;">
+      <div style="text-align: left; flex: 1;">
+        <h2 data-id="title">Auto-Animate</h2>
+        <p data-id="desc" style="margin-top: 0.5em; opacity: 0.7;">Elements move and morph between slides</p>
+      </div>
+      <div data-id="box" style="width: 120px; height: 120px; background: var(--ds-accent, #42affa); border-radius: 50%; flex-shrink: 0;"></div>
+    </div>
   </Slide>
 
   <!-- Slide 10: Keyboard shortcuts -->
