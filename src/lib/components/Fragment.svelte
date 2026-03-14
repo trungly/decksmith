@@ -12,7 +12,7 @@
     children?: Snippet;
   }
 
-  let {
+  const {
     index = 0,
     style = 'fade-in',
     slideH = -1,
@@ -45,7 +45,7 @@
   );
 </script>
 
-<span
+<div
   class="fragment {style}"
   class:visible={isVisible}
   class:was-visible={wasVisible}
@@ -54,11 +54,11 @@
   {#if children}
     {@render children()}
   {/if}
-</span>
+</div>
 
 <style>
   .fragment {
-    display: inline-block;
+    display: block;
   }
 
   /* Default: fade-in */

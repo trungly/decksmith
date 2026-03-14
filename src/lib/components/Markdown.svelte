@@ -5,12 +5,13 @@
     content?: string;
   }
 
-  let { content = '' }: Props = $props();
+  const { content = '' }: Props = $props();
 
   const html = $derived(marked.parse(content, { async: false }) as string);
 </script>
 
 <div class="markdown-content">
+  <!-- eslint-disable-next-line svelte/no-at-html-tags -- intentional: content is rendered from marked, not user input -->
   {@html html}
 </div>
 

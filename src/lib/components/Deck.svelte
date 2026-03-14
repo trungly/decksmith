@@ -8,6 +8,7 @@
   import { computeScale } from '../utils/scaling.js';
   import { sendSpeakerUpdate } from '../utils/speaker.js';
   import { setupPrintStyles, isPrintMode } from '../utils/pdf.js';
+  import { autoAnimate } from '../utils/auto-animate.js';
   import Controls from './Controls.svelte';
   import Progress from './Progress.svelte';
   import SlideNumber from './SlideNumber.svelte';
@@ -37,7 +38,7 @@
     children?: Snippet;
   }
 
-  let {
+  const {
     theme = 'black',
     transition = 'slide',
     transitionSpeed = 'default',
@@ -79,6 +80,36 @@
   // Scaling
   let scale = $state(1);
   let deckElement: HTMLElement;
+  let slidesElement: HTMLElement;
+
+  // Track previous position to detect slide changes for auto-animate
+  let prevH = 0;
+  let prevV = 0;
+
+  // Auto-animate: trigger FLIP animation when navigating between two autoAnimate slides
+  $effect(() => {
+    const h = deck.currentH;
+    const v = deck.currentV;
+    if ((h !== prevH || v !== prevV) && slidesElement) {
+      const fromSlide = deck.getSlideAt(prevH, prevV);
+      const toSlide = deck.getSlideAt(h, v);
+      if (fromSlide?.autoAnimate && toSlide?.autoAnimate) {
+        const fromEl = slidesElement.querySelector<HTMLElement>(
+          `.slide[data-h="${prevH}"][data-v="${prevV}"]`
+        );
+        const toEl = slidesElement.querySelector<HTMLElement>(
+          `.slide[data-h="${h}"][data-v="${v}"]`
+        );
+        if (fromEl && toEl) {
+          const duration = deck.config.transitionSpeed === 'fast' ? 400
+            : deck.config.transitionSpeed === 'slow' ? 1200 : 800;
+          autoAnimate(fromEl, toEl, duration);
+        }
+      }
+      prevH = h;
+      prevV = v;
+    }
+  });
 
   function updateScale() {
     scale = computeScale(deck.config);
@@ -135,6 +166,7 @@
   <div
     class="deck-slides"
     style="width: {width}px; height: {height}px; transform: scale({scale});"
+    bind:this={slidesElement}
   >
     {#if children}
       {@render children()}

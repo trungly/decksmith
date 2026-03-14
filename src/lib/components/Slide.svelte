@@ -17,7 +17,7 @@
     children?: Snippet;
   }
 
-  let {
+  const {
     h = 0,
     v = 0,
     transition,
@@ -47,7 +47,7 @@
   const activeTransition = $derived(transition ?? deck.config.transition);
   const transitionStyle = $derived(getTransitionStyles(position, activeTransition, deck.config.transitionSpeed));
 
-  const bgStyle = $derived(() => {
+  const bgStyle = $derived.by(() => {
     let s = '';
     if (background) s += `background: ${background};`;
     if (backgroundImage) {
@@ -66,7 +66,7 @@
   data-h={h}
   data-v={v}
   data-id={id}
-  style="{transitionStyle} {bgStyle()}"
+  style="{transitionStyle} {bgStyle}"
 >
   {#if children}
     {@render children()}

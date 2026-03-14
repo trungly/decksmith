@@ -4,7 +4,7 @@
 
   const deck = getContext<DeckState>('deck');
 
-  const progressValue = $derived(deck.progress());
+  const progressValue = $derived(deck.progress);
 </script>
 
 {#if deck.config.progress && !deck.isOverview}

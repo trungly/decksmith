@@ -4,7 +4,7 @@
 
   const deck = getContext<DeckState>('deck');
 
-  const display = $derived(() => {
+  const display = $derived.by(() => {
     const h = deck.currentH + 1;
     const v = deck.currentV;
     const total = deck.totalHorizontal;
@@ -17,7 +17,7 @@
 
 {#if deck.config.slideNumber && !deck.isOverview}
   <div class="deck-slide-number">
-    {display()}
+    {display}
   </div>
 {/if}
 

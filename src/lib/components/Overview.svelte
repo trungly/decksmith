@@ -12,9 +12,9 @@
 
 {#if deck.isOverview}
   <div class="deck-overview" role="grid" aria-label="Slide overview">
-    {#each deck.slides as column, h}
+    {#each deck.slides as column, h (h)}
       <div class="overview-column">
-        {#each column as slide, v}
+        {#each column as _slide, v (v)}
           <button
             class="overview-slide"
             class:current={h === deck.currentH && v === deck.currentV}

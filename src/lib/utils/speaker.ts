@@ -93,7 +93,7 @@ export function openSpeakerWindow() {
         String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
       document.getElementById('clock').textContent = new Date().toLocaleTimeString();
     }, 1000);
-  <\/script>
+  </script>
 </body>
 </html>`;
 

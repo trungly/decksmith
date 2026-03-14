@@ -27,18 +27,8 @@ export class DeckState {
     this.slides.reduce((sum, col) => sum + col.length, 0)
   );
 
-  // Linear index for progress calculation
-  linearIndex = $derived(() => {
-    let idx = 0;
-    for (let h = 0; h < this.currentH && h < this.slides.length; h++) {
-      idx += this.slides[h].length;
-    }
-    idx += this.currentV;
-    return idx;
-  });
-
   // Progress (0 to 1)
-  progress = $derived(() => {
+  progress = $derived.by(() => {
     const total = this.slides.reduce((sum, col) => sum + col.length, 0);
     if (total <= 1) return 0;
     let idx = 0;
