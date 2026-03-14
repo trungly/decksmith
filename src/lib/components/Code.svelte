@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getContext, onMount, tick } from 'svelte';
+  import { getContext } from 'svelte';
   import type { DeckState } from '../state/deck-state.svelte.js';
   import hljs from 'highlight.js';
   import 'highlight.js/styles/atom-one-dark.css';
@@ -19,9 +19,6 @@
     highlightLines?: string;
     /** Starting line number offset (default 1) */
     lineNumberStart?: number;
-    /** Parent slide coordinates for fragment registration */
-    slideH?: number;
-    slideV?: number;
   }
 
   const {
@@ -30,11 +27,12 @@
     lineNumbers = false,
     highlightLines = '',
     lineNumberStart = 1,
-    slideH = -1,
-    slideV = -1,
   }: Props = $props();
 
   const deck = getContext<DeckState>('deck');
+  const slide = getContext<{ h: number; v: number; registerFragment: (i: number) => void }>(
+    'slide'
+  );
 
   // Parse highlight steps: "1|2-3|4,6-10" → [[1], [2,3], [4,6,7,8,9,10]]
   function parseHighlightSteps(spec: string): number[][] {
@@ -59,20 +57,16 @@
   const steps = $derived(parseHighlightSteps(highlightLines));
   const hasSteps = $derived(steps.length > 0);
 
-  // Register fragments for each highlight step
-  onMount(async () => {
-    if (hasSteps && slideH >= 0 && slideV >= 0) {
-      await tick();
-      const currentCount = deck.getSlideAt(slideH, slideV)?.fragmentCount ?? 0;
-      const needed = steps.length;
-      if (needed > currentCount) {
-        deck.updateFragmentCount(slideH, slideV, needed);
-      }
+  // Register each highlight step as a fragment (synchronously, like Fragment does)
+  if (hasSteps) {
+    const stepCount = parseHighlightSteps(highlightLines).length;
+    for (let i = 0; i < stepCount; i++) {
+      slide.registerFragment(i);
     }
-  });
+  }
 
   // Which step is currently active (for line highlighting)
-  const isCurrentSlide = $derived(slideH === deck.currentH && slideV === deck.currentV);
+  const isCurrentSlide = $derived(slide.h === deck.currentH && slide.v === deck.currentV);
   const activeStep = $derived.by(() => {
     if (!hasSteps || !isCurrentSlide) return -1;
     return deck.currentFragment;

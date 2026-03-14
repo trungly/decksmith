@@ -143,8 +143,6 @@ Write your slides using **Markdown** syntax:
       language="svelte"
       lineNumbers
       highlightLines="1-2|3-4|5-8|9"
-      slideH={7}
-      slideV={0}
       code={`<Deck theme="black" transition="slide">
   <Slide h={0} v={0}>
     <h1>My Presentation</h1>
@@ -156,7 +154,7 @@ Write your slides using **Markdown** syntax:
   </Slide>
 </Deck>`}
     />
-    <Notes slideH={7} slideV={0} text="Code blocks support syntax highlighting with highlight.js and line-by-line step-through. Each press advances to the next highlighted section." />
+    <Notes text="Code blocks support syntax highlighting with highlight.js and line-by-line step-through. Each press advances to the next highlighted section." />
   </Slide>
 
   <!-- Slide 8b: Code - another language -->
@@ -166,8 +164,6 @@ Write your slides using **Markdown** syntax:
       language="typescript"
       lineNumbers
       highlightLines="1-2|4-6|8-10"
-      slideH={7}
-      slideV={1}
       code={`import { Deck, Slide, Fragment } from 'decksmith';
 import type { DeckConfig } from 'decksmith';
 

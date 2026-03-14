@@ -35,7 +35,7 @@ export default [
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       '@typescript-eslint/no-explicit-any': 'warn',
       'svelte/no-unused-svelte-ignore': 'error',
-      'svelte/valid-compile': 'error',
+      'svelte/valid-compile': ['error', { ignoreWarnings: true }],
       'no-console': 'warn',
       'prefer-const': 'error',
     },

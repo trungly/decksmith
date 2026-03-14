@@ -17,6 +17,7 @@
   );
 
   // Register synchronously so Slide.onMount sees the correct count.
+  // svelte-ignore state_referenced_locally
   slide.registerFragment(index);
 
   const isCurrentSlide = $derived(slide.h === deck.currentH && slide.v === deck.currentV);
