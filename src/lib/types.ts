@@ -31,6 +31,8 @@ export interface SlideInfo {
   autoAnimateId?: string;
 }
 
+export type ScrollLayout = 'full' | 'compact';
+
 export interface DeckConfig {
   width: number;
   height: number;
@@ -45,6 +47,12 @@ export interface DeckConfig {
   keyboard: boolean;
   loop: boolean;
   theme: ThemeName;
+  /** Enable scroll view mode (scrollable page instead of slide-by-slide) */
+  scrollView: boolean;
+  /** Scroll layout: 'full' (viewport-height slides) or 'compact' (natural height) */
+  scrollLayout: ScrollLayout;
+  /** Snap to slides when scrolling */
+  scrollSnap: boolean;
 }
 
 export const DEFAULT_CONFIG: DeckConfig = {
@@ -61,6 +69,9 @@ export const DEFAULT_CONFIG: DeckConfig = {
   keyboard: true,
   loop: false,
   theme: 'black',
+  scrollView: false,
+  scrollLayout: 'full',
+  scrollSnap: true,
 };
 
 export type NavigationDirection = 'left' | 'right' | 'up' | 'down';
