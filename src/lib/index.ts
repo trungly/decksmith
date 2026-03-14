@@ -6,6 +6,7 @@ export { default as Slide } from './components/Slide.svelte';
 export { default as Fragment } from './components/Fragment.svelte';
 export { default as Notes } from './components/Notes.svelte';
 export { default as Markdown } from './components/Markdown.svelte';
+export { default as Code } from './components/Code.svelte';
 
 export { DeckState } from './state/deck-state.svelte.js';
 
@@ -13,6 +14,7 @@ export type {
   TransitionType,
   FragmentStyle,
   ThemeName,
+  ScrollLayout,
   DeckConfig,
   SlideInfo,
   SlidePosition,

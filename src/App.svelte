@@ -4,6 +4,7 @@
   import Fragment from './lib/components/Fragment.svelte';
   import Notes from './lib/components/Notes.svelte';
   import Markdown from './lib/components/Markdown.svelte';
+  import Code from './lib/components/Code.svelte';
 </script>
 
 <Deck theme="black" transition="slide">
@@ -134,22 +135,47 @@ Write your slides using **Markdown** syntax:
     </div>
   </Slide>
 
-  <!-- Slide 8: Code -->
+  <!-- Slide 8: Code with syntax highlighting -->
   <Slide h={7} v={0}>
-    <h2>Code Example</h2>
-    <Markdown content={`
-\`\`\`svelte
-<Deck theme="black" transition="slide">
+    <h2>Syntax Highlighting</h2>
+    <p style="margin-bottom: 0.5em; opacity: 0.6; font-size: 0.7em;">Press <kbd>Space</kbd> to step through highlighted lines</p>
+    <Code
+      language="svelte"
+      lineNumbers
+      highlightLines="1-2|3-4|5-8|9"
+      code={`<Deck theme="black" transition="slide">
   <Slide h={0} v={0}>
     <h1>My Presentation</h1>
+    <p>Built with Decksmith</p>
     <Fragment index={0} style="fade-up"
             >
       <p>Revealed step by step</p>
     </Fragment>
   </Slide>
-</Deck>
-\`\`\`
-    `} />
+</Deck>`}
+    />
+    <Notes text="Code blocks support syntax highlighting with highlight.js and line-by-line step-through. Each press advances to the next highlighted section." />
+  </Slide>
+
+  <!-- Slide 8b: Code - another language -->
+  <Slide h={7} v={1}>
+    <h2>Multi-Language Support</h2>
+    <Code
+      language="typescript"
+      lineNumbers
+      highlightLines="1-2|4-6|8-10"
+      code={`import { Deck, Slide, Fragment } from 'decksmith';
+import type { DeckConfig } from 'decksmith';
+
+const config: DeckConfig = {
+  theme: 'moon',
+  transition: 'convex',
+};
+
+function startPresentation() {
+  console.log('Ready!');
+}`}
+    />
   </Slide>
 
   <!-- Slide 9: Auto-animate -->

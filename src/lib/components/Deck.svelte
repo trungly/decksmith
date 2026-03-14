@@ -1,7 +1,7 @@
 <script lang="ts">
   import { setContext, onMount, type Snippet } from 'svelte';
   import { DeckState } from '../state/deck-state.svelte.js';
-  import type { TransitionType, ThemeName } from '../types.js';
+  import type { TransitionType, ThemeName, ScrollLayout } from '../types.js';
   import { setupKeyboard } from '../utils/keyboard.js';
   import { setupTouch } from '../utils/touch.js';
   import { setupHashRouting, updateHash } from '../utils/hash.js';
@@ -13,6 +13,7 @@
   import Progress from './Progress.svelte';
   import SlideNumber from './SlideNumber.svelte';
   import Overview from './Overview.svelte';
+  import ScrollProgress from './ScrollProgress.svelte';
 
   // Import themes
   import '../themes/black.css';
@@ -35,6 +36,9 @@
     touch?: boolean;
     keyboard?: boolean;
     loop?: boolean;
+    scrollView?: boolean;
+    scrollLayout?: ScrollLayout;
+    scrollSnap?: boolean;
     children?: Snippet;
   }
 
@@ -52,6 +56,9 @@
     touch = true,
     keyboard = true,
     loop = false,
+    scrollView = false,
+    scrollLayout = 'full',
+    scrollSnap = true,
     children,
   }: Props = $props();
 
@@ -74,13 +81,16 @@
       keyboard,
       loop,
       theme,
+      scrollView,
+      scrollLayout,
+      scrollSnap,
     };
   });
 
   // Scaling
   let scale = $state(1);
-  let deckElement: HTMLElement;
-  let slidesElement: HTMLElement;
+  let deckElement = $state<HTMLElement>(undefined!);
+  let slidesElement = $state<HTMLElement>(undefined!);
 
   // Track previous position to detect slide changes for auto-animate
   let prevH = 0;
@@ -88,6 +98,7 @@
 
   // Auto-animate: trigger FLIP animation when navigating between two autoAnimate slides
   $effect(() => {
+    if (scrollView) return; // auto-animate not applicable in scroll view
     const h = deck.currentH;
     const v = deck.currentV;
     if ((h !== prevH || v !== prevV) && slidesElement) {
@@ -117,7 +128,7 @@
 
   // Hash sync
   $effect(() => {
-    if (deck.config.hash) {
+    if (deck.config.hash && !scrollView) {
       updateHash(deck.currentH, deck.currentV);
     }
   });
@@ -134,22 +145,72 @@
     });
   });
 
-  onMount(() => {
-    updateScale();
+  // Scroll view: track scroll position to update current slide and fragments
+  let scrollProgress = $state(0);
 
-    const cleanupKeyboard = setupKeyboard(deck);
-    const cleanupTouch = setupTouch(deck, deckElement);
-    const cleanupHash = setupHashRouting(deck);
+  function setupScrollTracking() {
+    if (!scrollView || !deckElement) return () => {};
+    const scrollEl = deckElement;
+
+    function onScroll() {
+      const maxScroll = scrollEl.scrollHeight - scrollEl.clientHeight;
+      scrollProgress = maxScroll > 0 ? scrollEl.scrollTop / maxScroll : 0;
+
+      // Find which slide is currently in view
+      const slideEls = slidesElement.querySelectorAll<HTMLElement>('.slide');
+      const viewportCenter = scrollEl.scrollTop + scrollEl.clientHeight / 2;
+
+      for (const slideEl of slideEls) {
+        const slideTop = slideEl.offsetTop;
+        const slideBottom = slideTop + slideEl.offsetHeight;
+        if (viewportCenter >= slideTop && viewportCenter < slideBottom) {
+          const h = parseInt(slideEl.dataset.h ?? '0', 10);
+          const v = parseInt(slideEl.dataset.v ?? '0', 10);
+          if (h !== deck.currentH || v !== deck.currentV) {
+            deck.goTo(h, v);
+          }
+
+          // Calculate fragment progress within the slide
+          const slideProg = (viewportCenter - slideTop) / slideEl.offsetHeight;
+          const fragmentCount = deck.getSlideAt(h, v)?.fragmentCount ?? 0;
+          if (fragmentCount > 0) {
+            const fragmentIndex = Math.floor(slideProg * (fragmentCount + 1)) - 1;
+            const clamped = Math.max(-1, Math.min(fragmentIndex, fragmentCount - 1));
+            if (clamped !== deck.currentFragment) {
+              deck.currentFragment = clamped;
+            }
+          }
+          break;
+        }
+      }
+    }
+
+    scrollEl.addEventListener('scroll', onScroll, { passive: true });
+    return () => scrollEl.removeEventListener('scroll', onScroll);
+  }
+
+  onMount(() => {
+    if (!scrollView) {
+      updateScale();
+    }
+
+    const cleanupKeyboard = scrollView ? () => {} : setupKeyboard(deck);
+    const cleanupTouch = scrollView ? () => {} : setupTouch(deck, deckElement);
+    const cleanupHash = scrollView ? () => {} : setupHashRouting(deck);
+    const cleanupScroll = setupScrollTracking();
 
     setupPrintStyles(width, height);
 
-    const resizeHandler = () => updateScale();
+    const resizeHandler = () => {
+      if (!scrollView) updateScale();
+    };
     window.addEventListener('resize', resizeHandler);
 
     return () => {
       cleanupKeyboard();
       cleanupTouch();
       cleanupHash();
+      cleanupScroll();
       window.removeEventListener('resize', resizeHandler);
     };
   });
@@ -157,33 +218,54 @@
   const printMode = isPrintMode();
 </script>
 
-<div
-  class="deck theme-{theme}"
-  class:paused={deck.isPaused}
-  class:print-pdf={printMode}
-  bind:this={deckElement}
->
+{#if scrollView}
+  <!-- Scroll View Mode -->
   <div
-    class="deck-slides"
-    style="width: {width}px; height: {height}px; transform: scale({scale});"
-    bind:this={slidesElement}
+    class="deck deck-scroll theme-{theme}"
+    class:scroll-snap={scrollSnap}
+    class:scroll-full={scrollLayout === 'full'}
+    class:scroll-compact={scrollLayout === 'compact'}
+    class:print-pdf={printMode}
+    bind:this={deckElement}
   >
-    {#if children}
-      {@render children()}
-    {/if}
+    <div class="deck-scroll-slides" bind:this={slidesElement}>
+      {#if children}
+        {@render children()}
+      {/if}
+    </div>
+    <ScrollProgress value={scrollProgress} />
   </div>
+{:else}
+  <!-- Standard Slide View Mode -->
+  <div
+    class="deck theme-{theme}"
+    class:paused={deck.isPaused}
+    class:print-pdf={printMode}
+    bind:this={deckElement}
+  >
+    <div
+      class="deck-slides"
+      style="width: {width}px; height: {height}px; transform: scale({scale});"
+      bind:this={slidesElement}
+    >
+      {#if children}
+        {@render children()}
+      {/if}
+    </div>
 
-  {#if deck.isPaused}
-    <div class="deck-pause-overlay"></div>
-  {/if}
+    {#if deck.isPaused}
+      <div class="deck-pause-overlay"></div>
+    {/if}
 
-  <Controls />
-  <Progress />
-  <SlideNumber />
-  <Overview />
-</div>
+    <Controls />
+    <Progress />
+    <SlideNumber />
+    <Overview />
+  </div>
+{/if}
 
 <style>
+  /* === Standard Slide View === */
   .deck {
     width: 100%;
     height: 100%;
@@ -208,5 +290,57 @@
     background: black;
     z-index: 100;
     cursor: pointer;
+  }
+
+  /* === Scroll View Mode === */
+  .deck-scroll {
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: block;
+    height: 100vh;
+    scroll-behavior: smooth;
+  }
+
+  .deck-scroll.scroll-snap {
+    scroll-snap-type: y mandatory;
+  }
+
+  .deck-scroll-slides {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* In scroll view, slides are positioned statically, not absolute */
+  .deck-scroll-slides :global(.slide) {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    box-sizing: border-box;
+  }
+
+  .deck-scroll.scroll-full .deck-scroll-slides :global(.slide) {
+    min-height: 100vh;
+    scroll-snap-align: start;
+  }
+
+  .deck-scroll.scroll-compact .deck-scroll-slides :global(.slide) {
+    min-height: auto;
+    padding: 60px 40px;
+    scroll-snap-align: start;
+  }
+
+  /* In scroll view, all slides are visible (no transition hiding) */
+  .deck-scroll-slides :global(.slide) {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    z-index: auto !important;
+  }
+
+  /* In scroll view, fragments are revealed based on scroll position */
+  .deck-scroll-slides :global(.fragment) {
+    transition: opacity 0.4s ease, transform 0.4s ease;
   }
 </style>

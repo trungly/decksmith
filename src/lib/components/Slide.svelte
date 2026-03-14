@@ -35,11 +35,16 @@
   // Fragment children call this synchronously during their initialization,
   // before this Slide's onMount fires, so the count is correct by mount time.
   let fragmentCount = $state(0);
+  // Props are stable per-instance; intentionally capturing initial value.
+  // svelte-ignore state_referenced_locally
+  const slideH = h;
+  // svelte-ignore state_referenced_locally
+  const slideV = v;
   setContext('slide', {
-    h,
-    v,
-    registerFragment(index: number) {
-      if (index + 1 > fragmentCount) fragmentCount = index + 1;
+    get h() { return slideH; },
+    get v() { return slideV; },
+    registerFragment(idx: number) {
+      if (idx + 1 > fragmentCount) fragmentCount = idx + 1;
     },
   });
 
