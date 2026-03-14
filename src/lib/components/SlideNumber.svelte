@@ -8,29 +8,68 @@
     const h = deck.currentH + 1;
     const v = deck.currentV;
     const total = deck.totalHorizontal;
-    if (v > 0) {
-      return `${h}.${v + 1} / ${total}`;
-    }
-    return `${h} / ${total}`;
+    return v > 0 ? `${h}.${v + 1} / ${total}` : `${h} / ${total}`;
   });
+
+  const fragmentTotal = $derived(deck.currentFragmentCount);
+  const fragmentIndex = $derived(deck.currentFragment);
 </script>
 
 {#if deck.config.slideNumber && !deck.isOverview}
   <div class="deck-slide-number">
-    {display}
+    <span class="label">{display}</span>
+    {#if fragmentTotal > 0}
+      <div class="fragment-dots">
+        {#each { length: fragmentTotal } as _, i}
+          <span class="dot" class:filled={i <= fragmentIndex}></span>
+        {/each}
+      </div>
+    {/if}
   </div>
 {/if}
 
 <style>
   .deck-slide-number {
     position: absolute;
-    bottom: 14px;
-    left: 14px;
+    bottom: 16px;
+    left: 16px;
     z-index: 30;
-    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .label {
+    font-size: 11px;
     font-family: system-ui, sans-serif;
-    opacity: 0.5;
     font-variant-numeric: tabular-nums;
-    color: inherit;
+    color: white;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+    padding: 3px 9px;
+    border-radius: 20px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+
+  .fragment-dots {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: background 0.2s;
+  }
+
+  .dot.filled {
+    background: white;
+    border-color: white;
   }
 </style>

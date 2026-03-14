@@ -1,5 +1,6 @@
 <script lang="ts">
   import { getContext } from 'svelte';
+  import { fade } from 'svelte/transition';
   import type { DeckState } from '../state/deck-state.svelte.js';
 
   const deck = getContext<DeckState>('deck');
@@ -38,6 +39,7 @@
     role="grid"
     aria-label="Slide overview"
     onclick={() => (deck.isOverview = false)}
+    transition:fade={{ duration: 180 }}
   >
     {#each deck.slides as column, h (h)}
       <div class="overview-column">
@@ -75,14 +77,16 @@
     width: 100%;
     height: 100%;
     z-index: 50;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.88);
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 20px;
-    padding: 40px;
-    backdrop-filter: blur(4px);
+    padding: 48px 40px;
+    backdrop-filter: blur(6px);
     overflow: auto;
+    align-content: center;
   }
 
   .overview-column {
