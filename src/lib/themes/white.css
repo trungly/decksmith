@@ -1,0 +1,60 @@
+/* Decksmith Theme: White */
+.theme-white {
+  --ds-bg: #fff;
+  --ds-fg: #222;
+  --ds-heading: #222;
+  --ds-link: #2a76dd;
+  --ds-link-hover: #1a5ab8;
+  --ds-accent: #2a76dd;
+  --ds-code-bg: rgba(0, 0, 0, 0.05);
+  --ds-selection-bg: #2a76dd;
+  --ds-selection-fg: #fff;
+
+  background: var(--ds-bg);
+  color: var(--ds-fg);
+}
+
+.theme-white h1, .theme-white h2, .theme-white h3,
+.theme-white h4, .theme-white h5, .theme-white h6 {
+  color: var(--ds-heading);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.theme-white h1 { font-size: 2.5em; }
+.theme-white h2 { font-size: 1.8em; }
+.theme-white h3 { font-size: 1.3em; }
+
+.theme-white a { color: var(--ds-link); text-decoration: none; }
+.theme-white a:hover { color: var(--ds-link-hover); text-decoration: underline; }
+
+.theme-white ::selection {
+  background: var(--ds-selection-bg);
+  color: var(--ds-selection-fg);
+}
+
+.theme-white code {
+  background: var(--ds-code-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.theme-white pre {
+  background: #f4f4f4;
+  border-radius: 8px;
+  padding: 1em;
+  text-align: left;
+}
+
+.theme-white blockquote {
+  border-left: 4px solid var(--ds-accent);
+  padding-left: 1em;
+}
+
+.theme-white .slide {
+  font-size: 24px;
+  line-height: 1.5;
+}

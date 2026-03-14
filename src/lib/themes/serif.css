@@ -1,0 +1,62 @@
+/* Decksmith Theme: Serif */
+.theme-serif {
+  --ds-bg: #f0edde;
+  --ds-fg: #333;
+  --ds-heading: #383d3d;
+  --ds-link: #51483d;
+  --ds-link-hover: #8b743d;
+  --ds-accent: #8b743d;
+  --ds-code-bg: rgba(0, 0, 0, 0.06);
+  --ds-selection-bg: #8b743d;
+  --ds-selection-fg: #fff;
+
+  background: var(--ds-bg);
+  color: var(--ds-fg);
+}
+
+.theme-serif h1, .theme-serif h2, .theme-serif h3,
+.theme-serif h4, .theme-serif h5, .theme-serif h6 {
+  color: var(--ds-heading);
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, FreeSerif, serif;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.theme-serif h1 { font-size: 2.5em; }
+.theme-serif h2 { font-size: 1.8em; }
+.theme-serif h3 { font-size: 1.3em; }
+
+.theme-serif a { color: var(--ds-link); text-decoration: none; }
+.theme-serif a:hover { color: var(--ds-link-hover); text-decoration: underline; }
+
+.theme-serif ::selection {
+  background: var(--ds-selection-bg);
+  color: var(--ds-selection-fg);
+}
+
+.theme-serif code {
+  background: var(--ds-code-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Courier New', monospace;
+}
+
+.theme-serif pre {
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  padding: 1em;
+  text-align: left;
+}
+
+.theme-serif blockquote {
+  border-left: 4px solid var(--ds-accent);
+  padding-left: 1em;
+  font-style: italic;
+}
+
+.theme-serif .slide {
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, FreeSerif, serif;
+  font-size: 24px;
+  line-height: 1.6;
+}

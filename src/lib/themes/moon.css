@@ -1,0 +1,61 @@
+/* Decksmith Theme: Moon */
+.theme-moon {
+  --ds-bg: #002b36;
+  --ds-fg: #93a1a1;
+  --ds-heading: #eee8d5;
+  --ds-link: #268bd2;
+  --ds-link-hover: #78bae6;
+  --ds-accent: #268bd2;
+  --ds-code-bg: rgba(255, 255, 255, 0.06);
+  --ds-selection-bg: #d33682;
+  --ds-selection-fg: #fff;
+
+  background: var(--ds-bg);
+  color: var(--ds-fg);
+}
+
+.theme-moon h1, .theme-moon h2, .theme-moon h3,
+.theme-moon h4, .theme-moon h5, .theme-moon h6 {
+  color: var(--ds-heading);
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, FreeSerif, serif;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-shadow: none;
+}
+
+.theme-moon h1 { font-size: 2.5em; }
+.theme-moon h2 { font-size: 1.8em; }
+.theme-moon h3 { font-size: 1.3em; }
+
+.theme-moon a { color: var(--ds-link); text-decoration: none; }
+.theme-moon a:hover { color: var(--ds-link-hover); text-decoration: underline; }
+
+.theme-moon ::selection {
+  background: var(--ds-selection-bg);
+  color: var(--ds-selection-fg);
+}
+
+.theme-moon code {
+  background: var(--ds-code-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.theme-moon pre {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  padding: 1em;
+  text-align: left;
+}
+
+.theme-moon blockquote {
+  border-left: 4px solid var(--ds-accent);
+  padding-left: 1em;
+}
+
+.theme-moon .slide {
+  font-size: 24px;
+  line-height: 1.5;
+}
