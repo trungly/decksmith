@@ -15,34 +15,34 @@
     <p style="margin-top: 1em; opacity: 0.5; font-size: 0.7em;">
       Press <kbd>Space</kbd> or <kbd>→</kbd> to navigate &bull; <kbd>Esc</kbd> for overview
     </p>
-    <Notes slideH={0} slideV={0} text="Welcome to Decksmith! This is the title slide. Press S to open speaker notes." />
+    <Notes text="Welcome to Decksmith! This is the title slide. Press S to open speaker notes." />
   </Slide>
 
   <!-- Slide 2: Features -->
   <Slide h={1} v={0}>
     <h2>Core Features</h2>
     <div style="text-align: left; margin-top: 1em;">
-      <Fragment index={0} style="fade-up" slideH={1} slideV={0}>
+      <Fragment index={0} style="fade-up">
         <p>Horizontal &amp; vertical slide navigation</p>
       </Fragment>
-      <Fragment index={1} style="fade-up" slideH={1} slideV={0}>
+      <Fragment index={1} style="fade-up">
         <p>Beautiful slide transitions</p>
       </Fragment>
-      <Fragment index={2} style="fade-up" slideH={1} slideV={0}>
+      <Fragment index={2} style="fade-up">
         <p>Fragment animations (like this!)</p>
       </Fragment>
-      <Fragment index={3} style="fade-up" slideH={1} slideV={0}>
+      <Fragment index={3} style="fade-up">
         <p>Speaker notes, overview mode, &amp; more</p>
       </Fragment>
     </div>
-    <Notes slideH={1} slideV={0} text="This slide demonstrates fragment animations. Each bullet point appears one at a time." />
+    <Notes text="This slide demonstrates fragment animations. Each bullet point appears one at a time." />
   </Slide>
 
   <!-- Slide 3: Vertical slides demo -->
   <Slide h={2} v={0}>
     <h2>Vertical Slides</h2>
     <p>Press <kbd>↓</kbd> to explore vertical slides</p>
-    <Notes slideH={2} slideV={0} text="Vertical slides allow you to organize content in a 2D grid." />
+    <Notes text="Vertical slides allow you to organize content in a 2D grid." />
   </Slide>
 
   <Slide h={2} v={1} background="#2d2d2d">
@@ -83,32 +83,33 @@ Write your slides using **Markdown** syntax:
       <p><code>concave</code> — 3D flip backward</p>
       <p><code>zoom</code> — Scale in/out</p>
     </div>
-    <Notes slideH={4} slideV={0} text="Each transition type creates a different visual effect. You can set transitions globally on the Deck or per-slide." />
+    <Notes text="Each transition type creates a different visual effect. You can set transitions globally on the Deck or per-slide." />
   </Slide>
 
   <!-- Slide 6: Fragment styles -->
   <Slide h={5} v={0}>
     <h2>Fragment Styles</h2>
-    <div style="display: flex; gap: 2em; margin-top: 1em; flex-wrap: wrap; justify-content: center;">
-      <Fragment index={0} style="fade-in" slideH={5} slideV={0}>
-        <span style="padding: 0.3em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px;">fade-in</span>
+    <div style="display: grid; grid-template-columns: repeat(3, 160px); gap: 1em; margin-top: 1.5em; justify-content: center;">
+      <Fragment index={0} style="fade-in">
+        <span style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;">fade-in</span>
       </Fragment>
-      <Fragment index={1} style="fade-up" slideH={5} slideV={0}>
-        <span style="padding: 0.3em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px;">fade-up</span>
+      <Fragment index={1} style="fade-up">
+        <span style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;">fade-up</span>
       </Fragment>
-      <Fragment index={2} style="grow" slideH={5} slideV={0}>
-        <span style="padding: 0.3em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px;">grow</span>
+      <Fragment index={2} style="grow">
+        <span style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;">grow</span>
       </Fragment>
-      <Fragment index={3} style="shrink" slideH={5} slideV={0}>
-        <span style="padding: 0.3em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px;">shrink</span>
+      <Fragment index={3} style="shrink">
+        <span style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;">shrink</span>
       </Fragment>
-      <Fragment index={4} style="highlight-red" slideH={5} slideV={0}>
-        <span style="padding: 0.3em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px;">highlight-red</span>
+      <Fragment index={4} style="highlight-red">
+        <span style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;">highlight-red</span>
       </Fragment>
-      <Fragment index={5} style="highlight-blue" slideH={5} slideV={0}>
-        <span style="padding: 0.3em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px;">highlight-blue</span>
+      <Fragment index={5} style="highlight-blue">
+        <span style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;">highlight-blue</span>
       </Fragment>
     </div>
+    <p style="margin-top: 1.5em; opacity: 0.5; font-size: 0.7em;">Press <kbd>Space</kbd> to reveal each fragment</p>
   </Slide>
 
   <!-- Slide 7: Themes -->
@@ -142,7 +143,7 @@ Write your slides using **Markdown** syntax:
   <Slide h={0} v={0}>
     <h1>My Presentation</h1>
     <Fragment index={0} style="fade-up"
-             slideH={0} slideV={0}>
+            >
       <p>Revealed step by step</p>
     </Fragment>
   </Slide>
@@ -186,7 +187,7 @@ Write your slides using **Markdown** syntax:
   <Slide h={11} v={0} background="linear-gradient(135deg, #0c0c1d 0%, #1a1a3e 100%)">
     <h1>Thank You</h1>
     <p style="margin-top: 0.5em; opacity: 0.7;">Built with Svelte 5 &bull; Open Source</p>
-    <Notes slideH={11} slideV={0} text="Thank you for checking out Decksmith!" />
+    <Notes text="Thank you for checking out Decksmith!" />
   </Slide>
 
 </Deck>

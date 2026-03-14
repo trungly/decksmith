@@ -1,48 +1,27 @@
 <script lang="ts">
-  import { getContext, onMount, type Snippet } from 'svelte';
+  import { getContext, type Snippet } from 'svelte';
   import type { DeckState } from '../state/deck-state.svelte.js';
   import type { FragmentStyle } from '../types.js';
 
   interface Props {
     index?: number;
     style?: FragmentStyle;
-    /** The h/v of the parent slide — set automatically by Slide if using Decksmith patterns */
-    slideH?: number;
-    slideV?: number;
     children?: Snippet;
   }
 
-  const {
-    index = 0,
-    style = 'fade-in',
-    slideH = -1,
-    slideV = -1,
-    children,
-  }: Props = $props();
+  const { index = 0, style = 'fade-in', children }: Props = $props();
 
   const deck = getContext<DeckState>('deck');
-
-  // Register this fragment with the parent slide
-  onMount(() => {
-    if (slideH >= 0 && slideV >= 0) {
-      const slide = deck.getSlideAt(slideH, slideV);
-      if (slide && index + 1 > slide.fragmentCount) {
-        deck.updateFragmentCount(slideH, slideV, index + 1);
-      }
-    }
-  });
-
-  const isCurrentSlide = $derived(
-    slideH === deck.currentH && slideV === deck.currentV
+  const slide = getContext<{ h: number; v: number; registerFragment: (i: number) => void }>(
+    'slide'
   );
 
-  const isVisible = $derived(
-    isCurrentSlide && deck.currentFragment >= index
-  );
+  // Register synchronously so Slide.onMount sees the correct count.
+  slide.registerFragment(index);
 
-  const wasVisible = $derived(
-    isCurrentSlide && deck.currentFragment > index
-  );
+  const isCurrentSlide = $derived(slide.h === deck.currentH && slide.v === deck.currentV);
+  const isVisible = $derived(isCurrentSlide && deck.currentFragment >= index);
+  const wasVisible = $derived(isCurrentSlide && deck.currentFragment > index);
 </script>
 
 <div

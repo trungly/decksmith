@@ -8,21 +8,59 @@
     deck.goTo(h, v);
     deck.isOverview = false;
   }
+
+  const THUMB_W = 192;
+  const thumbH = $derived(Math.round((THUMB_W * deck.config.height) / deck.config.width));
+  const thumbScale = $derived(THUMB_W / deck.config.width);
+
+  function slidePreview(node: HTMLElement, params: { h: number; v: number }) {
+    function populate({ h, v }: { h: number; v: number }) {
+      const slideEl = document.querySelector<HTMLElement>(
+        `.deck-slides .slide[data-h="${h}"][data-v="${v}"]`
+      );
+      if (!slideEl) return;
+      node.innerHTML = slideEl.innerHTML;
+      if (slideEl.style.background) node.style.background = slideEl.style.background;
+      if (slideEl.style.backgroundImage) {
+        node.style.backgroundImage = slideEl.style.backgroundImage;
+        node.style.backgroundSize = slideEl.style.backgroundSize;
+        node.style.backgroundPosition = slideEl.style.backgroundPosition;
+      }
+    }
+    populate(params);
+    return { update: populate };
+  }
 </script>
 
 {#if deck.isOverview}
-  <div class="deck-overview" role="grid" aria-label="Slide overview">
+  <div
+    class="deck-overview"
+    role="grid"
+    aria-label="Slide overview"
+    onclick={() => (deck.isOverview = false)}
+  >
     {#each deck.slides as column, h (h)}
       <div class="overview-column">
         {#each column as _slide, v (v)}
-          <button
-            class="overview-slide"
-            class:current={h === deck.currentH && v === deck.currentV}
-            onclick={() => selectSlide(h, v)}
-            aria-label="Slide {h + 1}{v > 0 ? '.' + (v + 1) : ''}"
-          >
+          <div class="overview-item">
+            <button
+              class="overview-slide"
+              class:current={h === deck.currentH && v === deck.currentV}
+              style="width: {THUMB_W}px; height: {thumbH}px;"
+              onclick={(e) => {
+                e.stopPropagation();
+                selectSlide(h, v);
+              }}
+              aria-label="Slide {h + 1}{v > 0 ? '.' + (v + 1) : ''}"
+            >
+              <div
+                class="slide-preview"
+                style="width: {deck.config.width}px; height: {deck.config.height}px; transform: scale({thumbScale});"
+                use:slidePreview={{ h, v }}
+              ></div>
+            </button>
             <div class="overview-label">{h + 1}{v > 0 ? '.' + (v + 1) : ''}</div>
-          </button>
+          </div>
         {/each}
       </div>
     {/each}
@@ -40,41 +78,72 @@
     background: rgba(0, 0, 0, 0.85);
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 16px;
+    justify-content: flex-start;
+    gap: 20px;
     padding: 40px;
     backdrop-filter: blur(4px);
+    overflow: auto;
   }
+
   .overview-column {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    flex-shrink: 0;
   }
+
+  .overview-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
   .overview-slide {
-    width: 160px;
-    height: 120px;
-    background: rgba(255,255,255,0.08);
-    border: 2px solid rgba(255,255,255,0.15);
+    overflow: hidden;
+    background: var(--ds-bg, #111);
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 6px;
     cursor: pointer;
-    transition: border-color 0.2s, transform 0.2s, background 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: inherit;
+    transition:
+      border-color 0.15s,
+      box-shadow 0.15s,
+      transform 0.15s;
+    padding: 0;
+    display: block;
+    flex-shrink: 0;
   }
+
   .overview-slide:hover {
     border-color: var(--ds-accent, #42affa);
-    background: rgba(255,255,255,0.12);
+    box-shadow: 0 0 0 2px var(--ds-accent, #42affa);
     transform: scale(1.05);
   }
+
   .overview-slide.current {
     border-color: var(--ds-accent, #42affa);
-    background: rgba(66, 175, 250, 0.15);
+    box-shadow: 0 0 0 3px var(--ds-accent, #42affa);
   }
+
+  .slide-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+    transform-origin: 0 0;
+    pointer-events: none;
+    overflow: hidden;
+    background: var(--ds-bg, #111);
+    color: var(--ds-fg, #eee);
+  }
+
   .overview-label {
-    font-size: 1.2em;
+    font-size: 11px;
     font-weight: 600;
-    opacity: 0.7;
+    opacity: 0.5;
+    color: white;
+    letter-spacing: 0.05em;
   }
 </style>

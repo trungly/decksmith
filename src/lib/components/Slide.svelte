@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getContext, onMount, type Snippet } from 'svelte';
+  import { getContext, onMount, setContext, type Snippet } from 'svelte';
   import type { DeckState } from '../state/deck-state.svelte.js';
   import type { TransitionType } from '../types.js';
   import { getSlidePosition, getTransitionStyles } from '../transitions/transitions.js';
@@ -32,15 +32,19 @@
 
   const deck = getContext<DeckState>('deck');
 
+  // Fragment children call this synchronously during their initialization,
+  // before this Slide's onMount fires, so the count is correct by mount time.
+  let fragmentCount = $state(0);
+  setContext('slide', {
+    h,
+    v,
+    registerFragment(index: number) {
+      if (index + 1 > fragmentCount) fragmentCount = index + 1;
+    },
+  });
+
   onMount(() => {
-    deck.registerSlide({
-      h,
-      v,
-      id,
-      fragmentCount: 0,
-      autoAnimate,
-      notes: '',
-    });
+    deck.registerSlide({ h, v, id, fragmentCount, autoAnimate, notes: '' });
   });
 
   const position = $derived(getSlidePosition(h, v, deck.currentH, deck.currentV));
