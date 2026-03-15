@@ -14,22 +14,42 @@
   color: var(--ds-fg);
 }
 
-.theme-black h1, .theme-black h2, .theme-black h3,
-.theme-black h4, .theme-black h5, .theme-black h6 {
+.theme-black h1,
+.theme-black h2,
+.theme-black h3,
+.theme-black h4,
+.theme-black h5,
+.theme-black h6 {
   color: var(--ds-heading);
-  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
   text-transform: none;
 }
 
-.theme-black h1 { font-size: 2.5em; }
-.theme-black h2 { font-size: 1.8em; }
-.theme-black h3 { font-size: 1.3em; }
+.theme-black h1 {
+  font-size: 2.5em;
+}
+.theme-black h2 {
+  font-size: 1.8em;
+}
+.theme-black h3 {
+  font-size: 1.3em;
+}
 
-.theme-black a { color: var(--ds-link); text-decoration: none; }
-.theme-black a:hover { color: var(--ds-link-hover); text-decoration: underline; }
+.theme-black a {
+  color: var(--ds-link);
+  text-decoration: none;
+}
+.theme-black a:hover {
+  color: var(--ds-link-hover);
+  text-decoration: underline;
+}
 
 .theme-black ::selection {
   background: var(--ds-selection-bg);

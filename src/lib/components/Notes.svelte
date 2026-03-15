@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { getContext, onMount, tick } from 'svelte';
-  import type { DeckState } from '../state/deck-state.svelte.js';
+  import { getContext, onMount, tick } from "svelte";
+  import type { DeckState } from "../state/deck-state.svelte.js";
 
   interface Props {
     slideH?: number;
@@ -8,9 +8,9 @@
     text?: string;
   }
 
-  const { slideH = 0, slideV = 0, text = '' }: Props = $props();
+  const { slideH = 0, slideV = 0, text = "" }: Props = $props();
 
-  const deck = getContext<DeckState>('deck');
+  const deck = getContext<DeckState>("deck");
 
   onMount(async () => {
     if (text) {

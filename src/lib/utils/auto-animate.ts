@@ -39,20 +39,20 @@ function getRect(el: HTMLElement): ElementRect {
 export function autoAnimate(
   fromSlide: HTMLElement,
   toSlide: HTMLElement,
-  duration: number = 800
+  duration: number = 800,
 ): Animation[] {
   const animations: Animation[] = [];
 
-  const fromElements = fromSlide.querySelectorAll<HTMLElement>('[data-id]');
+  const fromElements = fromSlide.querySelectorAll<HTMLElement>("[data-id]");
   const toMap = new Map<string, HTMLElement>();
 
-  toSlide.querySelectorAll<HTMLElement>('[data-id]').forEach((el) => {
-    const id = el.getAttribute('data-id');
+  toSlide.querySelectorAll<HTMLElement>("[data-id]").forEach((el) => {
+    const id = el.getAttribute("data-id");
     if (id) toMap.set(id, el);
   });
 
   fromElements.forEach((fromEl) => {
-    const id = fromEl.getAttribute('data-id');
+    const id = fromEl.getAttribute("data-id");
     if (!id) return;
     const toEl = toMap.get(id);
     if (!toEl) return;
@@ -76,7 +76,7 @@ export function autoAnimate(
         opacity: first.opacity,
       },
       {
-        transform: 'translate(0, 0) scale(1, 1)',
+        transform: "translate(0, 0) scale(1, 1)",
         fontSize: last.fontSize,
         color: last.color,
         backgroundColor: last.backgroundColor,
@@ -87,8 +87,8 @@ export function autoAnimate(
 
     const anim = toEl.animate(keyframes, {
       duration,
-      easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
-      fill: 'backwards',
+      easing: "cubic-bezier(0.25, 0.1, 0.25, 1)",
+      fill: "backwards",
     });
 
     animations.push(anim);

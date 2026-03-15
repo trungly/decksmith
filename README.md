@@ -26,16 +26,16 @@ Decksmith replicates the core features of Reveal.js using Svelte 5's runes-based
 git clone <repo-url> my-presentation
 cd my-presentation
 npm install
-npm run dev
+npm start
 ```
 
 Edit `src/App.svelte` to create your presentation:
 
 ```svelte
 <script lang="ts">
-  import Deck from './lib/components/Deck.svelte';
-  import Slide from './lib/components/Slide.svelte';
-  import Fragment from './lib/components/Fragment.svelte';
+  import Deck from "./lib/components/Deck.svelte";
+  import Slide from "./lib/components/Slide.svelte";
+  import Fragment from "./lib/components/Fragment.svelte";
 </script>
 
 <Deck theme="black" transition="slide">
@@ -54,16 +54,16 @@ Edit `src/App.svelte` to create your presentation:
 
 ## Keyboard Shortcuts
 
-| Key | Action |
-|-----|--------|
-| `→` / `Space` | Next slide/fragment |
-| `←` / `Shift+Space` | Previous slide/fragment |
-| `↑` / `↓` | Navigate vertical slides |
-| `Esc` | Toggle overview mode |
-| `F` | Toggle fullscreen |
-| `S` | Open speaker notes |
-| `B` / `.` | Pause (blackout) |
-| `Home` / `End` | First / last slide |
+| Key                 | Action                   |
+| ------------------- | ------------------------ |
+| `→` / `Space`       | Next slide/fragment      |
+| `←` / `Shift+Space` | Previous slide/fragment  |
+| `↑` / `↓`           | Navigate vertical slides |
+| `Esc`               | Toggle overview mode     |
+| `F`                 | Toggle fullscreen        |
+| `S`                 | Open speaker notes       |
+| `B` / `.`           | Pause (blackout)         |
+| `Home` / `End`      | First / last slide       |
 
 ## Themes
 

@@ -1,25 +1,31 @@
-export type TransitionType = 'none' | 'fade' | 'slide' | 'convex' | 'concave' | 'zoom';
+export type TransitionType =
+  | "none"
+  | "fade"
+  | "slide"
+  | "convex"
+  | "concave"
+  | "zoom";
 
 export type FragmentStyle =
-  | 'fade-in'
-  | 'fade-out'
-  | 'fade-up'
-  | 'fade-down'
-  | 'fade-left'
-  | 'fade-right'
-  | 'fade-in-then-out'
-  | 'fade-in-then-semi-out'
-  | 'grow'
-  | 'shrink'
-  | 'strike'
-  | 'highlight-red'
-  | 'highlight-green'
-  | 'highlight-blue'
-  | 'highlight-current-red'
-  | 'highlight-current-green'
-  | 'highlight-current-blue';
+  | "fade-in"
+  | "fade-out"
+  | "fade-up"
+  | "fade-down"
+  | "fade-left"
+  | "fade-right"
+  | "fade-in-then-out"
+  | "fade-in-then-semi-out"
+  | "grow"
+  | "shrink"
+  | "strike"
+  | "highlight-red"
+  | "highlight-green"
+  | "highlight-blue"
+  | "highlight-current-red"
+  | "highlight-current-green"
+  | "highlight-current-blue";
 
-export type ThemeName = 'black' | 'white' | 'moon' | 'serif' | 'blood';
+export type ThemeName = "black" | "white" | "moon" | "serif" | "blood";
 
 export interface SlideInfo {
   h: number;
@@ -31,13 +37,13 @@ export interface SlideInfo {
   autoAnimateId?: string;
 }
 
-export type ScrollLayout = 'full' | 'compact';
+export type ScrollLayout = "full" | "compact";
 
 export interface DeckConfig {
   width: number;
   height: number;
   transition: TransitionType;
-  transitionSpeed: 'default' | 'fast' | 'slow';
+  transitionSpeed: "default" | "fast" | "slow";
   controls: boolean;
   progress: boolean;
   slideNumber: boolean;
@@ -58,8 +64,8 @@ export interface DeckConfig {
 export const DEFAULT_CONFIG: DeckConfig = {
   width: 960,
   height: 700,
-  transition: 'slide',
-  transitionSpeed: 'default',
+  transition: "slide",
+  transitionSpeed: "default",
   controls: true,
   progress: true,
   slideNumber: true,
@@ -68,13 +74,13 @@ export const DEFAULT_CONFIG: DeckConfig = {
   touch: true,
   keyboard: true,
   loop: false,
-  theme: 'black',
+  theme: "black",
   scrollView: false,
-  scrollLayout: 'full',
+  scrollLayout: "full",
   scrollSnap: true,
 };
 
-export type NavigationDirection = 'left' | 'right' | 'up' | 'down';
+export type NavigationDirection = "left" | "right" | "up" | "down";
 
 export interface SlidePosition {
   h: number;

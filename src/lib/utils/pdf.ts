@@ -1,11 +1,11 @@
 export function isPrintMode(): boolean {
-  return window.location.search.includes('print-pdf');
+  return window.location.search.includes("print-pdf");
 }
 
 export function setupPrintStyles(width: number, height: number) {
   if (!isPrintMode()) return;
 
-  const style = document.createElement('style');
+  const style = document.createElement("style");
   style.textContent = `
     @media print {
       * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
@@ -52,6 +52,6 @@ export function setupPrintStyles(width: number, height: number) {
   document.head.appendChild(style);
 
   if (isPrintMode()) {
-    document.body.classList.add('print-pdf');
+    document.body.classList.add("print-pdf");
   }
 }

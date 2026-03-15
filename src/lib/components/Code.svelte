@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { getContext } from 'svelte';
-  import type { DeckState } from '../state/deck-state.svelte.js';
-  import hljs from 'highlight.js';
-  import 'highlight.js/styles/atom-one-dark.css';
+  import { getContext } from "svelte";
+  import type { DeckState } from "../state/deck-state.svelte.js";
+  import hljs from "highlight.js";
+  import "highlight.js/styles/atom-one-dark.css";
 
   interface Props {
     /** The code string to display */
@@ -22,26 +22,28 @@
   }
 
   const {
-    code = '',
+    code = "",
     language,
     lineNumbers = false,
-    highlightLines = '',
+    highlightLines = "",
     lineNumberStart = 1,
   }: Props = $props();
 
-  const deck = getContext<DeckState>('deck');
-  const slide = getContext<{ h: number; v: number; registerFragment: (i: number) => void }>(
-    'slide'
-  );
+  const deck = getContext<DeckState>("deck");
+  const slide = getContext<{
+    h: number;
+    v: number;
+    registerFragment: (i: number) => void;
+  }>("slide");
 
   // Parse highlight steps: "1|2-3|4,6-10" → [[1], [2,3], [4,6,7,8,9,10]]
   function parseHighlightSteps(spec: string): number[][] {
     if (!spec) return [];
-    return spec.split('|').map((step) => {
+    return spec.split("|").map((step) => {
       const lines: number[] = [];
-      for (const part of step.split(',')) {
+      for (const part of step.split(",")) {
         const trimmed = part.trim();
-        const range = trimmed.split('-');
+        const range = trimmed.split("-");
         if (range.length === 2) {
           const start = parseInt(range[0], 10);
           const end = parseInt(range[1], 10);
@@ -66,7 +68,9 @@
   }
 
   // Which step is currently active (for line highlighting)
-  const isCurrentSlide = $derived(slide.h === deck.currentH && slide.v === deck.currentV);
+  const isCurrentSlide = $derived(
+    slide.h === deck.currentH && slide.v === deck.currentV,
+  );
   const activeStep = $derived.by(() => {
     if (!hasSteps || !isCurrentSlide) return -1;
     return deck.currentFragment;
@@ -74,7 +78,7 @@
 
   // Highlighted HTML from highlight.js
   const highlightedHtml = $derived.by(() => {
-    const trimmed = code.replace(/^\n/, '').replace(/\n$/, '');
+    const trimmed = code.replace(/^\n/, "").replace(/\n$/, "");
     if (language) {
       try {
         return hljs.highlight(trimmed, { language }).value;
@@ -86,7 +90,7 @@
   });
 
   // Split into lines for line-number and line-highlight rendering
-  const lines = $derived(highlightedHtml.split('\n'));
+  const lines = $derived(highlightedHtml.split("\n"));
 
   // Check if a line number is highlighted in the current step
   function isLineHighlighted(lineNum: number): boolean {
@@ -96,13 +100,25 @@
 </script>
 
 <!-- eslint-disable svelte/no-at-html-tags -- highlight.js output is trusted -->
-<div class="code-block" class:has-line-numbers={lineNumbers} class:has-highlights={hasSteps}>
-  <pre><code class={language ? `hljs language-${language}` : 'hljs'}>{#each lines as line, i (i)}{@const lineNum = i + lineNumberStart}<span
+<div
+  class="code-block"
+  class:has-line-numbers={lineNumbers}
+  class:has-highlights={hasSteps}
+>
+  <pre><code class={language ? `hljs language-${language}` : "hljs"}
+      >{#each lines as line, i (i)}{@const lineNum = i + lineNumberStart}<span
           class="code-line"
-          class:highlighted={hasSteps && activeStep >= 0 && isLineHighlighted(lineNum)}
-          class:dimmed={hasSteps && activeStep >= 0 && !isLineHighlighted(lineNum)}
-        >{#if lineNumbers}<span class="line-number">{lineNum}</span>{/if}<span class="line-content">{@html line}</span>
-</span>{/each}</code></pre>
+          class:highlighted={hasSteps &&
+            activeStep >= 0 &&
+            isLineHighlighted(lineNum)}
+          class:dimmed={hasSteps &&
+            activeStep >= 0 &&
+            !isLineHighlighted(lineNum)}
+          >{#if lineNumbers}<span class="line-number">{lineNum}</span>{/if}<span
+            class="line-content">{@html line}</span
+          >
+</span>{/each}</code
+    ></pre>
 </div>
 
 <style>
@@ -123,7 +139,8 @@
   }
 
   code {
-    font-family: 'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Consolas', monospace;
+    font-family:
+      "Fira Code", "Cascadia Code", "JetBrains Mono", "Consolas", monospace;
     line-height: 1.6;
     tab-size: 2;
   }
@@ -133,7 +150,9 @@
     padding: 0 0.5em;
     margin: 0 -0.5em;
     border-radius: 2px;
-    transition: opacity 0.3s ease, background 0.3s ease;
+    transition:
+      opacity 0.3s ease,
+      background 0.3s ease;
   }
 
   .code-line.highlighted {

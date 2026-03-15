@@ -14,21 +14,41 @@
   color: var(--ds-fg);
 }
 
-.theme-white h1, .theme-white h2, .theme-white h3,
-.theme-white h4, .theme-white h5, .theme-white h6 {
+.theme-white h1,
+.theme-white h2,
+.theme-white h3,
+.theme-white h4,
+.theme-white h5,
+.theme-white h6 {
   color: var(--ds-heading);
-  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
-.theme-white h1 { font-size: 2.5em; }
-.theme-white h2 { font-size: 1.8em; }
-.theme-white h3 { font-size: 1.3em; }
+.theme-white h1 {
+  font-size: 2.5em;
+}
+.theme-white h2 {
+  font-size: 1.8em;
+}
+.theme-white h3 {
+  font-size: 1.3em;
+}
 
-.theme-white a { color: var(--ds-link); text-decoration: none; }
-.theme-white a:hover { color: var(--ds-link-hover); text-decoration: underline; }
+.theme-white a {
+  color: var(--ds-link);
+  text-decoration: none;
+}
+.theme-white a:hover {
+  color: var(--ds-link-hover);
+  text-decoration: underline;
+}
 
 .theme-white ::selection {
   background: var(--ds-selection-bg);

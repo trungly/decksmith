@@ -1,9 +1,9 @@
-const SPEAKER_CHANNEL = 'decksmith-speaker';
+const SPEAKER_CHANNEL = "decksmith-speaker";
 let speakerWindow: Window | null = null;
 let channel: BroadcastChannel | null = null;
 
 export interface SpeakerMessage {
-  type: 'state-update';
+  type: "state-update";
   currentH: number;
   currentV: number;
   currentFragment: number;
@@ -77,7 +77,7 @@ export function openSpeakerWindow() {
     channel.onmessage = (e) => {
       const data = e.data;
       if (data.type === 'state-update') {
-        document.getElementById('notes-content').innerHTML = data.notes || '<em>No notes for this slide</em>';
+        document.getElementById('notes-content').textContent = data.notes || 'No notes for this slide';
         document.getElementById('slide-info').textContent =
           'Slide ' + (data.currentH + 1) + (data.currentV > 0 ? '.' + (data.currentV + 1) : '') +
           ' / ' + data.totalSlides;
@@ -97,9 +97,9 @@ export function openSpeakerWindow() {
 </body>
 </html>`;
 
-  const blob = new Blob([html], { type: 'text/html' });
+  const blob = new Blob([html], { type: "text/html" });
   const url = URL.createObjectURL(blob);
-  speakerWindow = window.open(url, 'decksmith-speaker', 'width=800,height=600');
+  speakerWindow = window.open(url, "decksmith-speaker", "width=800,height=600");
 }
 
 export function sendSpeakerUpdate(msg: SpeakerMessage) {

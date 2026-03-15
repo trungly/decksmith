@@ -1,4 +1,9 @@
-import { type DeckConfig, type SlideInfo, type SlidePosition, DEFAULT_CONFIG } from '../types.js';
+import {
+  type DeckConfig,
+  type SlideInfo,
+  type SlidePosition,
+  DEFAULT_CONFIG,
+} from "../types.js";
 
 export class DeckState {
   // Core navigation state
@@ -17,15 +22,15 @@ export class DeckState {
   slides: SlideInfo[][] = $state([]);
 
   // Speaker notes for current slide
-  currentNotes = $derived(this.getSlideAt(this.currentH, this.currentV)?.notes ?? '');
+  currentNotes = $derived(
+    this.getSlideAt(this.currentH, this.currentV)?.notes ?? "",
+  );
 
   // Total horizontal slide count
   totalHorizontal = $derived(this.slides.length);
 
   // Flat total of all slides
-  totalSlides = $derived(
-    this.slides.reduce((sum, col) => sum + col.length, 0)
-  );
+  totalSlides = $derived(this.slides.reduce((sum, col) => sum + col.length, 0));
 
   // Progress (0 to 1)
   progress = $derived.by(() => {
@@ -45,12 +50,12 @@ export class DeckState {
   canGoUp = $derived(this.currentV > 0);
   canGoDown = $derived(
     this.slides[this.currentH] !== undefined &&
-    this.currentV < this.slides[this.currentH].length - 1
+      this.currentV < this.slides[this.currentH].length - 1,
   );
 
   // Current slide fragment count
   currentFragmentCount = $derived(
-    this.getSlideAt(this.currentH, this.currentV)?.fragmentCount ?? 0
+    this.getSlideAt(this.currentH, this.currentV)?.fragmentCount ?? 0,
   );
 
   getSlideAt(h: number, v: number): SlideInfo | undefined {

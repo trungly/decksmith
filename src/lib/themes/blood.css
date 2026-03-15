@@ -14,21 +14,41 @@
   color: var(--ds-fg);
 }
 
-.theme-blood h1, .theme-blood h2, .theme-blood h3,
-.theme-blood h4, .theme-blood h5, .theme-blood h6 {
+.theme-blood h1,
+.theme-blood h2,
+.theme-blood h3,
+.theme-blood h4,
+.theme-blood h5,
+.theme-blood h6 {
   color: var(--ds-heading);
-  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
   font-weight: 700;
   line-height: 1.2;
   text-shadow: 2px 2px 6px rgba(150, 0, 0, 0.5);
 }
 
-.theme-blood h1 { font-size: 2.5em; }
-.theme-blood h2 { font-size: 1.8em; }
-.theme-blood h3 { font-size: 1.3em; }
+.theme-blood h1 {
+  font-size: 2.5em;
+}
+.theme-blood h2 {
+  font-size: 1.8em;
+}
+.theme-blood h3 {
+  font-size: 1.3em;
+}
 
-.theme-blood a { color: var(--ds-link); text-decoration: none; }
-.theme-blood a:hover { color: var(--ds-link-hover); text-decoration: underline; }
+.theme-blood a {
+  color: var(--ds-link);
+  text-decoration: none;
+}
+.theme-blood a:hover {
+  color: var(--ds-link-hover);
+  text-decoration: underline;
+}
 
 .theme-blood ::selection {
   background: var(--ds-selection-bg);

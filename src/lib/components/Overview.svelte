@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { getContext } from 'svelte';
-  import { fade } from 'svelte/transition';
-  import type { DeckState } from '../state/deck-state.svelte.js';
+  import { getContext } from "svelte";
+  import { fade } from "svelte/transition";
+  import type { DeckState } from "../state/deck-state.svelte.js";
 
-  const deck = getContext<DeckState>('deck');
+  const deck = getContext<DeckState>("deck");
 
   function selectSlide(h: number, v: number) {
     deck.goTo(h, v);
@@ -11,17 +11,20 @@
   }
 
   const THUMB_W = 192;
-  const thumbH = $derived(Math.round((THUMB_W * deck.config.height) / deck.config.width));
+  const thumbH = $derived(
+    Math.round((THUMB_W * deck.config.height) / deck.config.width),
+  );
   const thumbScale = $derived(THUMB_W / deck.config.width);
 
   function slidePreview(node: HTMLElement, params: { h: number; v: number }) {
     function populate({ h, v }: { h: number; v: number }) {
       const slideEl = document.querySelector<HTMLElement>(
-        `.deck-slides .slide[data-h="${h}"][data-v="${v}"]`
+        `.deck-slides .slide[data-h="${h}"][data-v="${v}"]`,
       );
       if (!slideEl) return;
       node.innerHTML = slideEl.innerHTML;
-      if (slideEl.style.background) node.style.background = slideEl.style.background;
+      if (slideEl.style.background)
+        node.style.background = slideEl.style.background;
       if (slideEl.style.backgroundImage) {
         node.style.backgroundImage = slideEl.style.backgroundImage;
         node.style.backgroundSize = slideEl.style.backgroundSize;
@@ -58,11 +61,14 @@
             >
               <div
                 class="slide-preview"
-                style="width: {deck.config.width}px; height: {deck.config.height}px; transform: scale({thumbScale});"
+                style="width: {deck.config.width}px; height: {deck.config
+                  .height}px; transform: scale({thumbScale});"
                 use:slidePreview={{ h, v }}
               ></div>
             </button>
-            <div class="overview-label">{h + 1}{v > 0 ? '.' + (v + 1) : ''}</div>
+            <div class="overview-label">
+              {h + 1}{v > 0 ? "." + (v + 1) : ""}
+            </div>
           </div>
         {/each}
       </div>

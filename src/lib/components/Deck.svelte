@@ -1,31 +1,31 @@
 <script lang="ts">
-  import { setContext, onMount, type Snippet } from 'svelte';
-  import { DeckState } from '../state/deck-state.svelte.js';
-  import type { TransitionType, ThemeName, ScrollLayout } from '../types.js';
-  import { setupKeyboard } from '../utils/keyboard.js';
-  import { setupTouch } from '../utils/touch.js';
-  import { setupHashRouting, updateHash } from '../utils/hash.js';
-  import { computeScale } from '../utils/scaling.js';
-  import { sendSpeakerUpdate } from '../utils/speaker.js';
-  import { setupPrintStyles, isPrintMode } from '../utils/pdf.js';
-  import { autoAnimate } from '../utils/auto-animate.js';
-  import Controls from './Controls.svelte';
-  import Progress from './Progress.svelte';
-  import SlideNumber from './SlideNumber.svelte';
-  import Overview from './Overview.svelte';
-  import ScrollProgress from './ScrollProgress.svelte';
+  import { setContext, onMount, type Snippet } from "svelte";
+  import { DeckState } from "../state/deck-state.svelte.js";
+  import type { TransitionType, ThemeName, ScrollLayout } from "../types.js";
+  import { setupKeyboard } from "../utils/keyboard.js";
+  import { setupTouch } from "../utils/touch.js";
+  import { setupHashRouting, updateHash } from "../utils/hash.js";
+  import { computeScale } from "../utils/scaling.js";
+  import { sendSpeakerUpdate } from "../utils/speaker.js";
+  import { setupPrintStyles, isPrintMode } from "../utils/pdf.js";
+  import { autoAnimate } from "../utils/auto-animate.js";
+  import Controls from "./Controls.svelte";
+  import Progress from "./Progress.svelte";
+  import SlideNumber from "./SlideNumber.svelte";
+  import Overview from "./Overview.svelte";
+  import ScrollProgress from "./ScrollProgress.svelte";
 
   // Import themes
-  import '../themes/black.css';
-  import '../themes/white.css';
-  import '../themes/moon.css';
-  import '../themes/serif.css';
-  import '../themes/blood.css';
+  import "../themes/black.css";
+  import "../themes/white.css";
+  import "../themes/moon.css";
+  import "../themes/serif.css";
+  import "../themes/blood.css";
 
   interface Props {
     theme?: ThemeName;
     transition?: TransitionType;
-    transitionSpeed?: 'default' | 'fast' | 'slow';
+    transitionSpeed?: "default" | "fast" | "slow";
     width?: number;
     height?: number;
     controls?: boolean;
@@ -43,9 +43,9 @@
   }
 
   const {
-    theme = 'black',
-    transition = 'slide',
-    transitionSpeed = 'default',
+    theme = "black",
+    transition = "slide",
+    transitionSpeed = "default",
     width = 960,
     height = 700,
     controls = true,
@@ -57,13 +57,13 @@
     keyboard = true,
     loop = false,
     scrollView = false,
-    scrollLayout = 'full',
+    scrollLayout = "full",
     scrollSnap = true,
     children,
   }: Props = $props();
 
   const deck = new DeckState();
-  setContext('deck', deck);
+  setContext("deck", deck);
 
   // Apply config
   $effect(() => {
@@ -106,14 +106,18 @@
       const toSlide = deck.getSlideAt(h, v);
       if (fromSlide?.autoAnimate && toSlide?.autoAnimate) {
         const fromEl = slidesElement.querySelector<HTMLElement>(
-          `.slide[data-h="${prevH}"][data-v="${prevV}"]`
+          `.slide[data-h="${prevH}"][data-v="${prevV}"]`,
         );
         const toEl = slidesElement.querySelector<HTMLElement>(
-          `.slide[data-h="${h}"][data-v="${v}"]`
+          `.slide[data-h="${h}"][data-v="${v}"]`,
         );
         if (fromEl && toEl) {
-          const duration = deck.config.transitionSpeed === 'fast' ? 400
-            : deck.config.transitionSpeed === 'slow' ? 1200 : 800;
+          const duration =
+            deck.config.transitionSpeed === "fast"
+              ? 400
+              : deck.config.transitionSpeed === "slow"
+                ? 1200
+                : 800;
           autoAnimate(fromEl, toEl, duration);
         }
       }
@@ -136,7 +140,7 @@
   // Speaker notes sync
   $effect(() => {
     sendSpeakerUpdate({
-      type: 'state-update',
+      type: "state-update",
       currentH: deck.currentH,
       currentV: deck.currentV,
       currentFragment: deck.currentFragment,
@@ -151,12 +155,14 @@
 
   function scrollToSlide(h: number, v: number) {
     const slideEl = slidesElement?.querySelector<HTMLElement>(
-      `.slide[data-h="${h}"][data-v="${v}"]`
+      `.slide[data-h="${h}"][data-v="${v}"]`,
     );
     if (!slideEl) return;
     programmaticScroll = true;
-    slideEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setTimeout(() => { programmaticScroll = false; }, 1000);
+    slideEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(() => {
+      programmaticScroll = false;
+    }, 1000);
   }
 
   // Sync keyboard/programmatic navigation to scroll position in scroll view mode.
@@ -177,15 +183,15 @@
       const maxScroll = scrollEl.scrollHeight - scrollEl.clientHeight;
       scrollProgress = maxScroll > 0 ? scrollEl.scrollTop / maxScroll : 0;
 
-      const slideEls = slidesElement.querySelectorAll<HTMLElement>('.slide');
+      const slideEls = slidesElement.querySelectorAll<HTMLElement>(".slide");
       const viewportCenter = scrollEl.scrollTop + scrollEl.clientHeight / 2;
 
       for (const slideEl of slideEls) {
         const slideTop = slideEl.offsetTop;
         const slideBottom = slideTop + slideEl.offsetHeight;
         if (viewportCenter >= slideTop && viewportCenter < slideBottom) {
-          const h = parseInt(slideEl.dataset.h ?? '0', 10);
-          const v = parseInt(slideEl.dataset.v ?? '0', 10);
+          const h = parseInt(slideEl.dataset.h ?? "0", 10);
+          const v = parseInt(slideEl.dataset.v ?? "0", 10);
           if (h !== deck.currentH || v !== deck.currentV) {
             deck.goTo(h, v); // resets currentFragment to -1
           }
@@ -194,8 +200,8 @@
       }
     }
 
-    scrollEl.addEventListener('scroll', onScroll, { passive: true });
-    return () => scrollEl.removeEventListener('scroll', onScroll);
+    scrollEl.addEventListener("scroll", onScroll, { passive: true });
+    return () => scrollEl.removeEventListener("scroll", onScroll);
   }
 
   onMount(() => {
@@ -213,14 +219,14 @@
     const resizeHandler = () => {
       if (!scrollView) updateScale();
     };
-    window.addEventListener('resize', resizeHandler);
+    window.addEventListener("resize", resizeHandler);
 
     return () => {
       cleanupKeyboard();
       cleanupTouch();
       cleanupHash();
       cleanupScroll();
-      window.removeEventListener('resize', resizeHandler);
+      window.removeEventListener("resize", resizeHandler);
     };
   });
 
@@ -232,8 +238,8 @@
   <div
     class="deck deck-scroll theme-{theme}"
     class:scroll-snap={scrollSnap}
-    class:scroll-full={scrollLayout === 'full'}
-    class:scroll-compact={scrollLayout === 'compact'}
+    class:scroll-full={scrollLayout === "full"}
+    class:scroll-compact={scrollLayout === "compact"}
     class:print-pdf={printMode}
     bind:this={deckElement}
   >
@@ -360,6 +366,8 @@
 
   /* In scroll view, fragments are revealed based on scroll position */
   .deck-scroll-slides :global(.fragment) {
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
   }
 </style>

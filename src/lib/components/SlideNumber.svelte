@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { getContext } from 'svelte';
-  import type { DeckState } from '../state/deck-state.svelte.js';
+  import { getContext } from "svelte";
+  import type { DeckState } from "../state/deck-state.svelte.js";
 
-  const deck = getContext<DeckState>('deck');
+  const deck = getContext<DeckState>("deck");
 
   const display = $derived.by(() => {
     const h = deck.currentH + 1;

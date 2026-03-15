@@ -1,4 +1,4 @@
-import type { DeckState } from '../state/deck-state.svelte.js';
+import type { DeckState } from "../state/deck-state.svelte.js";
 
 const SWIPE_THRESHOLD = 40;
 
@@ -50,11 +50,11 @@ export function setupTouch(deck: DeckState, element: HTMLElement): () => void {
     }
   }
 
-  element.addEventListener('touchstart', handleTouchStart, { passive: true });
-  element.addEventListener('touchend', handleTouchEnd, { passive: true });
+  element.addEventListener("touchstart", handleTouchStart, { passive: true });
+  element.addEventListener("touchend", handleTouchEnd, { passive: true });
 
   return () => {
-    element.removeEventListener('touchstart', handleTouchStart);
-    element.removeEventListener('touchend', handleTouchEnd);
+    element.removeEventListener("touchstart", handleTouchStart);
+    element.removeEventListener("touchend", handleTouchEnd);
   };
 }

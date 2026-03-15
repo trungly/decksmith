@@ -1,5 +1,5 @@
-import type { DeckState } from '../state/deck-state.svelte.js';
-import { openSpeakerWindow } from './speaker.js';
+import type { DeckState } from "../state/deck-state.svelte.js";
+import { openSpeakerWindow } from "./speaker.js";
 
 export function setupKeyboard(deck: DeckState): () => void {
   function handleKeydown(e: KeyboardEvent) {
@@ -7,11 +7,11 @@ export function setupKeyboard(deck: DeckState): () => void {
 
     // Ignore when typing in inputs
     const tag = (e.target as HTMLElement)?.tagName;
-    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
 
     switch (e.key) {
-      case 'ArrowRight':
-      case 'PageDown':
+      case "ArrowRight":
+      case "PageDown":
         e.preventDefault();
         if (deck.isOverview) {
           deck.right();
@@ -20,8 +20,8 @@ export function setupKeyboard(deck: DeckState): () => void {
         }
         break;
 
-      case 'ArrowLeft':
-      case 'PageUp':
+      case "ArrowLeft":
+      case "PageUp":
         e.preventDefault();
         if (deck.isOverview) {
           deck.left();
@@ -30,7 +30,7 @@ export function setupKeyboard(deck: DeckState): () => void {
         }
         break;
 
-      case 'ArrowDown':
+      case "ArrowDown":
         e.preventDefault();
         if (deck.isOverview) {
           deck.down();
@@ -39,7 +39,7 @@ export function setupKeyboard(deck: DeckState): () => void {
         }
         break;
 
-      case 'ArrowUp':
+      case "ArrowUp":
         e.preventDefault();
         if (deck.isOverview) {
           deck.up();
@@ -48,7 +48,7 @@ export function setupKeyboard(deck: DeckState): () => void {
         }
         break;
 
-      case ' ':
+      case " ":
         e.preventDefault();
         if (e.shiftKey) {
           deck.prev();
@@ -57,7 +57,7 @@ export function setupKeyboard(deck: DeckState): () => void {
         }
         break;
 
-      case 'Escape':
+      case "Escape":
         e.preventDefault();
         if (deck.isOverview) {
           deck.isOverview = false;
@@ -66,35 +66,35 @@ export function setupKeyboard(deck: DeckState): () => void {
         }
         break;
 
-      case 'Home':
+      case "Home":
         e.preventDefault();
         deck.goToFirst();
         break;
 
-      case 'End':
+      case "End":
         e.preventDefault();
         deck.goToLast();
         break;
 
-      case 'f':
-      case 'F':
+      case "f":
+      case "F":
         if (!e.ctrlKey && !e.metaKey) {
           e.preventDefault();
           toggleFullscreen();
         }
         break;
 
-      case 's':
-      case 'S':
+      case "s":
+      case "S":
         if (!e.ctrlKey && !e.metaKey) {
           e.preventDefault();
           openSpeakerWindow();
         }
         break;
 
-      case '.':
-      case 'b':
-      case 'B':
+      case ".":
+      case "b":
+      case "B":
         if (!e.ctrlKey && !e.metaKey) {
           e.preventDefault();
           deck.togglePause();
@@ -103,8 +103,8 @@ export function setupKeyboard(deck: DeckState): () => void {
     }
   }
 
-  window.addEventListener('keydown', handleKeydown);
-  return () => window.removeEventListener('keydown', handleKeydown);
+  window.addEventListener("keydown", handleKeydown);
+  return () => window.removeEventListener("keydown", handleKeydown);
 }
 
 function toggleFullscreen() {

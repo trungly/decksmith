@@ -1,8 +1,8 @@
-import type { DeckState } from '../state/deck-state.svelte.js';
+import type { DeckState } from "../state/deck-state.svelte.js";
 
 export function parseHash(): { h: number; v: number; f: number } {
-  const hash = window.location.hash.replace(/^#\/?/, '');
-  const parts = hash.split('/').map(Number);
+  const hash = window.location.hash.replace(/^#\/?/, "");
+  const parts = hash.split("/").map(Number);
   return {
     h: parts[0] || 0,
     v: parts[1] || 0,
@@ -13,7 +13,7 @@ export function parseHash(): { h: number; v: number; f: number } {
 export function updateHash(h: number, v: number) {
   const hash = v > 0 ? `#/${h}/${v}` : `#/${h}`;
   if (window.location.hash !== hash) {
-    history.replaceState(null, '', hash);
+    history.replaceState(null, "", hash);
   }
 }
 
@@ -36,9 +36,9 @@ export function setupHashRouting(deck: DeckState): () => void {
     }
   }
 
-  window.addEventListener('hashchange', handleHashChange);
+  window.addEventListener("hashchange", handleHashChange);
 
   return () => {
-    window.removeEventListener('hashchange', handleHashChange);
+    window.removeEventListener("hashchange", handleHashChange);
   };
 }
