@@ -24,7 +24,7 @@
         role="group"
         aria-label="Fragment {fragmentIndex + 1} of {fragmentTotal}"
       >
-        {#each { length: fragmentTotal } as _, i}
+        {#each { length: fragmentTotal } as _, i (i)}
           <span
             class="dot"
             class:filled={i <= fragmentIndex}

@@ -13,7 +13,9 @@ Decksmith replicates the core features of Reveal.js using Svelte 5's runes-based
 - **Overview Mode** — Bird's-eye view of all slides (ESC key)
 - **Speaker Notes** — Separate speaker window with timer and notes
 - **Markdown** — Write slide content in Markdown
+- **Code Highlighting** — Syntax highlighting with line-by-line step-through
 - **Auto-Animate** — Automatically animate matching elements between slides
+- **Scroll View** — Render as a scrollable page
 - **Themes** — 5 built-in themes (Black, White, Moon, Serif, Blood)
 - **Hash Routing** — URL reflects current slide for deep-linking
 - **Auto-Scaling** — Content scales to fit any viewport
@@ -45,7 +47,7 @@ Edit `src/App.svelte` to create your presentation:
 
   <Slide h={1} v={0}>
     <h2>Second Slide</h2>
-    <Fragment index={0} style="fade-up" slideH={1} slideV={0}>
+    <Fragment index={0} style="fade-up">
       <p>Appears on click</p>
     </Fragment>
   </Slide>
@@ -88,8 +90,10 @@ See the [docs/](./docs/) directory for complete documentation:
 - [Themes](./docs/themes.md)
 - [Navigation](./docs/navigation.md)
 - [Speaker Notes](./docs/speaker-notes.md)
+- [Code Highlighting](./docs/code-highlighting.md)
 - [Markdown](./docs/markdown.md)
 - [Auto-Animate](./docs/auto-animate.md)
+- [Scroll View](./docs/scroll-view.md)
 - [PDF Export](./docs/pdf-export.md)
 - [Overview Mode](./docs/overview-mode.md)
 - [Configuration](./docs/configuration.md)
