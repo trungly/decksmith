@@ -56,8 +56,8 @@ Then import it in your presentation file:
 To work on Decksmith itself:
 
 ```bash
-git clone <repo-url> decksmith
-cd decksmith
+git clone git@github.com:trungly/decksmith.git my-presentation
+cd my-presentation
 npm install
 npm start
 ```
