@@ -1,6 +1,6 @@
 # Contributing to Decksmith
 
-Thank you for your interest in contributing! This document explains how to get involved.
+Glad you want to help out! Here's the short version of how things work.
 
 ## Getting Started
 
@@ -29,37 +29,26 @@ npm run format:check  # Check formatting without writing
 
 ## How to Contribute
 
-### Reporting Bugs
+### Found a Bug?
 
-Before opening a bug report, please search existing issues to avoid duplicates.
-When filing an issue, use the **Bug Report** template and include:
+Open a **Bug Report** issue. Include what you expected, what actually happened,
+and a minimal way to reproduce it — that's all I need to dig in.
 
-- A clear, minimal reproduction (steps or a code snippet)
-- What you expected vs. what actually happened
-- Environment details (browser, Node.js version, OS)
+### Have an Idea?
 
-### Suggesting Features
+Open a **Feature Request** issue and describe what you're trying to do. No need
+to write a formal proposal — a quick description is fine.
 
-Open a **Feature Request** issue describing:
+### Sending a PR?
 
-- The problem you are trying to solve
-- Your proposed solution
-- Any alternatives you considered
-
-Please open an issue **before** starting significant feature work so we can discuss
-the approach and avoid wasted effort.
-
-### Submitting Pull Requests
-
-1. Fork the repository and create a branch from `main`.
-2. Keep changes focused — one logical change per PR.
-3. Ensure the code lints cleanly (`npm run lint`) and is formatted (`npm run format:check`).
-4. Update or add documentation in `docs/` if your change affects public API or behavior.
-5. Fill out the pull request template when opening your PR.
+1. Fork the repo and create a branch from `main`.
+2. Keep the change focused — one thing per PR is easier to review.
+3. Make sure it lints (`npm run lint`) and is formatted (`npm run format:check`).
+4. Fill in the PR description briefly so I know what it does.
 
 ### Commit Messages
 
-Use the conventional commits style where possible:
+I loosely follow conventional commits, but don't stress about it:
 
 ```
 feat: add new theme variant
@@ -70,19 +59,10 @@ chore: bump highlight.js dependency
 
 ## Code Style
 
-- **TypeScript** for all logic; avoid `any`.
-- **Svelte 5** with runes-based reactivity (`$state`, `$derived`, `$effect`).
-- **Prettier** for formatting (config in `.prettierrc`).
-- **ESLint** for linting (config in `eslint.config.js`).
-
-Run both before pushing:
-
-```bash
-npm run lint
-npm run format:check
-```
+- **TypeScript** — avoid `any`.
+- **Svelte 5** with runes (`$state`, `$derived`, `$effect`).
+- **Prettier** for formatting; **ESLint** for linting.
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the
-[MIT License](./LICENSE) that covers this project.
+Contributions are covered by the [MIT License](./LICENSE).

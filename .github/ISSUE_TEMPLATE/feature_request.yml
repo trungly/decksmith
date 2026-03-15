@@ -5,37 +5,28 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for suggesting an improvement to Decksmith!
-        Please search existing issues before submitting to avoid duplicates.
+        Got an idea? Describe what you're trying to do and what you'd like to see.
 
   - type: textarea
     id: problem
     attributes:
-      label: Problem / Motivation
-      description: What problem does this feature solve? What are you trying to do?
+      label: What are you trying to do?
+      description: What problem does this feature solve?
     validations:
       required: true
 
   - type: textarea
     id: solution
     attributes:
-      label: Proposed Solution
-      description: Describe the feature you'd like to see added.
+      label: What would you like?
+      description: Describe the feature or change you have in mind.
     validations:
       required: true
 
   - type: textarea
-    id: alternatives
-    attributes:
-      label: Alternatives Considered
-      description: Any alternative approaches or workarounds you've tried?
-    validations:
-      required: false
-
-  - type: textarea
     id: additional
     attributes:
-      label: Additional Context
-      description: Any other context, screenshots, or examples that would help.
+      label: Anything else?
+      description: Screenshots, examples, alternative ideas — whatever helps.
     validations:
       required: false
