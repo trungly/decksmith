@@ -8,7 +8,7 @@ A minimal working presentation with 3 slides.
   import Slide from "./lib/components/Slide.svelte";
 </script>
 
-<Deck theme="black" transition="slide">
+<Deck theme="obsidian" transition="slide">
   <Slide h={0} v={0}>
     <h1>Welcome</h1>
     <p>A simple presentation</p>

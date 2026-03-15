@@ -12,7 +12,7 @@ Demonstrates all major Decksmith features: fragments, transitions, code highligh
   import Code from "./lib/components/Code.svelte";
 </script>
 
-<Deck theme="moon" transition="slide">
+<Deck theme="dusk" transition="slide">
   <!-- Title -->
   <Slide h={0} v={0}>
     <h1>Building Modern Web Apps</h1>

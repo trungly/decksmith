@@ -9,14 +9,14 @@ Complete reference for all Decksmith components, types, and the state API.
 Root container for a presentation. One per presentation.
 
 ```svelte
-<Deck theme="black" transition="slide" width={960} height={700}>
+<Deck theme="obsidian" transition="slide" width={960} height={700}>
   <Slide>...</Slide>
 </Deck>
 ```
 
 | Prop | Type | Default |
 |------|------|---------|
-| `theme` | `"black" \| "white" \| "moon" \| "serif" \| "blood"` | `"black"` |
+| `theme` | `"obsidian" \| "air" \| "dusk" \| "parchment" \| "ember"` | `"obsidian"` |
 | `transition` | `"none" \| "fade" \| "slide" \| "convex" \| "concave" \| "zoom"` | `"slide"` |
 | `transitionSpeed` | `"default" \| "fast" \| "slow"` | `"default"` |
 | `width` | `number` | `960` |
@@ -145,7 +145,7 @@ type FragmentStyle =
 ### `ThemeName`
 
 ```typescript
-type ThemeName = "black" | "white" | "moon" | "serif" | "blood"
+type ThemeName = "obsidian" | "air" | "dusk" | "parchment" | "ember"
 ```
 
 ### `ScrollLayout`

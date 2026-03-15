@@ -16,7 +16,7 @@ Decksmith replicates the core features of Reveal.js using Svelte 5's runes-based
 - **Code Highlighting** — Syntax highlighting with line-by-line step-through
 - **Auto-Animate** — Automatically animate matching elements between slides
 - **Scroll View** — Render as a scrollable page
-- **Themes** — 5 built-in themes (Black, White, Moon, Serif, Blood)
+- **Themes** — 5 built-in themes (Obsidian, Air, Dusk, Parchment, Ember)
 - **Hash Routing** — URL reflects current slide for deep-linking
 - **Auto-Scaling** — Content scales to fit any viewport
 - **PDF Export** — Print-friendly layout via `?print-pdf`
@@ -40,7 +40,7 @@ Edit `src/App.svelte` to create your presentation:
   import Fragment from "./lib/components/Fragment.svelte";
 </script>
 
-<Deck theme="black" transition="slide">
+<Deck theme="obsidian" transition="slide">
   <Slide h={0} v={0}>
     <h1>Hello World</h1>
   </Slide>
@@ -72,10 +72,10 @@ Edit `src/App.svelte` to create your presentation:
 Set the theme on the `<Deck>` component:
 
 ```svelte
-<Deck theme="moon">
+<Deck theme="obsidian">
 ```
 
-Available: `black` (default), `white`, `moon`, `serif`, `blood`
+Available: `obsidian` (default), `air`, `dusk`, `parchment`, `ember`
 
 ## Documentation
 

@@ -6,7 +6,7 @@ All configuration is set as props on the `<Deck>` component.
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `theme` | `ThemeName` | `"black"` | Visual theme: `"black"`, `"white"`, `"moon"`, `"serif"`, `"blood"` |
+| `theme` | `ThemeName` | `"obsidian"` | Visual theme: `"obsidian"`, `"air"`, `"dusk"`, `"parchment"`, `"ember"` |
 | `transition` | `TransitionType` | `"slide"` | Default transition: `"none"`, `"fade"`, `"slide"`, `"convex"`, `"concave"`, `"zoom"` |
 | `transitionSpeed` | `string` | `"default"` | Speed: `"fast"` (400ms), `"default"` (800ms), `"slow"` (1200ms) |
 | `width` | `number` | `960` | Base slide width in pixels |
@@ -27,7 +27,7 @@ All configuration is set as props on the `<Deck>` component.
 
 ```svelte
 <Deck
-  theme="moon"
+  theme="dusk"
   transition="fade"
   transitionSpeed="fast"
   width={1280}
