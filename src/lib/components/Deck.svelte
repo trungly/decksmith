@@ -16,11 +16,11 @@
   import ScrollProgress from "./ScrollProgress.svelte";
 
   // Import themes
-  import "../themes/black.css";
-  import "../themes/white.css";
-  import "../themes/moon.css";
-  import "../themes/serif.css";
-  import "../themes/blood.css";
+  import "../themes/obsidian.css";
+  import "../themes/air.css";
+  import "../themes/dusk.css";
+  import "../themes/parchment.css";
+  import "../themes/ember.css";
 
   interface Props {
     theme?: ThemeName;
@@ -43,7 +43,7 @@
   }
 
   const {
-    theme = "black",
+    theme = "obsidian",
     transition = "slide",
     transitionSpeed = "default",
     width = 960,

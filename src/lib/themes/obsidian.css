@@ -1,0 +1,84 @@
+/* Decksmith Theme: Obsidian — Deep dark background with crisp blue accents */
+.theme-obsidian {
+  --ds-bg: #0f1117;
+  --ds-fg: #c9d1d9;
+  --ds-heading: #f0f2f5;
+  --ds-link: #58a6ff;
+  --ds-link-hover: #79b8ff;
+  --ds-accent: #58a6ff;
+  --ds-muted: #6e7681;
+  --ds-border: rgba(255, 255, 255, 0.1);
+  --ds-code-bg: rgba(255, 255, 255, 0.08);
+  --ds-pre-bg: rgba(0, 0, 0, 0.4);
+  --ds-selection-bg: #1f6feb;
+  --ds-selection-fg: #fff;
+
+  background: var(--ds-bg);
+  color: var(--ds-fg);
+}
+
+.theme-obsidian h1,
+.theme-obsidian h2,
+.theme-obsidian h3,
+.theme-obsidian h4,
+.theme-obsidian h5,
+.theme-obsidian h6 {
+  color: var(--ds-heading);
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.theme-obsidian h1 {
+  font-size: 2.5em;
+}
+.theme-obsidian h2 {
+  font-size: 1.8em;
+}
+.theme-obsidian h3 {
+  font-size: 1.3em;
+}
+
+.theme-obsidian a {
+  color: var(--ds-link);
+  text-decoration: none;
+}
+.theme-obsidian a:hover {
+  color: var(--ds-link-hover);
+  text-decoration: underline;
+}
+
+.theme-obsidian ::selection {
+  background: var(--ds-selection-bg);
+  color: var(--ds-selection-fg);
+}
+
+.theme-obsidian code {
+  background: var(--ds-code-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.theme-obsidian pre {
+  background: var(--ds-pre-bg);
+  border-radius: 8px;
+  padding: 1em;
+  text-align: left;
+}
+
+.theme-obsidian blockquote {
+  border-left: 4px solid var(--ds-accent);
+  padding-left: 1em;
+  color: var(--ds-muted);
+}
+
+.theme-obsidian .slide {
+  font-size: 24px;
+  line-height: 1.5;
+}

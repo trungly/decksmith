@@ -14,7 +14,7 @@ Decksmith is a presentation framework built with Svelte 5. Presentations are Sve
   import Code from "./lib/components/Code.svelte";
 </script>
 
-<Deck theme="black" transition="slide">
+<Deck theme="obsidian" transition="slide">
   <Slide h={0} v={0}>
     <h1>Title</h1>
     <p>Subtitle</p>
@@ -58,7 +58,7 @@ Wraps all slides. One per presentation.
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `theme` | `"black" \| "white" \| "moon" \| "serif" \| "blood"` | `"black"` | Visual theme |
+| `theme` | `"obsidian" \| "air" \| "dusk" \| "parchment" \| "ember"` | `"obsidian"` | Visual theme |
 | `transition` | `"none" \| "fade" \| "slide" \| "convex" \| "concave" \| "zoom"` | `"slide"` | Default slide transition |
 | `transitionSpeed` | `"default" \| "fast" \| "slow"` | `"default"` | Transition duration (400ms / 800ms / 1200ms) |
 | `width` | `number` | `960` | Base slide width in px |
@@ -165,11 +165,11 @@ Each step acts as a fragment. Non-highlighted lines dim to 35% opacity.
 
 | Theme | Background | Text | Accent | Description |
 |-------|-----------|------|--------|-------------|
-| `black` | #111 | #eee | #42affa | Dark, high contrast, modern |
-| `white` | #fff | #222 | #2a76dd | Light, clean, minimal |
-| `moon` | #002b36 | #93a1a1 | #268bd2 | Dark blue-grey, soft, professional |
-| `serif` | #f0edde | #333 | #6c4b2a | Warm tones, classic, editorial |
-| `blood` | #1a1626 | #eee | #a23 | Dark with red accents, bold, dramatic |
+| `obsidian` | #0f1117 | #c9d1d9 | #58a6ff | Deep dark, high contrast, modern |
+| `air` | #f8fafc | #334155 | #2563eb | Light, clean, minimal |
+| `dusk` | #1e2433 | #a9b1d6 | #7aa2f7 | Deep navy, professional, focused |
+| `parchment` | #f6f1e7 | #3d2e1e | #8b5e3c | Warm cream, serif, classic editorial |
+| `ember` | #1a1520 | #ddd0e6 | #e07b99 | Dark plum, rose-coral accents, dramatic |
 
 ### CSS Variables (for custom styling within slides)
 
@@ -180,7 +180,10 @@ Each step acts as a fragment. Non-highlighted lines dim to 35% opacity.
 --ds-link            /* Link color */
 --ds-link-hover      /* Link hover color */
 --ds-accent          /* Accent color (progress bar, highlights) */
+--ds-muted           /* De-emphasized text color */
+--ds-border          /* Subtle border/separator color */
 --ds-code-bg         /* Inline code background */
+--ds-pre-bg          /* Code block background */
 --ds-selection-bg    /* Text selection background */
 --ds-selection-fg    /* Text selection text color */
 ```

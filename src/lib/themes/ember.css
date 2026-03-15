@@ -1,0 +1,84 @@
+/* Decksmith Theme: Ember — Dark plum background with warm rose-coral accents */
+.theme-ember {
+  --ds-bg: #1a1520;
+  --ds-fg: #ddd0e6;
+  --ds-heading: #f0e8fa;
+  --ds-link: #e07b99;
+  --ds-link-hover: #f0a0b5;
+  --ds-accent: #e07b99;
+  --ds-muted: #7d6d88;
+  --ds-border: rgba(255, 255, 255, 0.1);
+  --ds-code-bg: rgba(255, 255, 255, 0.07);
+  --ds-pre-bg: rgba(0, 0, 0, 0.4);
+  --ds-selection-bg: #9b2c4e;
+  --ds-selection-fg: #f0e8fa;
+
+  background: var(--ds-bg);
+  color: var(--ds-fg);
+}
+
+.theme-ember h1,
+.theme-ember h2,
+.theme-ember h3,
+.theme-ember h4,
+.theme-ember h5,
+.theme-ember h6 {
+  color: var(--ds-heading);
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.theme-ember h1 {
+  font-size: 2.5em;
+}
+.theme-ember h2 {
+  font-size: 1.8em;
+}
+.theme-ember h3 {
+  font-size: 1.3em;
+}
+
+.theme-ember a {
+  color: var(--ds-link);
+  text-decoration: none;
+}
+.theme-ember a:hover {
+  color: var(--ds-link-hover);
+  text-decoration: underline;
+}
+
+.theme-ember ::selection {
+  background: var(--ds-selection-bg);
+  color: var(--ds-selection-fg);
+}
+
+.theme-ember code {
+  background: var(--ds-code-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.theme-ember pre {
+  background: var(--ds-pre-bg);
+  border-radius: 8px;
+  padding: 1em;
+  text-align: left;
+}
+
+.theme-ember blockquote {
+  border-left: 4px solid var(--ds-accent);
+  padding-left: 1em;
+  color: var(--ds-muted);
+}
+
+.theme-ember .slide {
+  font-size: 24px;
+  line-height: 1.5;
+}

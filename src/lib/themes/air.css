@@ -1,25 +1,28 @@
-/* Decksmith Theme: Black */
-.theme-black {
-  --ds-bg: #111;
-  --ds-fg: #eee;
-  --ds-heading: #eee;
-  --ds-link: #42affa;
-  --ds-link-hover: #74c4fb;
-  --ds-accent: #42affa;
-  --ds-code-bg: rgba(255, 255, 255, 0.06);
-  --ds-selection-bg: #42affa;
+/* Decksmith Theme: Air — Light and open with sharp typographic contrast */
+.theme-air {
+  --ds-bg: #f8fafc;
+  --ds-fg: #334155;
+  --ds-heading: #0f172a;
+  --ds-link: #2563eb;
+  --ds-link-hover: #1d4ed8;
+  --ds-accent: #2563eb;
+  --ds-muted: #94a3b8;
+  --ds-border: rgba(0, 0, 0, 0.08);
+  --ds-code-bg: rgba(0, 0, 0, 0.06);
+  --ds-pre-bg: #f1f5f9;
+  --ds-selection-bg: #2563eb;
   --ds-selection-fg: #fff;
 
   background: var(--ds-bg);
   color: var(--ds-fg);
 }
 
-.theme-black h1,
-.theme-black h2,
-.theme-black h3,
-.theme-black h4,
-.theme-black h5,
-.theme-black h6 {
+.theme-air h1,
+.theme-air h2,
+.theme-air h3,
+.theme-air h4,
+.theme-air h5,
+.theme-air h6 {
   color: var(--ds-heading);
   font-family:
     system-ui,
@@ -28,54 +31,54 @@
     sans-serif;
   font-weight: 700;
   line-height: 1.2;
-  letter-spacing: -0.02em;
-  text-transform: none;
+  letter-spacing: -0.025em;
 }
 
-.theme-black h1 {
+.theme-air h1 {
   font-size: 2.5em;
 }
-.theme-black h2 {
+.theme-air h2 {
   font-size: 1.8em;
 }
-.theme-black h3 {
+.theme-air h3 {
   font-size: 1.3em;
 }
 
-.theme-black a {
+.theme-air a {
   color: var(--ds-link);
   text-decoration: none;
 }
-.theme-black a:hover {
+.theme-air a:hover {
   color: var(--ds-link-hover);
   text-decoration: underline;
 }
 
-.theme-black ::selection {
+.theme-air ::selection {
   background: var(--ds-selection-bg);
   color: var(--ds-selection-fg);
 }
 
-.theme-black code {
+.theme-air code {
   background: var(--ds-code-bg);
   padding: 0.1em 0.4em;
   border-radius: 4px;
   font-size: 0.9em;
 }
 
-.theme-black pre {
-  background: rgba(0, 0, 0, 0.5);
+.theme-air pre {
+  background: var(--ds-pre-bg);
   border-radius: 8px;
   padding: 1em;
   text-align: left;
 }
 
-.theme-black blockquote {
+.theme-air blockquote {
   border-left: 4px solid var(--ds-accent);
   padding-left: 1em;
+  color: var(--ds-muted);
 }
 
-.theme-black .slide {
+.theme-air .slide {
   font-size: 24px;
   line-height: 1.5;
 }

@@ -7,7 +7,7 @@
   import Code from "./lib/components/Code.svelte";
 </script>
 
-<Deck theme="black" transition="slide">
+<Deck theme="obsidian" transition="slide">
   <!-- Slide 1: Title -->
   <Slide h={0} v={0}>
     <h1>Decksmith</h1>
@@ -109,37 +109,37 @@ Write your slides using **Markdown** syntax:
     >
       <Fragment index={0} style="fade-in">
         <span
-          style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;"
+          style="display: block; padding: 0.4em 0.6em; background: var(--ds-border); border-radius: 4px; text-align: center;"
           >fade-in</span
         >
       </Fragment>
       <Fragment index={1} style="fade-up">
         <span
-          style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;"
+          style="display: block; padding: 0.4em 0.6em; background: var(--ds-border); border-radius: 4px; text-align: center;"
           >fade-up</span
         >
       </Fragment>
       <Fragment index={2} style="grow">
         <span
-          style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;"
+          style="display: block; padding: 0.4em 0.6em; background: var(--ds-border); border-radius: 4px; text-align: center;"
           >grow</span
         >
       </Fragment>
       <Fragment index={3} style="shrink">
         <span
-          style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;"
+          style="display: block; padding: 0.4em 0.6em; background: var(--ds-border); border-radius: 4px; text-align: center;"
           >shrink</span
         >
       </Fragment>
       <Fragment index={4} style="highlight-red">
         <span
-          style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;"
+          style="display: block; padding: 0.4em 0.6em; background: var(--ds-border); border-radius: 4px; text-align: center;"
           >highlight-red</span
         >
       </Fragment>
       <Fragment index={5} style="highlight-blue">
         <span
-          style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;"
+          style="display: block; padding: 0.4em 0.6em; background: var(--ds-border); border-radius: 4px; text-align: center;"
           >highlight-blue</span
         >
       </Fragment>
@@ -153,34 +153,40 @@ Write your slides using **Markdown** syntax:
   <Slide h={6} v={0}>
     <h2>Built-in Themes</h2>
     <div
-      style="display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 1em; text-align: left; font-size: 0.85em;"
+      style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75em; margin-top: 1em; text-align: left; font-size: 0.8em;"
     >
       <div
-        style="padding: 0.8em; background: #111; color: #eee; border-radius: 8px;"
+        style="padding: 0.8em 1em; background: #0f1117; color: #c9d1d9; border-radius: 8px; border-left: 3px solid #58a6ff;"
       >
-        <strong>Black</strong> — Dark, high contrast
+        <strong style="color: #f0f2f5;">obsidian</strong>
+        <div style="margin-top: 0.2em; opacity: 0.7;">Deep dark, modern</div>
       </div>
       <div
-        style="padding: 0.8em; background: #fff; color: #222; border-radius: 8px;"
+        style="padding: 0.8em 1em; background: #f8fafc; color: #334155; border-radius: 8px; border-left: 3px solid #2563eb;"
       >
-        <strong>White</strong> — Clean, minimal
+        <strong style="color: #0f172a;">air</strong>
+        <div style="margin-top: 0.2em; opacity: 0.7;">Light, minimal</div>
       </div>
       <div
-        style="padding: 0.8em; background: #002b36; color: #93a1a1; border-radius: 8px;"
+        style="padding: 0.8em 1em; background: #1e2433; color: #a9b1d6; border-radius: 8px; border-left: 3px solid #7aa2f7;"
       >
-        <strong>Moon</strong> — Soft, professional
+        <strong style="color: #c0caf5;">dusk</strong>
+        <div style="margin-top: 0.2em; opacity: 0.7;">Deep navy, focused</div>
       </div>
       <div
-        style="padding: 0.8em; background: #f0edde; color: #333; border-radius: 8px;"
+        style="padding: 0.8em 1em; background: #f6f1e7; color: #3d2e1e; border-radius: 8px; border-left: 3px solid #8b5e3c; font-family: Georgia, serif;"
       >
-        <strong>Serif</strong> — Classic, editorial
+        <strong style="color: #1c1209;">parchment</strong>
+        <div style="margin-top: 0.2em; opacity: 0.7;">Warm serif, editorial</div>
       </div>
       <div
-        style="padding: 0.8em; background: #222; color: #eee; border-radius: 8px; grid-column: 1 / -1; border-left: 4px solid #a23;"
+        style="padding: 0.8em 1em; background: #1a1520; color: #ddd0e6; border-radius: 8px; border-left: 3px solid #e07b99; grid-column: 2 / 4;"
       >
-        <strong>Blood</strong> — Bold, dramatic
+        <strong style="color: #f0e8fa;">ember</strong>
+        <div style="margin-top: 0.2em; opacity: 0.7;">Dark plum, rose-coral accents</div>
       </div>
     </div>
+    <Notes text="Five built-in themes, each with a distinct character. Use the theme prop on Deck to switch." />
   </Slide>
 
   <!-- Slide 8: Code with syntax highlighting -->
@@ -193,7 +199,7 @@ Write your slides using **Markdown** syntax:
       language="svelte"
       lineNumbers
       highlightLines="1-2|3-4|5-8|9"
-      code={`<Deck theme="black" transition="slide">
+      code={`<Deck theme="obsidian" transition="slide">
   <Slide h={0} v={0}>
     <h1>My Presentation</h1>
     <p>Built with Decksmith</p>
@@ -220,7 +226,7 @@ Write your slides using **Markdown** syntax:
 import type { DeckConfig } from 'decksmith';
 
 const config: DeckConfig = {
-  theme: 'moon',
+  theme: 'dusk',
   transition: 'convex',
 };
 

@@ -1,0 +1,84 @@
+/* Decksmith Theme: Parchment — Warm cream with editorial serif typography */
+.theme-parchment {
+  --ds-bg: #f6f1e7;
+  --ds-fg: #3d2e1e;
+  --ds-heading: #1c1209;
+  --ds-link: #8b5e3c;
+  --ds-link-hover: #c07c4a;
+  --ds-accent: #8b5e3c;
+  --ds-muted: #8a7560;
+  --ds-border: rgba(0, 0, 0, 0.12);
+  --ds-code-bg: rgba(0, 0, 0, 0.06);
+  --ds-pre-bg: rgba(0, 0, 0, 0.05);
+  --ds-selection-bg: #c9a55a;
+  --ds-selection-fg: #1c1209;
+
+  background: var(--ds-bg);
+  color: var(--ds-fg);
+}
+
+.theme-parchment h1,
+.theme-parchment h2,
+.theme-parchment h3,
+.theme-parchment h4,
+.theme-parchment h5,
+.theme-parchment h6 {
+  color: var(--ds-heading);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+
+.theme-parchment h1 {
+  font-size: 2.5em;
+}
+.theme-parchment h2 {
+  font-size: 1.8em;
+}
+.theme-parchment h3 {
+  font-size: 1.3em;
+}
+
+.theme-parchment a {
+  color: var(--ds-link);
+  text-decoration: none;
+}
+.theme-parchment a:hover {
+  color: var(--ds-link-hover);
+  text-decoration: underline;
+}
+
+.theme-parchment ::selection {
+  background: var(--ds-selection-bg);
+  color: var(--ds-selection-fg);
+}
+
+.theme-parchment code {
+  background: var(--ds-code-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: "Courier New", monospace;
+}
+
+.theme-parchment pre {
+  background: var(--ds-pre-bg);
+  border-radius: 8px;
+  padding: 1em;
+  text-align: left;
+  border: 1px solid var(--ds-border);
+}
+
+.theme-parchment blockquote {
+  border-left: 4px solid var(--ds-accent);
+  padding-left: 1em;
+  font-style: italic;
+  color: var(--ds-muted);
+}
+
+.theme-parchment .slide {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 24px;
+  line-height: 1.7;
+}

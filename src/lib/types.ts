@@ -25,7 +25,7 @@ export type FragmentStyle =
   | "highlight-current-green"
   | "highlight-current-blue";
 
-export type ThemeName = "black" | "white" | "moon" | "serif" | "blood";
+export type ThemeName = "obsidian" | "air" | "dusk" | "parchment" | "ember";
 
 export interface SlideInfo {
   h: number;
@@ -74,7 +74,7 @@ export const DEFAULT_CONFIG: DeckConfig = {
   touch: true,
   keyboard: true,
   loop: false,
-  theme: "black",
+  theme: "obsidian",
   scrollView: false,
   scrollLayout: "full",
   scrollSnap: true,
