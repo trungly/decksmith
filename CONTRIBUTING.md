@@ -12,8 +12,8 @@ Thank you for your interest in contributing! This document explains how to get i
 ### Local Development Setup
 
 ```bash
-git clone https://github.com/trungly/decksmith.git
-cd decksmith
+git clone git@github.com:trungly/decksmith.git my-presentation
+cd my-presentation
 npm install
 npm start          # Start dev server at http://localhost:5173
 ```
