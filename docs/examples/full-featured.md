@@ -2,9 +2,11 @@
 
 Demonstrates all major Decksmith features: fragments, transitions, code highlighting, markdown, auto-animate, vertical slides, backgrounds, and speaker notes.
 
+Paste this into `src/App.svelte`:
+
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
+  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "./lib/index.js";
 </script>
 
 <Deck theme="dusk" transition="slide">

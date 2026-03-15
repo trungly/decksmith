@@ -1,12 +1,12 @@
 # Decksmith — AI Agent Reference
 
-Decksmith is a presentation framework built with Svelte 5. Presentations are Svelte components that use Decksmith's `<Deck>`, `<Slide>`, `<Fragment>`, `<Notes>`, `<Markdown>`, and `<Code>` components.
+Decksmith is a standalone local presentation tool built with Svelte 5. Presentations typically live in `src/App.svelte` and use Decksmith's `<Deck>`, `<Slide>`, `<Fragment>`, `<Notes>`, `<Markdown>`, and `<Code>` components.
 
 ## Quick Start Template
 
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
+  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "./lib/index.js";
 </script>
 
 <Deck theme="obsidian" transition="slide">
@@ -389,3 +389,5 @@ npm start         # Development server
 npm run build     # Production build
 npm run preview   # Preview production build
 ```
+
+Edit `src/App.svelte` to build your presentation.

@@ -2,9 +2,11 @@
 
 A minimal working presentation with 3 slides.
 
+Paste this into `src/App.svelte`:
+
 ```svelte
 <script lang="ts">
-  import { Deck, Slide } from "decksmith";
+  import { Deck, Slide } from "./lib/index.js";
 </script>
 
 <Deck theme="obsidian" transition="slide">

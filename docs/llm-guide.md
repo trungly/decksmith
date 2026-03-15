@@ -4,13 +4,13 @@ This guide is designed for LLMs and AI agents to generate Decksmith presentation
 
 ## Output Format
 
-A Decksmith presentation is a single Svelte component. The LLM should generate a complete `.svelte` file.
+A Decksmith presentation is a single Svelte component. In the standard workflow, the LLM should generate the contents of `src/App.svelte`.
 
 ### Required Structure
 
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
+  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "./lib/index.js";
 </script>
 
 <Deck theme="THEME" transition="TRANSITION">
@@ -224,7 +224,7 @@ User prompt: "Create a presentation about REST APIs with 4 slides"
 
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment, Notes, Code } from "decksmith";
+  import { Deck, Slide, Fragment, Notes, Code } from "./lib/index.js";
 </script>
 
 <Deck theme="dusk" transition="slide">

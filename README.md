@@ -1,6 +1,6 @@
 # Decksmith
 
-A modern presentation framework built with **Svelte 5**. Create beautiful, interactive presentations using components and modern JavaScript.
+A standalone local presentation tool built with **Svelte 5**. Create beautiful, interactive presentations by editing a Svelte deck and running it locally.
 
 Decksmith was originally inspired by [Reveal.js](https://revealjs.com/).
 
@@ -22,19 +22,28 @@ Decksmith was originally inspired by [Reveal.js](https://revealjs.com/).
 - **PDF Export** — Print-friendly layout via `?print-pdf`
 - **Progress Bar & Slide Numbers** — Configurable UI controls
 
-## Quick Start
+## Local Development
 
-Install Decksmith from npm:
+Clone this repo to start a presentation:
 
 ```bash
-npm install decksmith
+git clone https://github.com/trungly/decksmith.git my-presentation
+cd my-presentation
+npm install
+npm start
 ```
 
-Then import it in your presentation file:
+Open `http://localhost:5173` and edit `src/App.svelte`. Changes hot-reload instantly.
+
+When you're ready to share it, build a static site with `npm run build`. The output goes to `dist/`.
+
+## Minimal Presentation
+
+Place this in `src/App.svelte`:
 
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment } from "decksmith";
+  import { Deck, Slide, Fragment } from "./lib/index.js";
 </script>
 
 <Deck theme="obsidian" transition="slide">
@@ -49,17 +58,6 @@ Then import it in your presentation file:
     </Fragment>
   </Slide>
 </Deck>
-```
-
-## Local Development
-
-To work on Decksmith itself:
-
-```bash
-git clone git@github.com:trungly/decksmith.git my-presentation
-cd my-presentation
-npm install
-npm start
 ```
 
 ## Keyboard Shortcuts

@@ -2,9 +2,11 @@
 
 A code-heavy presentation using the obsidian theme with multiple code walkthroughs.
 
+Paste this into `src/App.svelte`:
+
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment, Notes, Code } from "decksmith";
+  import { Deck, Slide, Fragment, Notes, Code } from "./lib/index.js";
 </script>
 
 <Deck theme="obsidian" transition="none">

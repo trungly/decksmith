@@ -11,7 +11,7 @@
   <!-- Slide 1: Title -->
   <Slide h={0} v={0}>
     <h1>Decksmith</h1>
-    <p>A modern presentation framework built with Svelte 5</p>
+    <p>A standalone local presentation tool built with Svelte 5</p>
     <p style="margin-top: 1em; opacity: 0.5; font-size: 0.7em;">
       Press <kbd>Space</kbd> or <kbd>→</kbd> to navigate &bull; <kbd>Esc</kbd> for
       overview
@@ -222,8 +222,8 @@ Write your slides using **Markdown** syntax:
       language="typescript"
       lineNumbers
       highlightLines="1-2|4-6|8-10"
-      code={`import { Deck, Slide, Fragment } from 'decksmith';
-import type { DeckConfig } from 'decksmith';
+      code={`import { Deck, Slide, Fragment } from './lib/index.js';
+import type { DeckConfig } from './lib/index.js';
 
 const config: DeckConfig = {
   theme: 'dusk',

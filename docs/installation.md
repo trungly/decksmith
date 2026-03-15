@@ -1,31 +1,17 @@
 # Installation
 
+Decksmith is typically used as a standalone local tool. The normal workflow is to clone this repo, edit `src/App.svelte`, and run the presentation locally.
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) 18 or later
 - npm (included with Node.js)
 
-## Install From npm
+## Clone Decksmith
 
 ```bash
-npm install decksmith
-```
-
-Import it in your presentation file:
-
-```svelte
-<script lang="ts">
-  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
-</script>
-```
-
-## Local Development
-
-If you want to work on Decksmith itself:
-
-```bash
-git clone <repo-url> decksmith
-cd decksmith
+git clone https://github.com/trungly/decksmith.git my-presentation
+cd my-presentation
 npm install
 ```
 
@@ -35,7 +21,15 @@ npm install
 npm start
 ```
 
-Opens a local dev server (default `http://localhost:5173`). Changes to `src/App.svelte` hot-reload instantly.
+Opens a local dev server (default `http://localhost:5173`). Edit `src/App.svelte` and changes hot-reload instantly.
+
+Import Decksmith components from the local entrypoint:
+
+```svelte
+<script lang="ts">
+  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "./lib/index.js";
+</script>
+```
 
 ## Production Build
 
@@ -66,6 +60,7 @@ my-presentation/
 ├── src/
 │   ├── main.ts          Entry point
 │   ├── App.svelte       Your presentation
+│   ├── lib/             Decksmith components and utilities
 │   └── ...
 ├── index.html           HTML shell
 ├── package.json

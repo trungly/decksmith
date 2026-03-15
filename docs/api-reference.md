@@ -2,6 +2,8 @@
 
 Complete reference for all Decksmith components, types, and the state API.
 
+When authoring a deck in this repo, import the API from `./lib/index.js` inside `src/App.svelte`.
+
 ## Components
 
 ### `<Deck>`
@@ -209,7 +211,7 @@ The `DeckState` class manages all presentation state. Access it via Svelte conte
 
 ```typescript
 import { getContext } from "svelte";
-import type { DeckState } from "decksmith";
+import type { DeckState } from "./lib/index.js";
 
 const deck = getContext<DeckState>("deck");
 ```
@@ -258,17 +260,21 @@ const deck = getContext<DeckState>("deck");
 
 ---
 
-## Exports
+## Local Imports
 
 ```typescript
-// Components
-export { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
+import {
+  Deck,
+  Slide,
+  Fragment,
+  Notes,
+  Markdown,
+  Code,
+  DeckState,
+  THEMES,
+} from "./lib/index.js";
 
-// State
-export { DeckState } from "decksmith";
-
-// Types
-export type {
+import type {
   TransitionType,
   FragmentStyle,
   ThemeName,
@@ -277,8 +283,5 @@ export type {
   SlideInfo,
   SlidePosition,
   NavigationDirection,
-} from "decksmith";
-
-// Constants
-export { THEMES } from "decksmith";
+} from "./lib/index.js";
 ```

@@ -2,9 +2,11 @@
 
 A business-focused template using the parchment theme.
 
+Paste this into `src/App.svelte`:
+
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment, Notes } from "decksmith";
+  import { Deck, Slide, Fragment, Notes } from "./lib/index.js";
 </script>
 
 <Deck theme="parchment" transition="fade" transitionSpeed="fast">
