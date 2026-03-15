@@ -60,9 +60,10 @@
   const hasSteps = $derived(steps.length > 0);
 
   // Register each highlight step as a fragment (synchronously, like Fragment does)
-  if (hasSteps) {
-    const stepCount = parseHighlightSteps(highlightLines).length;
-    for (let i = 0; i < stepCount; i++) {
+  // svelte-ignore state_referenced_locally
+  {
+    const initSteps = parseHighlightSteps(highlightLines);
+    for (let i = 0; i < initSteps.length; i++) {
       slide.registerFragment(i);
     }
   }

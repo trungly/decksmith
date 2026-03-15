@@ -19,9 +19,17 @@
   <div class="deck-slide-number">
     <span class="label">{display}</span>
     {#if fragmentTotal > 0}
-      <div class="fragment-dots">
+      <div
+        class="fragment-dots"
+        role="group"
+        aria-label="Fragment {fragmentIndex + 1} of {fragmentTotal}"
+      >
         {#each { length: fragmentTotal } as _, i}
-          <span class="dot" class:filled={i <= fragmentIndex}></span>
+          <span
+            class="dot"
+            class:filled={i <= fragmentIndex}
+            role="presentation"
+          ></span>
         {/each}
       </div>
     {/if}

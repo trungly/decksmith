@@ -103,7 +103,7 @@
     border-radius: 50%;
     cursor: pointer;
     color: white;
-    opacity: 0.25;
+    opacity: 0.4;
     transition:
       opacity 0.2s,
       background 0.2s,
@@ -132,6 +132,12 @@
 
   .control.enabled:active {
     transform: scale(0.95);
+  }
+
+  .control.enabled:focus-visible {
+    opacity: 1;
+    outline: 2px solid var(--ds-accent, #42affa);
+    outline-offset: 2px;
   }
 
   .control:not(.enabled) {

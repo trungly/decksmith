@@ -76,12 +76,14 @@ export function openSpeakerWindow() {
 
     channel.onmessage = (e) => {
       const data = e.data;
-      if (data.type === 'state-update') {
-        document.getElementById('notes-content').textContent = data.notes || 'No notes for this slide';
-        document.getElementById('slide-info').textContent =
-          'Slide ' + (data.currentH + 1) + (data.currentV > 0 ? '.' + (data.currentV + 1) : '') +
-          ' / ' + data.totalSlides;
-      }
+      if (!data || typeof data !== 'object') return;
+      if (data.type !== 'state-update') return;
+      if (typeof data.currentH !== 'number' || typeof data.currentV !== 'number' || typeof data.totalSlides !== 'number') return;
+      const notes = typeof data.notes === 'string' ? data.notes : '';
+      document.getElementById('notes-content').textContent = notes || 'No notes for this slide';
+      document.getElementById('slide-info').textContent =
+        'Slide ' + (data.currentH + 1) + (data.currentV > 0 ? '.' + (data.currentV + 1) : '') +
+        ' / ' + data.totalSlides;
     };
 
     setInterval(() => {

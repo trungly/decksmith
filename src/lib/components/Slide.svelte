@@ -71,11 +71,22 @@
     ),
   );
 
+  function isSafeUrl(url: string): boolean {
+    try {
+      const parsed = new URL(url, window.location.href);
+      return ["http:", "https:", "data:", "blob:"].includes(parsed.protocol);
+    } catch {
+      return false;
+    }
+  }
+
   const bgStyle = $derived.by(() => {
     let s = "";
     if (background) s += `background: ${background};`;
-    if (backgroundImage) {
-      s += `background-image: url('${backgroundImage}');`;
+    if (backgroundImage && isSafeUrl(backgroundImage)) {
+      // Escape characters that could break out of the CSS url('...') context
+      const safeUrl = backgroundImage.replace(/['\\()]/g, (c) => "\\" + c);
+      s += `background-image: url('${safeUrl}');`;
       s += `background-size: ${backgroundSize};`;
       s += `background-position: ${backgroundPosition};`;
     }

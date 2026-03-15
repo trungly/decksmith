@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getContext } from "svelte";
+  import { getContext, tick } from "svelte";
   import { fade } from "svelte/transition";
   import type { DeckState } from "../state/deck-state.svelte.js";
 
@@ -8,6 +8,15 @@
   function selectSlide(h: number, v: number) {
     deck.goTo(h, v);
     deck.isOverview = false;
+  }
+
+  // Auto-focus current slide button when overview opens
+  async function autoFocus(node: HTMLElement) {
+    await tick();
+    const current = node.querySelector<HTMLElement>(
+      "button[aria-current='step']",
+    );
+    current?.focus();
   }
 
   const THUMB_W = 192;
@@ -37,12 +46,19 @@
 </script>
 
 {#if deck.isOverview}
-  <!-- svelte-ignore a11y_interactive_supports_focus a11y_click_events_have_key_events -->
   <div
     class="deck-overview"
-    role="grid"
+    role="dialog"
     aria-label="Slide overview"
+    tabindex="-1"
+    use:autoFocus
     onclick={() => (deck.isOverview = false)}
+    onkeydown={(e) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        deck.isOverview = false;
+      }
+    }}
     transition:fade={{ duration: 180 }}
   >
     {#each deck.slides as column, h (h)}
@@ -52,6 +68,9 @@
             <button
               class="overview-slide"
               class:current={h === deck.currentH && v === deck.currentV}
+              aria-current={h === deck.currentH && v === deck.currentV
+                ? "step"
+                : undefined}
               style="width: {THUMB_W}px; height: {thumbH}px;"
               onclick={(e) => {
                 e.stopPropagation();
