@@ -1,22 +1,24 @@
 <script lang="ts">
-  import Deck from './lib/components/Deck.svelte';
-  import Slide from './lib/components/Slide.svelte';
-  import Fragment from './lib/components/Fragment.svelte';
-  import Notes from './lib/components/Notes.svelte';
-  import Markdown from './lib/components/Markdown.svelte';
-  import Code from './lib/components/Code.svelte';
+  import Deck from "./lib/components/Deck.svelte";
+  import Slide from "./lib/components/Slide.svelte";
+  import Fragment from "./lib/components/Fragment.svelte";
+  import Notes from "./lib/components/Notes.svelte";
+  import Markdown from "./lib/components/Markdown.svelte";
+  import Code from "./lib/components/Code.svelte";
 </script>
 
 <Deck theme="black" transition="slide">
-
   <!-- Slide 1: Title -->
   <Slide h={0} v={0}>
     <h1>Decksmith</h1>
     <p>A modern presentation framework built with Svelte 5</p>
     <p style="margin-top: 1em; opacity: 0.5; font-size: 0.7em;">
-      Press <kbd>Space</kbd> or <kbd>→</kbd> to navigate &bull; <kbd>Esc</kbd> for overview
+      Press <kbd>Space</kbd> or <kbd>→</kbd> to navigate &bull; <kbd>Esc</kbd> for
+      overview
     </p>
-    <Notes text="Welcome to Decksmith! This is the title slide. Press S to open speaker notes." />
+    <Notes
+      text="Welcome to Decksmith! This is the title slide. Press S to open speaker notes."
+    />
   </Slide>
 
   <!-- Slide 2: Features -->
@@ -36,7 +38,9 @@
         <p>Speaker notes, overview mode, &amp; more</p>
       </Fragment>
     </div>
-    <Notes text="This slide demonstrates fragment animations. Each bullet point appears one at a time." />
+    <Notes
+      text="This slide demonstrates fragment animations. Each bullet point appears one at a time."
+    />
   </Slide>
 
   <!-- Slide 3: Vertical slides demo -->
@@ -51,16 +55,23 @@
     <p>Slides can have custom background colors</p>
   </Slide>
 
-  <Slide h={2} v={2} background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+  <Slide
+    h={2}
+    v={2}
+    background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+  >
     <h3>Vertical Slide 2</h3>
     <p>Or even gradient backgrounds!</p>
-    <p style="margin-top: 0.5em; opacity: 0.6; font-size: 0.7em;">Press <kbd>↓</kbd> or <kbd>→</kbd> to continue</p>
+    <p style="margin-top: 0.5em; opacity: 0.6; font-size: 0.7em;">
+      Press <kbd>↓</kbd> or <kbd>→</kbd> to continue
+    </p>
   </Slide>
 
   <!-- Slide 4: Markdown -->
   <Slide h={3} v={0}>
     <h2>Markdown Support</h2>
-    <Markdown content={`
+    <Markdown
+      content={`
 Write your slides using **Markdown** syntax:
 
 - Bullet points
@@ -69,7 +80,8 @@ Write your slides using **Markdown** syntax:
 - [Links](https://example.com)
 
 > Blockquotes work too!
-    `} />
+    `}
+    />
   </Slide>
 
   <!-- Slide 5: Transitions -->
@@ -84,52 +96,88 @@ Write your slides using **Markdown** syntax:
       <p><code>concave</code> — 3D flip backward</p>
       <p><code>zoom</code> — Scale in/out</p>
     </div>
-    <Notes text="Each transition type creates a different visual effect. You can set transitions globally on the Deck or per-slide." />
+    <Notes
+      text="Each transition type creates a different visual effect. You can set transitions globally on the Deck or per-slide."
+    />
   </Slide>
 
   <!-- Slide 6: Fragment styles -->
   <Slide h={5} v={0}>
     <h2>Fragment Styles</h2>
-    <div style="display: grid; grid-template-columns: repeat(3, 160px); gap: 1em; margin-top: 1.5em; justify-content: center;">
+    <div
+      style="display: grid; grid-template-columns: repeat(3, 160px); gap: 1em; margin-top: 1.5em; justify-content: center;"
+    >
       <Fragment index={0} style="fade-in">
-        <span style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;">fade-in</span>
+        <span
+          style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;"
+          >fade-in</span
+        >
       </Fragment>
       <Fragment index={1} style="fade-up">
-        <span style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;">fade-up</span>
+        <span
+          style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;"
+          >fade-up</span
+        >
       </Fragment>
       <Fragment index={2} style="grow">
-        <span style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;">grow</span>
+        <span
+          style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;"
+          >grow</span
+        >
       </Fragment>
       <Fragment index={3} style="shrink">
-        <span style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;">shrink</span>
+        <span
+          style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;"
+          >shrink</span
+        >
       </Fragment>
       <Fragment index={4} style="highlight-red">
-        <span style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;">highlight-red</span>
+        <span
+          style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;"
+          >highlight-red</span
+        >
       </Fragment>
       <Fragment index={5} style="highlight-blue">
-        <span style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;">highlight-blue</span>
+        <span
+          style="display: block; padding: 0.4em 0.6em; background: rgba(255,255,255,0.1); border-radius: 4px; text-align: center;"
+          >highlight-blue</span
+        >
       </Fragment>
     </div>
-    <p style="margin-top: 1.5em; opacity: 0.5; font-size: 0.7em;">Press <kbd>Space</kbd> to reveal each fragment</p>
+    <p style="margin-top: 1.5em; opacity: 0.5; font-size: 0.7em;">
+      Press <kbd>Space</kbd> to reveal each fragment
+    </p>
   </Slide>
 
   <!-- Slide 7: Themes -->
   <Slide h={6} v={0}>
     <h2>Built-in Themes</h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 1em; text-align: left; font-size: 0.85em;">
-      <div style="padding: 0.8em; background: #111; color: #eee; border-radius: 8px;">
+    <div
+      style="display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 1em; text-align: left; font-size: 0.85em;"
+    >
+      <div
+        style="padding: 0.8em; background: #111; color: #eee; border-radius: 8px;"
+      >
         <strong>Black</strong> — Dark, high contrast
       </div>
-      <div style="padding: 0.8em; background: #fff; color: #222; border-radius: 8px;">
+      <div
+        style="padding: 0.8em; background: #fff; color: #222; border-radius: 8px;"
+      >
         <strong>White</strong> — Clean, minimal
       </div>
-      <div style="padding: 0.8em; background: #002b36; color: #93a1a1; border-radius: 8px;">
+      <div
+        style="padding: 0.8em; background: #002b36; color: #93a1a1; border-radius: 8px;"
+      >
         <strong>Moon</strong> — Soft, professional
       </div>
-      <div style="padding: 0.8em; background: #f0edde; color: #333; border-radius: 8px;">
+      <div
+        style="padding: 0.8em; background: #f0edde; color: #333; border-radius: 8px;"
+      >
         <strong>Serif</strong> — Classic, editorial
       </div>
-      <div style="padding: 0.8em; background: #222; color: #eee; border-radius: 8px; grid-column: 1 / -1; border-left: 4px solid #a23;">
+      <div
+        style="padding: 0.8em; background: #222; color: #eee; border-radius: 8px; grid-column: 1 / -1; border-left: 4px solid #a23;"
+      >
         <strong>Blood</strong> — Bold, dramatic
       </div>
     </div>
@@ -138,7 +186,9 @@ Write your slides using **Markdown** syntax:
   <!-- Slide 8: Code with syntax highlighting -->
   <Slide h={7} v={0}>
     <h2>Syntax Highlighting</h2>
-    <p style="margin-bottom: 0.5em; opacity: 0.6; font-size: 0.7em;">Press <kbd>Space</kbd> to step through highlighted lines</p>
+    <p style="margin-bottom: 0.5em; opacity: 0.6; font-size: 0.7em;">
+      Press <kbd>Space</kbd> to step through highlighted lines
+    </p>
     <Code
       language="svelte"
       lineNumbers
@@ -154,7 +204,9 @@ Write your slides using **Markdown** syntax:
   </Slide>
 </Deck>`}
     />
-    <Notes text="Code blocks support syntax highlighting with highlight.js and line-by-line step-through. Each press advances to the next highlighted section." />
+    <Notes
+      text="Code blocks support syntax highlighting with highlight.js and line-by-line step-through. Each press advances to the next highlighted section."
+    />
   </Slide>
 
   <!-- Slide 8b: Code - another language -->
@@ -180,29 +232,45 @@ function startPresentation() {
 
   <!-- Slide 9: Auto-animate -->
   <Slide h={8} v={0} autoAnimate>
-    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 2em;">
-      <div data-id="box" style="width: 120px; height: 120px; background: var(--ds-accent, #42affa); border-radius: 16px; flex-shrink: 0;"></div>
+    <div
+      style="display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 2em;"
+    >
+      <div
+        data-id="box"
+        style="width: 120px; height: 120px; background: var(--ds-accent, #42affa); border-radius: 16px; flex-shrink: 0;"
+      ></div>
       <div style="text-align: right; flex: 1;">
         <h2 data-id="title">Auto-Animate</h2>
-        <p data-id="desc" style="margin-top: 0.5em; opacity: 0.7;">Navigate forward to see it</p>
+        <p data-id="desc" style="margin-top: 0.5em; opacity: 0.7;">
+          Navigate forward to see it
+        </p>
       </div>
     </div>
   </Slide>
 
   <Slide h={9} v={0} autoAnimate>
-    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 2em;">
+    <div
+      style="display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 2em;"
+    >
       <div style="text-align: left; flex: 1;">
         <h2 data-id="title">Auto-Animate</h2>
-        <p data-id="desc" style="margin-top: 0.5em; opacity: 0.7;">Elements move and morph between slides</p>
+        <p data-id="desc" style="margin-top: 0.5em; opacity: 0.7;">
+          Elements move and morph between slides
+        </p>
       </div>
-      <div data-id="box" style="width: 120px; height: 120px; background: var(--ds-accent, #42affa); border-radius: 50%; flex-shrink: 0;"></div>
+      <div
+        data-id="box"
+        style="width: 120px; height: 120px; background: var(--ds-accent, #42affa); border-radius: 50%; flex-shrink: 0;"
+      ></div>
     </div>
   </Slide>
 
   <!-- Slide 10: Keyboard shortcuts -->
   <Slide h={10} v={0}>
     <h2>Keyboard Shortcuts</h2>
-    <div style="display: grid; grid-template-columns: auto 1fr; gap: 0.3em 1.5em; text-align: left; font-size: 0.75em; margin-top: 1em;">
+    <div
+      style="display: grid; grid-template-columns: auto 1fr; gap: 0.3em 1.5em; text-align: left; font-size: 0.75em; margin-top: 1em;"
+    >
       <kbd>→</kbd> <span>Next slide</span>
       <kbd>←</kbd> <span>Previous slide</span>
       <kbd>↓</kbd> <span>Next vertical slide</span>
@@ -218,12 +286,17 @@ function startPresentation() {
   </Slide>
 
   <!-- Slide 11: End -->
-  <Slide h={11} v={0} background="linear-gradient(135deg, #0c0c1d 0%, #1a1a3e 100%)">
+  <Slide
+    h={11}
+    v={0}
+    background="linear-gradient(135deg, #0c0c1d 0%, #1a1a3e 100%)"
+  >
     <h1>Thank You</h1>
-    <p style="margin-top: 0.5em; opacity: 0.7;">Built with Svelte 5 &bull; Open Source</p>
+    <p style="margin-top: 0.5em; opacity: 0.7;">
+      Built with Svelte 5 &bull; Open Source
+    </p>
     <Notes text="Thank you for checking out Decksmith!" />
   </Slide>
-
 </Deck>
 
 <style>

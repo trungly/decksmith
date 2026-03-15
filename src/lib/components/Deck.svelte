@@ -145,18 +145,38 @@
     });
   });
 
-  // Scroll view: track scroll position to update current slide and fragments
+  // Scroll view: track scroll position to update current slide
   let scrollProgress = $state(0);
+  let programmaticScroll = false;
+
+  function scrollToSlide(h: number, v: number) {
+    const slideEl = slidesElement?.querySelector<HTMLElement>(
+      `.slide[data-h="${h}"][data-v="${v}"]`
+    );
+    if (!slideEl) return;
+    programmaticScroll = true;
+    slideEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => { programmaticScroll = false; }, 1000);
+  }
+
+  // Sync keyboard/programmatic navigation to scroll position in scroll view mode.
+  // Runs whenever currentH/V changes; the programmaticScroll flag prevents
+  // the resulting scroll event from immediately overwriting that change.
+  $effect(() => {
+    if (!scrollView || !slidesElement) return;
+    scrollToSlide(deck.currentH, deck.currentV);
+  });
 
   function setupScrollTracking() {
     if (!scrollView || !deckElement) return () => {};
     const scrollEl = deckElement;
 
     function onScroll() {
+      if (programmaticScroll) return;
+
       const maxScroll = scrollEl.scrollHeight - scrollEl.clientHeight;
       scrollProgress = maxScroll > 0 ? scrollEl.scrollTop / maxScroll : 0;
 
-      // Find which slide is currently in view
       const slideEls = slidesElement.querySelectorAll<HTMLElement>('.slide');
       const viewportCenter = scrollEl.scrollTop + scrollEl.clientHeight / 2;
 
@@ -167,18 +187,7 @@
           const h = parseInt(slideEl.dataset.h ?? '0', 10);
           const v = parseInt(slideEl.dataset.v ?? '0', 10);
           if (h !== deck.currentH || v !== deck.currentV) {
-            deck.goTo(h, v);
-          }
-
-          // Calculate fragment progress within the slide
-          const slideProg = (viewportCenter - slideTop) / slideEl.offsetHeight;
-          const fragmentCount = deck.getSlideAt(h, v)?.fragmentCount ?? 0;
-          if (fragmentCount > 0) {
-            const fragmentIndex = Math.floor(slideProg * (fragmentCount + 1)) - 1;
-            const clamped = Math.max(-1, Math.min(fragmentIndex, fragmentCount - 1));
-            if (clamped !== deck.currentFragment) {
-              deck.currentFragment = clamped;
-            }
+            deck.goTo(h, v); // resets currentFragment to -1
           }
           break;
         }
@@ -194,7 +203,7 @@
       updateScale();
     }
 
-    const cleanupKeyboard = scrollView ? () => {} : setupKeyboard(deck);
+    const cleanupKeyboard = setupKeyboard(deck);
     const cleanupTouch = scrollView ? () => {} : setupTouch(deck, deckElement);
     const cleanupHash = scrollView ? () => {} : setupHashRouting(deck);
     const cleanupScroll = setupScrollTracking();
@@ -234,6 +243,10 @@
       {/if}
     </div>
     <ScrollProgress value={scrollProgress} />
+    {#if deck.isPaused}
+      <div class="deck-pause-overlay"></div>
+    {/if}
+    <Overview />
   </div>
 {:else}
   <!-- Standard Slide View Mode -->
@@ -337,6 +350,12 @@
     visibility: visible !important;
     transform: none !important;
     z-index: auto !important;
+  }
+
+  /* Overlays must be fixed to the viewport in scroll view, not the scroll origin */
+  .deck-scroll .deck-pause-overlay,
+  .deck-scroll :global(.deck-overview) {
+    position: fixed;
   }
 
   /* In scroll view, fragments are revealed based on scroll position */
