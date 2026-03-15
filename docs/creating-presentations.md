@@ -2,13 +2,13 @@
 
 A Decksmith presentation is a Svelte component. The `<Deck>` component wraps `<Slide>` components, which contain your content.
 
-In the standard workflow, you build your deck in `src/App.svelte` and import Decksmith components from `./lib/index.js`.
+In the standard workflow, you build your deck in `src/App.svelte` and import Decksmith components from `decksmith`.
 
 ## Basic Structure
 
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment, Notes } from "./lib/index.js";
+  import { Deck, Slide, Fragment, Notes } from "decksmith";
 </script>
 
 <Deck theme="obsidian" transition="slide">
@@ -102,7 +102,7 @@ Add notes visible only in the speaker view (press `S`):
 
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "./lib/index.js";
+  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
 </script>
 
 <Deck theme="dusk" transition="fade">

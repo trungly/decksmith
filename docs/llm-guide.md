@@ -10,7 +10,7 @@ A Decksmith presentation is a single Svelte component. In the standard workflow,
 
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "./lib/index.js";
+  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
 </script>
 
 <Deck theme="THEME" transition="TRANSITION">
@@ -224,7 +224,7 @@ User prompt: "Create a presentation about REST APIs with 4 slides"
 
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment, Notes, Code } from "./lib/index.js";
+  import { Deck, Slide, Fragment, Notes, Code } from "decksmith";
 </script>
 
 <Deck theme="dusk" transition="slide">

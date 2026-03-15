@@ -4,6 +4,10 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
+    "baseUrl": ".",
+    "paths": {
+      "decksmith": ["./src/lib/index.js"]
+    },
     "resolveJsonModule": true,
     "allowJs": true,
     "checkJs": true,

@@ -6,7 +6,7 @@ Decksmith is a standalone local presentation tool built with Svelte 5. Presentat
 
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "./lib/index.js";
+  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
 </script>
 
 <Deck theme="obsidian" transition="slide">

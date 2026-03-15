@@ -23,11 +23,11 @@ npm start
 
 Opens a local dev server (default `http://localhost:5173`). Edit `src/App.svelte` and changes hot-reload instantly.
 
-Import Decksmith components from the local entrypoint:
+Import Decksmith components directly from `decksmith`:
 
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "./lib/index.js";
+  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
 </script>
 ```
 

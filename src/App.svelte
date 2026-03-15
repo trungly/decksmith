@@ -1,10 +1,5 @@
 <script lang="ts">
-  import Deck from "./lib/components/Deck.svelte";
-  import Slide from "./lib/components/Slide.svelte";
-  import Fragment from "./lib/components/Fragment.svelte";
-  import Notes from "./lib/components/Notes.svelte";
-  import Markdown from "./lib/components/Markdown.svelte";
-  import Code from "./lib/components/Code.svelte";
+  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
 </script>
 
 <Deck theme="obsidian" transition="slide">
@@ -222,8 +217,8 @@ Write your slides using **Markdown** syntax:
       language="typescript"
       lineNumbers
       highlightLines="1-2|4-6|8-10"
-      code={`import { Deck, Slide, Fragment } from './lib/index.js';
-import type { DeckConfig } from './lib/index.js';
+      code={`import { Deck, Slide, Fragment } from 'decksmith';
+import type { DeckConfig } from 'decksmith';
 
 const config: DeckConfig = {
   theme: 'dusk',

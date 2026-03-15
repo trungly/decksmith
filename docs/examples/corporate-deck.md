@@ -6,7 +6,7 @@ Paste this into `src/App.svelte`:
 
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment, Notes } from "./lib/index.js";
+  import { Deck, Slide, Fragment, Notes } from "decksmith";
 </script>
 
 <Deck theme="parchment" transition="fade" transitionSpeed="fast">

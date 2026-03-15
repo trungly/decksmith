@@ -43,7 +43,7 @@ Place this in `src/App.svelte`:
 
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment } from "./lib/index.js";
+  import { Deck, Slide, Fragment } from "decksmith";
 </script>
 
 <Deck theme="obsidian" transition="slide">
