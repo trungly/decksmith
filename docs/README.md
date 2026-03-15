@@ -2,25 +2,33 @@
 
 Decksmith is a presentation framework built with Svelte 5. Create interactive, themeable slide decks using components.
 
+It was originally inspired by [Reveal.js](https://revealjs.com/).
+
 ## Getting Started
 
-1. Clone the repository and install dependencies:
+1. Install Decksmith from npm:
 
 ```bash
-git clone <repo-url> my-presentation
-cd my-presentation
-npm install
+npm install decksmith
 ```
 
-2. Start the development server:
+2. Import it in your presentation file:
+
+```svelte
+<script lang="ts">
+  import { Deck, Slide } from "decksmith";
+</script>
+```
+
+3. Start your development server:
 
 ```bash
-npm run dev
+npm start
 ```
 
-3. Edit `src/App.svelte` to create your presentation. The dev server hot-reloads on every save.
+4. Edit your presentation file. The dev server hot-reloads on every save.
 
-4. Build for production:
+5. Build for production:
 
 ```bash
 npm run build
@@ -32,11 +40,10 @@ The output goes to `dist/` — a static HTML bundle you can deploy anywhere.
 
 ```svelte
 <script lang="ts">
-  import Deck from "./lib/components/Deck.svelte";
-  import Slide from "./lib/components/Slide.svelte";
+  import { Deck, Slide } from "decksmith";
 </script>
 
-<Deck theme="black" transition="slide">
+<Deck theme="obsidian" transition="slide">
   <Slide h={0} v={0}>
     <h1>Hello World</h1>
   </Slide>

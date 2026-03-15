@@ -6,12 +6,7 @@ Decksmith is a presentation framework built with Svelte 5. Presentations are Sve
 
 ```svelte
 <script lang="ts">
-  import Deck from "./lib/components/Deck.svelte";
-  import Slide from "./lib/components/Slide.svelte";
-  import Fragment from "./lib/components/Fragment.svelte";
-  import Notes from "./lib/components/Notes.svelte";
-  import Markdown from "./lib/components/Markdown.svelte";
-  import Code from "./lib/components/Code.svelte";
+  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
 </script>
 
 <Deck theme="obsidian" transition="slide">
@@ -365,7 +360,7 @@ src/
 ├── App.svelte                      Your presentation
 ├── app.css                         Global base styles
 └── lib/
-    ├── index.ts                    Public API exports
+    ├── index.js                    Public API exports
     ├── types.ts                    TypeScript types
     ├── state/
     │   └── deck-state.svelte.ts    Core reactive state
@@ -390,7 +385,7 @@ src/
 
 ```bash
 npm install
-npm run dev       # Development server
+npm start         # Development server
 npm run build     # Production build
 npm run preview   # Preview production build
 ```

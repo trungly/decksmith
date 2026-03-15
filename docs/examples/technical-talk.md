@@ -1,17 +1,13 @@
 # Technical Talk
 
-A code-heavy presentation using the black theme with multiple code walkthroughs.
+A code-heavy presentation using the obsidian theme with multiple code walkthroughs.
 
 ```svelte
 <script lang="ts">
-  import Deck from "./lib/components/Deck.svelte";
-  import Slide from "./lib/components/Slide.svelte";
-  import Fragment from "./lib/components/Fragment.svelte";
-  import Notes from "./lib/components/Notes.svelte";
-  import Code from "./lib/components/Code.svelte";
+  import { Deck, Slide, Fragment, Notes, Code } from "decksmith";
 </script>
 
-<Deck theme="black" transition="none">
+<Deck theme="obsidian" transition="none">
   <Slide h={0} v={0}>
     <h1>Zero-Cost Abstractions in Rust</h1>
     <p style="opacity: 0.6;">How the compiler does the heavy lifting</p>

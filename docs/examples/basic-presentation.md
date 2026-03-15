@@ -4,8 +4,7 @@ A minimal working presentation with 3 slides.
 
 ```svelte
 <script lang="ts">
-  import Deck from "./lib/components/Deck.svelte";
-  import Slide from "./lib/components/Slide.svelte";
+  import { Deck, Slide } from "decksmith";
 </script>
 
 <Deck theme="obsidian" transition="slide">

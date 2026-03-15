@@ -2,7 +2,7 @@
 
 A modern presentation framework built with **Svelte 5**. Create beautiful, interactive presentations using components and modern JavaScript.
 
-Decksmith replicates the core features of Reveal.js using Svelte 5's runes-based reactivity, delivering a fast, type-safe, and developer-friendly experience.
+Decksmith was originally inspired by [Reveal.js](https://revealjs.com/).
 
 ## Features
 
@@ -24,20 +24,17 @@ Decksmith replicates the core features of Reveal.js using Svelte 5's runes-based
 
 ## Quick Start
 
+Install Decksmith from npm:
+
 ```bash
-git clone <repo-url> my-presentation
-cd my-presentation
-npm install
-npm start
+npm install decksmith
 ```
 
-Edit `src/App.svelte` to create your presentation:
+Then import it in your presentation file:
 
 ```svelte
 <script lang="ts">
-  import Deck from "./lib/components/Deck.svelte";
-  import Slide from "./lib/components/Slide.svelte";
-  import Fragment from "./lib/components/Fragment.svelte";
+  import { Deck, Slide, Fragment } from "decksmith";
 </script>
 
 <Deck theme="obsidian" transition="slide">
@@ -52,6 +49,17 @@ Edit `src/App.svelte` to create your presentation:
     </Fragment>
   </Slide>
 </Deck>
+```
+
+## Local Development
+
+To work on Decksmith itself:
+
+```bash
+git clone <repo-url> decksmith
+cd decksmith
+npm install
+npm start
 ```
 
 ## Keyboard Shortcuts
@@ -113,4 +121,4 @@ See [CLAUDE.md](./CLAUDE.md) for a structured reference designed for AI agents t
 
 ## License
 
-MIT
+Decksmith is released under the [MIT License](./LICENSE).

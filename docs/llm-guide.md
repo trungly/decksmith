@@ -10,12 +10,7 @@ A Decksmith presentation is a single Svelte component. The LLM should generate a
 
 ```svelte
 <script lang="ts">
-  import Deck from "./lib/components/Deck.svelte";
-  import Slide from "./lib/components/Slide.svelte";
-  import Fragment from "./lib/components/Fragment.svelte";
-  import Notes from "./lib/components/Notes.svelte";
-  import Markdown from "./lib/components/Markdown.svelte";
-  import Code from "./lib/components/Code.svelte";
+  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
 </script>
 
 <Deck theme="THEME" transition="TRANSITION">
@@ -41,7 +36,7 @@ Only import the components you use.
 ## Valid Prop Values
 
 ### Themes
-`"black"` | `"white"` | `"moon"` | `"serif"` | `"blood"`
+`"obsidian"` | `"air"` | `"dusk"` | `"parchment"` | `"ember"`
 
 ### Transitions
 `"none"` | `"fade"` | `"slide"` | `"convex"` | `"concave"` | `"zoom"`
@@ -183,11 +178,11 @@ Only import the components you use.
 
 | Audience/Context | Recommended Theme |
 |-----------------|-------------------|
-| Tech conference | `black` or `moon` |
-| Business/corporate | `white` or `serif` |
-| Academic/research | `moon` or `white` |
-| Creative/bold | `blood` |
-| General purpose | `black` |
+| Tech conference | `obsidian` or `dusk` |
+| Business/corporate | `parchment` or `air` |
+| Academic/research | `air` or `parchment` |
+| Creative/bold | `ember` |
+| General purpose | `obsidian` |
 
 ## Transition Selection Guide
 
@@ -216,7 +211,7 @@ Given a user prompt like "Create a 5-slide presentation about microservices":
 
 1. **Plan the structure**: Title, 3 content slides, closing
 2. **Assign coordinates**: h=0 through h=4, all v=0
-3. **Choose theme**: `black` for tech topic
+3. **Choose theme**: `obsidian` for a tech topic
 4. **Choose transition**: `slide` for general purpose
 5. **Generate each slide** using the patterns above
 6. **Add fragments** for bullet points (2-4 per slide)
@@ -229,14 +224,10 @@ User prompt: "Create a presentation about REST APIs with 4 slides"
 
 ```svelte
 <script lang="ts">
-  import Deck from "./lib/components/Deck.svelte";
-  import Slide from "./lib/components/Slide.svelte";
-  import Fragment from "./lib/components/Fragment.svelte";
-  import Notes from "./lib/components/Notes.svelte";
-  import Code from "./lib/components/Code.svelte";
+  import { Deck, Slide, Fragment, Notes, Code } from "decksmith";
 </script>
 
-<Deck theme="moon" transition="slide">
+<Deck theme="dusk" transition="slide">
   <Slide h={0} v={0}>
     <h1>REST APIs</h1>
     <p>Designing Clean, Scalable Interfaces</p>

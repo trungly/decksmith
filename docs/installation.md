@@ -5,18 +5,34 @@
 - [Node.js](https://nodejs.org/) 18 or later
 - npm (included with Node.js)
 
-## Setup
+## Install From npm
 
 ```bash
-git clone <repo-url> my-presentation
-cd my-presentation
+npm install decksmith
+```
+
+Import it in your presentation file:
+
+```svelte
+<script lang="ts">
+  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
+</script>
+```
+
+## Local Development
+
+If you want to work on Decksmith itself:
+
+```bash
+git clone <repo-url> decksmith
+cd decksmith
 npm install
 ```
 
 ## Development
 
 ```bash
-npm run dev
+npm start
 ```
 
 Opens a local dev server (default `http://localhost:5173`). Changes to `src/App.svelte` hot-reload instantly.
@@ -49,9 +65,8 @@ http://localhost:5173/?print-pdf
 my-presentation/
 ├── src/
 │   ├── main.ts          Entry point
-│   ├── App.svelte       Your presentation (edit this)
-│   ├── app.css          Global styles
-│   └── lib/             Decksmith framework (don't edit)
+│   ├── App.svelte       Your presentation
+│   └── ...
 ├── index.html           HTML shell
 ├── package.json
 ├── vite.config.ts
@@ -62,7 +77,7 @@ my-presentation/
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start development server |
+| `npm start` | Start development server |
 | `npm run build` | Build for production |
 | `npm run preview` | Preview production build |
 | `npm run lint` | Run ESLint |

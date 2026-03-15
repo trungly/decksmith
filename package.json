@@ -1,9 +1,43 @@
 {
   "name": "decksmith",
-  "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "A modern presentation framework built with Svelte 5",
+  "description": "A Svelte 5 presentation framework originally inspired by Reveal.js",
+  "license": "MIT",
+  "main": "./src/lib/index.js",
+  "module": "./src/lib/index.js",
+  "types": "./src/lib/index.d.ts",
+  "svelte": "./src/lib/index.js",
+  "exports": {
+    ".": {
+      "types": "./src/lib/index.d.ts",
+      "svelte": "./src/lib/index.js",
+      "default": "./src/lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trungly/decksmith.git"
+  },
+  "bugs": {
+    "url": "https://github.com/trungly/decksmith/issues"
+  },
+  "homepage": "https://github.com/trungly/decksmith#readme",
+  "keywords": [
+    "svelte",
+    "svelte5",
+    "presentation",
+    "slides",
+    "deck",
+    "revealjs"
+  ],
+  "files": [
+    "src/lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "start": "vite",
     "dev": "vite",
@@ -11,12 +45,17 @@
     "preview": "vite preview",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
+    "pack:check": "npm pack --dry-run",
+    "prepublishOnly": "npm run lint && npm run pack:check",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
   "dependencies": {
     "highlight.js": "^11.11.1",
     "marked": "^15.0.4"
+  },
+  "peerDependencies": {
+    "svelte": "^5.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

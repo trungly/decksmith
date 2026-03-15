@@ -209,7 +209,7 @@ The `DeckState` class manages all presentation state. Access it via Svelte conte
 
 ```typescript
 import { getContext } from "svelte";
-import type { DeckState } from "../state/deck-state.svelte.js";
+import type { DeckState } from "decksmith";
 
 const deck = getContext<DeckState>("deck");
 ```

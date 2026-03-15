@@ -1,16 +1,13 @@
 # Corporate Presentation
 
-A business-focused template using the serif theme.
+A business-focused template using the parchment theme.
 
 ```svelte
 <script lang="ts">
-  import Deck from "./lib/components/Deck.svelte";
-  import Slide from "./lib/components/Slide.svelte";
-  import Fragment from "./lib/components/Fragment.svelte";
-  import Notes from "./lib/components/Notes.svelte";
+  import { Deck, Slide, Fragment, Notes } from "decksmith";
 </script>
 
-<Deck theme="serif" transition="fade" transitionSpeed="fast">
+<Deck theme="parchment" transition="fade" transitionSpeed="fast">
   <Slide h={0} v={0}>
     <h1>Q4 Business Review</h1>
     <p>December 2025</p>
