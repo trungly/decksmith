@@ -1,0 +1,50 @@
+# Decksmith
+
+> A Svelte 5 presentation framework. Create interactive slideshows by editing `src/App.svelte` and running `npm start`. Built on Reveal.js-style 2D slide grids.
+
+## Usage
+
+Presentations are Svelte components that use `<Deck>`, `<Slide>`, `<Fragment>`, `<Notes>`, `<Markdown>`, and `<Code>` components imported from `"decksmith"`.
+
+```svelte
+<script lang="ts">
+  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
+</script>
+
+<Deck theme="obsidian" transition="slide">
+  <Slide h={0} v={0}>
+    <h1>Title</h1>
+  </Slide>
+  <Slide h={1} v={0}>
+    <h2>Second Slide</h2>
+    <Fragment index={0} style="fade-up"><p>First point</p></Fragment>
+  </Slide>
+</Deck>
+```
+
+Edit `src/App.svelte`, run `npm start`, open http://localhost:5173.
+
+## Key Concepts
+
+- Slides use a 2D grid: `h` (horizontal, left→right) and `v` (vertical, top→bottom sub-slides)
+- Every presentation starts at `h={0} v={0}`; `h` values must be sequential with no gaps
+- `<Fragment index={N}>` reveals content step-by-step; index starts at 0
+- 5 built-in themes: `obsidian` (default), `air`, `dusk`, `parchment`, `ember`
+- 6 transitions: `none`, `fade`, `slide`, `convex`, `concave`, `zoom`
+
+## Docs
+
+- [CLAUDE.md](CLAUDE.md): Full component API, rules for code generation, selection guides — primary AI reference
+- [LLM Guide](docs/llm-guide.md): Generation workflow, patterns, complete worked example
+- [API Reference](docs/api-reference.md): Complete component and type reference
+- [README](README.md): Project overview with all component API tables and common patterns
+
+## Optional
+
+- [Configuration](docs/configuration.md): All Deck config options
+- [Auto-Animate](docs/auto-animate.md): Animating elements between slides
+- [Scroll View](docs/scroll-view.md): Scrollable page mode
+- [PDF Export](docs/pdf-export.md): Printing presentations to PDF
+- [Speaker Notes](docs/speaker-notes.md): Speaker window usage
+- [Code Highlighting](docs/code-highlighting.md): Line step-through syntax
+- [Themes](docs/themes.md): Theme details and CSS variables
