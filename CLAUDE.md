@@ -28,6 +28,21 @@ Decksmith is a standalone local presentation tool built with Svelte 5. Presentat
 </Deck>
 ```
 
+## Rules for Code Generation
+
+Follow these rules when generating or editing a Decksmith presentation:
+
+1. **Every `<Slide>` must have `h` and `v` props.** The first slide is always `h={0} v={0}`.
+2. **`h` values must be sequential** starting from 0. No gaps allowed.
+3. **`v` values must start at 0** for each `h` column and increment: `v={0}`, `v={1}`, `v={2}`.
+4. **Fragment `index` values start at 0** and increment sequentially within a slide.
+5. **One `<Deck>` per presentation.** All `<Slide>` components must be direct children of `<Deck>`.
+6. **Use valid prop values only.** See enums in Component API below.
+7. **Inline styles only.** Do not generate `<style>` blocks unless specifically needed for global selectors.
+8. **Escape backticks in template literals.** When `code` or `content` props contain backticks, escape them: `` \` ``.
+9. **Import only what you use.** `import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";`
+10. **Return complete files.** Never return partial snippets when editing — always the full `src/App.svelte`.
+
 ## Slide Coordinate System
 
 Slides are arranged in a 2D grid using `h` (horizontal) and `v` (vertical) coordinates:
@@ -196,6 +211,39 @@ Each step acts as a fragment. Non-highlighted lines dim to 35% opacity.
 
 Set globally on `<Deck>` or per-slide on `<Slide>`.
 
+## Selection Guides
+
+### Theme by Audience
+
+| Audience / Context | Recommended Theme |
+|--------------------|-------------------|
+| Tech conference | `obsidian` or `dusk` |
+| Business / corporate | `parchment` or `air` |
+| Academic / research | `air` or `parchment` |
+| Creative / bold | `ember` |
+| General purpose | `obsidian` |
+
+### Transition by Content Type
+
+| Content Type | Recommended Transition |
+|--------------|------------------------|
+| Technical / code-heavy | `none` or `fade` |
+| Storytelling / narrative | `slide` |
+| Dramatic reveals | `zoom` |
+| Professional / polished | `convex` or `concave` |
+| Fast-paced | `fade` with `transitionSpeed="fast"` |
+
+### Fragment Style by Use Case
+
+| Use Case | Recommended Style |
+|----------|-------------------|
+| Sequential bullet points | `fade-up` |
+| Key reveals | `grow` |
+| Before/after comparison | `fade-in-then-out` |
+| Progressive highlighting | `highlight-current-blue` |
+| Emphasis | `highlight-red` |
+| Strikethrough / corrections | `strike` |
+
 ## Auto-Animate
 
 Consecutive slides with `autoAnimate` will smoothly animate matching elements between them. Match elements using the `data-id` attribute.
@@ -227,6 +275,16 @@ Render the presentation as a scrollable page instead of slide-by-slide navigatio
 - `scrollLayout="full"` — Each slide fills the viewport height
 - `scrollLayout="compact"` — Slides use natural content height
 - `scrollSnap` — Scroll snaps to slide boundaries
+
+## PDF Export
+
+Append `?print-pdf` to the dev server URL to activate print layout:
+
+```
+http://localhost:5173/?print-pdf
+```
+
+Then use the browser's print dialog (Cmd+P / Ctrl+P) and print to PDF. Each slide renders as a full page.
 
 ## Keyboard Shortcuts
 
