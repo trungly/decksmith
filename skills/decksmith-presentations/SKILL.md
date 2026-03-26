@@ -50,7 +50,7 @@ Run with `npm install && npm start`, then open http://localhost:5173.
 6. **Use valid prop values only.** See the Component API below.
 7. **Inline styles only.** Do not generate `<style>` blocks unless specifically needed for global selectors.
 8. **Escape backticks in template literals.** When `code` or `content` props contain backticks, escape them: `` \` ``.
-9. **Import only what you use.** `import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";`
+9. **Import only what you use.** Import from `"decksmith"` and include only the components used in the code (for example: `import { Deck, Slide } from "decksmith";`).
 10. **Return complete files.** Never return partial snippets when editing — always the full `src/App.svelte`.
 
 ## Slide Coordinate System
@@ -117,10 +117,13 @@ h=0,v=0  →  h=1,v=0  →  h=2,v=0  →  h=3,v=0
 
 ### `<Notes>` — Speaker Notes
 
-| Prop   | Type     | Default | Description           |
-| ------ | -------- | ------- | --------------------- |
-| `text` | `string` | `""`    | Speaker notes content |
+| Prop      | Type     | Default | Description                                                                 |
+| --------- | -------- | ------- | --------------------------------------------------------------------------- |
+| `text`    | `string` | `""`    | Speaker notes content                                                       |
+| `slideH`  | `number` | `0`     | Horizontal slide index (must match the slide's `h` when attaching notes)    |
+| `slideV`  | `number` | `0`     | Vertical slide index (must match the slide's `v` when attaching notes)      |
 
+When generating notes for a slide, always set `slideH` and `slideV` to that slide's `h`/`v` coordinates so the notes attach to the correct slide.
 ### `<Markdown>` — Markdown Content
 
 | Prop      | Type     | Default | Description               |
@@ -129,15 +132,15 @@ h=0,v=0  →  h=1,v=0  →  h=2,v=0  →  h=3,v=0
 
 ### `<Code>` — Syntax-Highlighted Code
 
-| Prop              | Type      | Default  | Description                           |
-| ----------------- | --------- | -------- | ------------------------------------- |
-| `code`            | `string`  | `""`     | Code to display                       |
-| `language`        | `string`  | _(auto)_ | Language for highlighting             |
-| `lineNumbers`     | `boolean` | `false`  | Show line numbers                     |
-| `highlightLines`  | `string`  | `""`     | Line highlight steps (pipe-separated) |
-| `lineNumberStart` | `number`  | `1`      | Starting line number                  |
+| Prop              | Type      | Default  | Description                                        |
+| ----------------- | --------- | -------- | -------------------------------------------------- |
+| `code`            | `string`  | `""`     | Code to display                                    |
+| `language`        | `string`  | _(auto)_ | Language for highlighting                          |
+| `lineNumbers`     | `boolean` | `false`  | Show line numbers                                  |
+| `highlightLines`  | `string`  | `""`     | Line highlight steps (pipe-separated, comma-aware) |
+| `lineNumberStart` | `number`  | `1`      | Starting line number                               |
 
-`highlightLines` format: `"1-3|5-7|9"` — pipe-separated steps, each with line numbers or ranges.
+`highlightLines` format: `"1|2-3|4,6-10"` — pipe-separated steps; within each step, use commas to combine single line numbers and ranges.
 
 ## Theme Selection
 
