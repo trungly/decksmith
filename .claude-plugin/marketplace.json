@@ -1,0 +1,20 @@
+{
+  "name": "decksmith-skills",
+  "owner": {
+    "name": "Trung Ly",
+    "url": "https://github.com/trungly"
+  },
+  "metadata": {
+    "description": "Decksmith presentation skills for Claude",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "decksmith-presentations",
+      "description": "Create interactive HTML presentations using the Decksmith Svelte 5 framework. Generates slide decks with themes, transitions, fragments, speaker notes, code highlighting, and more.",
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/decksmith-presentations"]
+    }
+  ]
+}
