@@ -47,11 +47,11 @@ Place this in `src/App.svelte`:
 </script>
 
 <Deck theme="obsidian" transition="slide">
-  <Slide h={0} v={0}>
+  <Slide h={1} v={0}>
     <h1>Hello World</h1>
   </Slide>
 
-  <Slide h={1} v={0}>
+  <Slide h={2} v={0}>
     <h2>Second Slide</h2>
     <Fragment index={0} style="fade-up">
       <p>Appears on click</p>
@@ -65,16 +65,16 @@ Place this in `src/App.svelte`:
 Slides are arranged in a 2D grid using `h` (horizontal) and `v` (vertical) coordinates:
 
 ```
-h=0,v=0  →  h=1,v=0  →  h=2,v=0  →  h=3,v=0
+h=1,v=0  →  h=2,v=0  →  h=3,v=0  →  h=4,v=0
                          ↓
-                         h=2,v=1
+                         h=3,v=1
                          ↓
-                         h=2,v=2
+                         h=3,v=2
 ```
 
-- `h` increments left-to-right for the main sequence.
+- `h` increments left-to-right for the main sequence, starting at `1`.
 - `v` increments top-to-bottom for sub-slides under a given `h`.
-- Every presentation starts at `h=0, v=0`.
+- Every presentation starts at `h=1, v=0`.
 - Vertical slides (`v > 0`) are navigated with ↑/↓ keys.
 
 ## Component API
@@ -106,7 +106,7 @@ Wraps all slides. One per presentation.
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `h` | `number` | `0` | Horizontal position |
+| `h` | `number` | `1` | Horizontal position |
 | `v` | `number` | `0` | Vertical position |
 | `transition` | `TransitionType` | _(inherits from Deck)_ | Override transition for this slide |
 | `background` | `string` | `""` | CSS background (color, gradient) |
@@ -200,7 +200,7 @@ Set globally on `<Deck transition="...">` or override per-slide with `<Slide tra
 ### Title Slide
 
 ```svelte
-<Slide h={0} v={0}>
+<Slide h={1} v={0}>
   <h1>Presentation Title</h1>
   <p>Subtitle or author name</p>
 </Slide>
@@ -209,7 +209,7 @@ Set globally on `<Deck transition="...">` or override per-slide with `<Slide tra
 ### Bullet List with Fragments
 
 ```svelte
-<Slide h={1} v={0}>
+<Slide h={2} v={0}>
   <h2>Key Points</h2>
   <Fragment index={0} style="fade-up"><p>First point</p></Fragment>
   <Fragment index={1} style="fade-up"><p>Second point</p></Fragment>
@@ -309,12 +309,12 @@ const server = serve({
 Consecutive slides with `autoAnimate` will smoothly animate matching elements between them. Match elements using the `data-id` attribute.
 
 ```svelte
-<Slide h={0} v={0} autoAnimate>
+<Slide h={1} v={0} autoAnimate>
   <div data-id="box" style="width: 100px; height: 100px; background: blue;"></div>
   <h2 data-id="title">Hello</h2>
 </Slide>
 
-<Slide h={1} v={0} autoAnimate>
+<Slide h={2} v={0} autoAnimate>
   <div data-id="box" style="width: 200px; height: 200px; background: red; border-radius: 50%;"></div>
   <h2 data-id="title" style="font-size: 3em;">Hello!</h2>
 </Slide>

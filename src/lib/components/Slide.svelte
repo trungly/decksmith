@@ -21,7 +21,7 @@
   }
 
   const {
-    h = 0,
+    h = 1,
     v = 0,
     transition,
     background = "",
@@ -38,9 +38,10 @@
   // Fragment children call this synchronously during their initialization,
   // before this Slide's onMount fires, so the count is correct by mount time.
   let fragmentCount = $state(0);
+  // h/v props are 1-based in source; convert to 0-based for all internal use.
   // Props are stable per-instance; intentionally capturing initial value.
   // svelte-ignore state_referenced_locally
-  const slideH = h;
+  const slideH = h - 1;
   // svelte-ignore state_referenced_locally
   const slideV = v;
   setContext("slide", {
@@ -56,11 +57,11 @@
   });
 
   onMount(() => {
-    deck.registerSlide({ h, v, id, fragmentCount, autoAnimate, notes: "" });
+    deck.registerSlide({ h: slideH, v: slideV, id, fragmentCount, autoAnimate, notes: "" });
   });
 
   const position = $derived(
-    getSlidePosition(h, v, deck.currentH, deck.currentV),
+    getSlidePosition(slideH, slideV, deck.currentH, deck.currentV),
   );
   const activeTransition = $derived(transition ?? deck.config.transition);
   const transitionStyle = $derived(

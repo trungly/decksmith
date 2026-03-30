@@ -1,6 +1,6 @@
 {
   "name": "decksmith",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "A Svelte 5 presentation framework originally inspired by Reveal.js",
   "license": "MIT",
@@ -46,6 +46,9 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "pack:check": "npm pack --dry-run",
+    "release:check": "npm run lint && npm run pack:check",
+    "release:patch": "npm run release:check && npm version patch",
+    "release:publish": "npm run release:check && npm publish --access public",
     "prepublishOnly": "npm run lint && npm run pack:check",
     "format": "prettier --write .",
     "format:check": "prettier --check ."

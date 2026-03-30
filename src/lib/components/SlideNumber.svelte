@@ -8,7 +8,7 @@
     const h = deck.currentH + 1;
     const v = deck.currentV;
     const total = deck.totalHorizontal;
-    return v > 0 ? `${h}.${v + 1} / ${total}` : `${h} / ${total}`;
+    return v > 0 ? `${h}.${v} / ${total}` : `${h} / ${total}`;
   });
 
   const fragmentTotal = $derived(deck.currentFragmentCount);
