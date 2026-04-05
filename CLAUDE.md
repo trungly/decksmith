@@ -10,13 +10,13 @@ Decksmith is a standalone local presentation tool built with Svelte 5. Presentat
 </script>
 
 <Deck theme="obsidian" transition="slide">
-  <Slide h={0} v={0}>
+  <Slide h={1} v={0}>
     <h1>Title</h1>
     <p>Subtitle</p>
     <Notes text="Speaker notes for this slide." />
   </Slide>
 
-  <Slide h={1} v={0}>
+  <Slide h={2} v={0}>
     <h2>Second Slide</h2>
     <Fragment index={0} style="fade-up">
       <p>First point</p>
@@ -32,8 +32,8 @@ Decksmith is a standalone local presentation tool built with Svelte 5. Presentat
 
 Follow these rules when generating or editing a Decksmith presentation:
 
-1. **Every `<Slide>` must have `h` and `v` props.** The first slide is always `h={0} v={0}`.
-2. **`h` values must be sequential** starting from 0. No gaps allowed.
+1. **Every `<Slide>` must have `h` and `v` props.** The first slide is always `h={1} v={0}`.
+2. **`h` values must be sequential** starting from 1. No gaps allowed.
 3. **`v` values must start at 0** for each `h` column and increment: `v={0}`, `v={1}`, `v={2}`.
 4. **Fragment `index` values start at 0** and increment sequentially within a slide.
 5. **One `<Deck>` per presentation.** All `<Slide>` components must be direct children of `<Deck>`.
@@ -48,16 +48,16 @@ Follow these rules when generating or editing a Decksmith presentation:
 Slides are arranged in a 2D grid using `h` (horizontal) and `v` (vertical) coordinates:
 
 ```
-h=0,v=0  →  h=1,v=0  →  h=2,v=0  →  h=3,v=0
+h=1,v=0  →  h=2,v=0  →  h=3,v=0  →  h=4,v=0
                          ↓
-                         h=2,v=1
+                         h=3,v=1
                          ↓
-                         h=2,v=2
+                         h=3,v=2
 ```
 
-- `h` increments left-to-right for the main sequence.
-- `v` increments top-to-bottom for sub-slides under a given `h`.
-- Every presentation starts at `h=0, v=0`.
+- `h` increments left-to-right for the main sequence, starting at 1.
+- `v` increments top-to-bottom for sub-slides under a given `h`, starting at 0.
+- Every presentation starts at `h=1, v=0`.
 - Vertical slides (v > 0) are navigated with ↑/↓ keys.
 
 ## Component API
@@ -89,7 +89,7 @@ Wraps all slides. One per presentation.
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `h` | `number` | `0` | Horizontal position |
+| `h` | `number` | `1` | Horizontal position (1-based) |
 | `v` | `number` | `0` | Vertical position |
 | `transition` | `TransitionType` | _(inherits from Deck)_ | Override transition for this slide |
 | `background` | `string` | `""` | CSS background (color, gradient) |
@@ -249,12 +249,12 @@ Set globally on `<Deck>` or per-slide on `<Slide>`.
 Consecutive slides with `autoAnimate` will smoothly animate matching elements between them. Match elements using the `data-id` attribute.
 
 ```svelte
-<Slide h={0} v={0} autoAnimate>
+<Slide h={1} v={0} autoAnimate>
   <div data-id="box" style="width: 100px; height: 100px; background: blue;"></div>
   <h2 data-id="title">Hello</h2>
 </Slide>
 
-<Slide h={1} v={0} autoAnimate>
+<Slide h={2} v={0} autoAnimate>
   <div data-id="box" style="width: 200px; height: 200px; background: red; border-radius: 50%;"></div>
   <h2 data-id="title" style="font-size: 3em;">Hello!</h2>
 </Slide>
@@ -306,7 +306,7 @@ Then use the browser's print dialog (Cmd+P / Ctrl+P) and print to PDF. Each slid
 ### Title Slide
 
 ```svelte
-<Slide h={0} v={0}>
+<Slide h={1} v={0}>
   <h1>Presentation Title</h1>
   <p>Subtitle or author name</p>
 </Slide>
@@ -315,7 +315,7 @@ Then use the browser's print dialog (Cmd+P / Ctrl+P) and print to PDF. Each slid
 ### Bullet List with Fragments
 
 ```svelte
-<Slide h={1} v={0}>
+<Slide h={2} v={0}>
   <h2>Key Points</h2>
   <Fragment index={0} style="fade-up"><p>First point</p></Fragment>
   <Fragment index={1} style="fade-up"><p>Second point</p></Fragment>
@@ -326,7 +326,7 @@ Then use the browser's print dialog (Cmd+P / Ctrl+P) and print to PDF. Each slid
 ### Code Walkthrough
 
 ```svelte
-<Slide h={2} v={0}>
+<Slide h={3} v={0}>
   <h2>Code Example</h2>
   <Code
     language="typescript"
@@ -348,7 +348,7 @@ const server = serve({
 ### Two-Column Layout
 
 ```svelte
-<Slide h={3} v={0}>
+<Slide h={4} v={0}>
   <h2>Comparison</h2>
   <div style="display: flex; gap: 2em; margin-top: 1em; text-align: left;">
     <div style="flex: 1;">
@@ -366,7 +366,7 @@ const server = serve({
 ### Background Image Slide
 
 ```svelte
-<Slide h={4} v={0} backgroundImage="/images/photo.jpg" backgroundSize="cover">
+<Slide h={5} v={0} backgroundImage="/images/photo.jpg" backgroundSize="cover">
   <h1 style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">Over an Image</h1>
 </Slide>
 ```
@@ -374,7 +374,7 @@ const server = serve({
 ### Gradient Background
 
 ```svelte
-<Slide h={5} v={0} background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+<Slide h={6} v={0} background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
   <h2>Gradient Slide</h2>
 </Slide>
 ```
@@ -382,14 +382,14 @@ const server = serve({
 ### Vertical Sub-Slides
 
 ```svelte
-<Slide h={2} v={0}>
+<Slide h={3} v={0}>
   <h2>Main Topic</h2>
   <p>Press ↓ for details</p>
 </Slide>
-<Slide h={2} v={1}>
+<Slide h={3} v={1}>
   <h3>Detail 1</h3>
 </Slide>
-<Slide h={2} v={2}>
+<Slide h={3} v={2}>
   <h3>Detail 2</h3>
 </Slide>
 ```
@@ -397,7 +397,7 @@ const server = serve({
 ### Markdown Slide
 
 ```svelte
-<Slide h={6} v={0}>
+<Slide h={7} v={0}>
   <Markdown content={`
 ## Features
 
