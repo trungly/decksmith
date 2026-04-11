@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Deck, Slide, Fragment, Notes } from "decksmith";
+  import { Deck, Slide, Fragment } from "decksmith";
 </script>
 
 <Deck theme="executive" transition="fade">

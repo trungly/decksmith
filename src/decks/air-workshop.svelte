@@ -41,7 +41,7 @@
   <Slide h={4} v={0}>
     <h2>Exercise 1: The Vague Prompt</h2>
     <p style="font-size: 0.9em; opacity: 0.6; margin-bottom: 1em;">Turn this into a "pro" prompt:</p>
-    <Code code={`"Write a script to clean some data"`} language="markdown" />
+    <Code code='"Write a script to clean some data"' language="markdown" />
     <div style="margin-top: 1em;">
       <p style="font-style: italic;">Hint: Consider the format, the cleaning logic, and the error handling.</p>
     </div>
@@ -51,7 +51,7 @@
   <Slide h={5} v={0}>
     <h2>Chain of Thought</h2>
     <p>Ask the AI to explain its reasoning <strong>before</strong> writing code.</p>
-    <Code code={`"Think step by step before generating the final implementation."`} language="markdown" />
+    <Code code='"Think step by step before generating the final implementation."' language="markdown" />
   </Slide>
 
   <!-- Slide 6: Feedback Loop -->
