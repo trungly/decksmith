@@ -8,4 +8,4 @@ export { default as Markdown } from "./components/Markdown.svelte";
 export { default as Code } from "./components/Code.svelte";
 
 export { DeckState } from "./state/deck-state.svelte.ts";
-export { THEMES } from "./themes/theme.ts";
+export { THEMES } from "./themes/theme.js";

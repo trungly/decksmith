@@ -40,16 +40,16 @@
   <!-- Slide 4: Eval Harnesses -->
   <Slide h={4} v={0}>
     <h2>Testing Your AI 🧪</h2>
-    <p>How do we know if it's actually good? We use **Eval Harnesses**.</p>
+    <p>How do we know if it's actually good? We use <strong>Eval Harnesses</strong>.</p>
     <div style="text-align: left; margin-top: 1.5em; padding-left: 2em; border-left: 4px solid #fecb2f;">
       <Fragment index={0} style="fade-in">
-        <p>✅ **Deterministic Checks:** Does it contain specific words?</p>
+        <p>✅ <strong>Deterministic Checks:</strong> Does it contain specific words?</p>
       </Fragment>
       <Fragment index={1} style="fade-in">
-        <p>✅ **LLM-as-a-Judge:** Ask another AI to score it.</p>
+        <p>✅ <strong>LLM-as-a-Judge:</strong> Ask another AI to score it.</p>
       </Fragment>
       <Fragment index={2} style="fade-in">
-        <p>✅ **Regression Tests:** Did it get worse than before?</p>
+        <p>✅ <strong>Regression Tests:</strong> Did it get worse than before?</p>
       </Fragment>
     </div>
   </Slide>

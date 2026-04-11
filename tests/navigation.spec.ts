@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('App loads and navigation works', async ({ page }) => {
   await page.goto('/');
-  // Expect title to contain 'Startup' since that's the default in App.svelte
+  // Expect page title to contain 'Decksmith'
   await expect(page).toHaveTitle(/Decksmith/);
 });
 

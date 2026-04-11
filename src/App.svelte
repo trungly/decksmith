@@ -8,21 +8,21 @@
   import PlayfulClassroom from "./decks/playful-classroom.svelte";
   import ObsidianDevopsStrategy from "./decks/obsidian-devops-strategy.svelte";
 
-  const decks = {
-    startup: StartupInvestorPitch,
-    executive: ExecutiveEnterpriseRoadmap,
-    technical: TechnicalDesignReview,
-    editorial: EditorialStrategyMemo,
-    air: AirWorkshop,
-    cinematic: CinematicKeynote,
-    playful: PlayfulClassroom,
-    obsidian: ObsidianDevopsStrategy,
-  } as const;
+  const deckRegistry = [
+    { key: "startup", label: "Startup Investor Pitch (Startup Theme)", component: StartupInvestorPitch },
+    { key: "executive", label: "Enterprise Roadmap (Executive Theme)", component: ExecutiveEnterpriseRoadmap },
+    { key: "technical", label: "Technical Design Review (Technical Theme)", component: TechnicalDesignReview },
+    { key: "editorial", label: "Internal Strategy Memo (Editorial Theme)", component: EditorialStrategyMemo },
+    { key: "air", label: "Workshop Training (Air Theme)", component: AirWorkshop },
+    { key: "cinematic", label: "Storytelling Keynote (Cinematic Theme)", component: CinematicKeynote },
+    { key: "playful", label: "Educational Classroom (Playful Theme)", component: PlayfulClassroom },
+    { key: "obsidian", label: "DevOps Strategy (Obsidian Theme)", component: ObsidianDevopsStrategy },
+  ] as const;
 
-  type DeckKey = keyof typeof decks;
+  type DeckKey = (typeof deckRegistry)[number]["key"];
   let selectedDeck = $state<DeckKey>("startup");
 
-  const DeckComponent = $derived(decks[selectedDeck]);
+  const DeckComponent = $derived(deckRegistry.find((d) => d.key === selectedDeck)?.component ?? deckRegistry[0].component);
 </script>
 
 <svelte:head>
@@ -30,15 +30,10 @@
 </svelte:head>
 
 <div class="deck-selector">
-  <select bind:value={selectedDeck}>
-    <option value="startup">Startup Investor Pitch (Startup Theme)</option>
-    <option value="executive">Enterprise Roadmap (Executive Theme)</option>
-    <option value="technical">Technical Design Review (Technical Theme)</option>
-    <option value="editorial">Internal Strategy Memo (Editorial Theme)</option>
-    <option value="air">Workshop Training (Air Theme)</option>
-    <option value="cinematic">Storytelling Keynote (Cinematic Theme)</option>
-    <option value="playful">Educational Classroom (Playful Theme)</option>
-    <option value="obsidian">DevOps Strategy (Obsidian Theme)</option>
+  <select bind:value={selectedDeck} aria-label="Select presentation deck">
+    {#each deckRegistry as deck (deck.key)}
+      <option value={deck.key}>{deck.label}</option>
+    {/each}
   </select>
 </div>
 
