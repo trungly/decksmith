@@ -1,0 +1,86 @@
+/* Decksmith Theme: Executive — Clean, restrained, high-density. */
+.theme-executive {
+  --ds-bg: #ffffff;
+  --ds-fg: #1a1a1a;
+  --ds-heading: #000000;
+  --ds-link: #0056b3;
+  --ds-link-hover: #004494;
+  --ds-accent: #0056b3;
+  --ds-muted: #666666;
+  --ds-border: #e0e0e0;
+  --ds-code-bg: #f5f5f5;
+  --ds-pre-bg: #f8f9fa;
+  --ds-selection-bg: #0056b3;
+  --ds-selection-fg: #ffffff;
+
+  /* Layout and Density */
+  --ds-slide-padding: 60px;
+  --ds-slide-text-align: left;
+  --ds-slide-align-items: flex-start;
+  --ds-slide-justify-content: center;
+
+  /* Typography */
+  --ds-heading-font: "Inter", system-ui, sans-serif;
+  --ds-body-font: "Inter", system-ui, sans-serif;
+  --ds-heading-weight: 600;
+  --ds-heading-letter-spacing: -0.02em;
+
+  background: var(--ds-bg);
+  color: var(--ds-fg);
+}
+
+.theme-executive h1,
+.theme-executive h2,
+.theme-executive h3,
+.theme-executive h4,
+.theme-executive h5,
+.theme-executive h6 {
+  color: var(--ds-heading);
+  font-family: var(--ds-heading-font);
+  font-weight: var(--ds-heading-weight);
+  line-height: 1.1;
+  letter-spacing: var(--ds-heading-letter-spacing);
+  margin-bottom: 0.5em;
+}
+
+.theme-executive h1 { font-size: 3.5em; }
+.theme-executive h2 { font-size: 2.2em; border-bottom: 2px solid var(--ds-border); padding-bottom: 0.2em; width: 100%; }
+.theme-executive h3 { font-size: 1.5em; color: var(--ds-accent); }
+
+.theme-executive a {
+  color: var(--ds-link);
+  text-decoration: none;
+}
+.theme-executive a:hover {
+  color: var(--ds-link-hover);
+  text-decoration: underline;
+}
+
+.theme-executive blockquote {
+  border-left: 3px solid var(--ds-accent);
+  padding-left: 1.5em;
+  margin: 1.5em 0;
+  color: var(--ds-muted);
+  font-style: italic;
+}
+
+.theme-executive .slide {
+  font-family: var(--ds-body-font);
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+.theme-executive code {
+  background: var(--ds-code-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 2px;
+  font-size: 0.9em;
+}
+
+.theme-executive pre {
+  background: var(--ds-pre-bg);
+  border: 1px solid var(--ds-border);
+  padding: 1.5em;
+  border-radius: 4px;
+  text-align: left;
+}

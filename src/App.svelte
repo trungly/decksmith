@@ -148,40 +148,34 @@ Write your slides using **Markdown** syntax:
   <Slide h={6} v={0}>
     <h2>Built-in Themes</h2>
     <div
-      style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75em; margin-top: 1em; text-align: left; font-size: 0.8em;"
+      style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5em; margin-top: 0.5em; text-align: left; font-size: 0.7em;"
     >
-      <div
-        style="padding: 0.8em 1em; background: #0f1117; color: #c9d1d9; border-radius: 8px; border-left: 3px solid #58a6ff;"
-      >
-        <strong style="color: #f0f2f5;">obsidian</strong>
-        <div style="margin-top: 0.2em; opacity: 0.7;">Deep dark, modern</div>
+      <div style="padding: 0.5em; background: #0f1117; color: #c9d1d9; border-radius: 4px; border-left: 2px solid #58a6ff;">
+        <strong>obsidian</strong>
       </div>
-      <div
-        style="padding: 0.8em 1em; background: #f8fafc; color: #334155; border-radius: 8px; border-left: 3px solid #2563eb;"
-      >
-        <strong style="color: #0f172a;">air</strong>
-        <div style="margin-top: 0.2em; opacity: 0.7;">Light, minimal</div>
+      <div style="padding: 0.5em; background: #f8fafc; color: #334155; border-radius: 4px; border-left: 2px solid #2563eb;">
+        <strong>air</strong>
       </div>
-      <div
-        style="padding: 0.8em 1em; background: #1e2433; color: #a9b1d6; border-radius: 8px; border-left: 3px solid #7aa2f7;"
-      >
-        <strong style="color: #c0caf5;">dusk</strong>
-        <div style="margin-top: 0.2em; opacity: 0.7;">Deep navy, focused</div>
+      <div style="padding: 0.5em; background: #ffffff; color: #1a1a1a; border-radius: 4px; border-left: 2px solid #0056b3;">
+        <strong>executive</strong>
       </div>
-      <div
-        style="padding: 0.8em 1em; background: #f6f1e7; color: #3d2e1e; border-radius: 8px; border-left: 3px solid #8b5e3c; font-family: Georgia, serif;"
-      >
-        <strong style="color: #1c1209;">parchment</strong>
-        <div style="margin-top: 0.2em; opacity: 0.7;">Warm serif, editorial</div>
+      <div style="padding: 0.5em; background: #fdfdfd; color: #1d1d1f; border-radius: 4px; border-left: 2px solid #3d5afe;">
+        <strong>startup</strong>
       </div>
-      <div
-        style="padding: 0.8em 1em; background: #1a1520; color: #ddd0e6; border-radius: 8px; border-left: 3px solid #e07b99; grid-column: 2 / 4;"
-      >
-        <strong style="color: #f0e8fa;">ember</strong>
-        <div style="margin-top: 0.2em; opacity: 0.7;">Dark plum, rose-coral accents</div>
+      <div style="padding: 0.5em; background: #fcfaf7; color: #2c241e; border-radius: 4px; border-left: 2px solid #8d6e63;">
+        <strong>editorial</strong>
+      </div>
+      <div style="padding: 0.5em; background: #0d1117; color: #c9d1d9; border-radius: 4px; border-left: 2px solid #238636;">
+        <strong>technical</strong>
+      </div>
+      <div style="padding: 0.5em; background: #fffcf2; color: #252422; border-radius: 4px; border-left: 2px solid #eb5e28;">
+        <strong>playful</strong>
+      </div>
+      <div style="padding: 0.5em; background: #050505; color: #ffffff; border-radius: 4px; border-left: 2px solid #ff3e00;">
+        <strong>cinematic</strong>
       </div>
     </div>
-    <Notes text="Five built-in themes, each with a distinct character. Use the theme prop on Deck to switch." />
+    <Notes text="Now with 11 built-in themes spanning different styles from Corporate to Playful." />
   </Slide>
 
   <!-- Slide 8: Code with syntax highlighting -->

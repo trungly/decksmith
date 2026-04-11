@@ -116,13 +116,13 @@
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
+    display: var(--ds-slide-display, flex);
+    flex-direction: var(--ds-slide-flex-direction, column);
+    align-items: var(--ds-slide-align-items, center);
+    justify-content: var(--ds-slide-justify-content, center);
+    padding: var(--ds-slide-padding, 40px);
     perspective: 800px;
     overflow: hidden;
-    text-align: center;
+    text-align: var(--ds-slide-text-align, center);
   }
 </style>

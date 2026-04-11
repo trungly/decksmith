@@ -12,19 +12,34 @@ export const THEMES: Record<ThemeName, { name: string; description: string }> =
       description:
         "Light, open background with sharp typographic contrast. Clean, minimal.",
     },
-    dusk: {
-      name: "Dusk",
+    executive: {
+      name: "Executive",
       description:
-        "Deep navy tones with cool-blue accents. Professional, focused.",
+        "Clean, restrained, high-density. Perfect for enterprise and corporate decks.",
     },
-    parchment: {
-      name: "Parchment",
+    startup: {
+      name: "Startup",
       description:
-        "Warm cream with editorial serif typography. Classic, refined.",
+        "Modern, bright, and bold. Designed for products, pitches, and high-energy demos.",
     },
-    ember: {
-      name: "Ember",
+    editorial: {
+      name: "Editorial",
       description:
-        "Dark plum background with warm rose-coral accents. Bold, dramatic.",
+        "Serif-forward and spacious. Ideal for quote-heavy or long-form narrative decks.",
+    },
+    technical: {
+      name: "Technical",
+      description:
+        "Code and data-first. Grid-heavy and optimized for engineering and scientific presentations.",
+    },
+    playful: {
+      name: "Playful",
+      description:
+        "Vibrant colors and lighthearted typography. Great for workshops and casual talks.",
+    },
+    cinematic: {
+      name: "Cinematic",
+      description:
+        "High-impact imagery and sparse copy. Focused on storytelling and dramatic transitions.",
     },
   };

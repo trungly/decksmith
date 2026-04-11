@@ -1,0 +1,101 @@
+/* Decksmith Theme: Editorial — Serif-forward and spacious. */
+.theme-editorial {
+  --ds-bg: #fcfaf7;
+  --ds-fg: #2c241e;
+  --ds-heading: #1a1612;
+  --ds-link: #8d6e63;
+  --ds-link-hover: #5d4037;
+  --ds-accent: #8d6e63;
+  --ds-muted: #795548;
+  --ds-border: rgba(141, 110, 99, 0.2);
+  --ds-code-bg: rgba(0, 0, 0, 0.05);
+  --ds-pre-bg: #f5f2ee;
+  --ds-selection-bg: #d7ccc8;
+  --ds-selection-fg: #2c241e;
+
+  /* Layout and Density */
+  --ds-slide-padding: 80px;
+  --ds-slide-text-align: left;
+  --ds-slide-align-items: flex-start;
+  --ds-slide-justify-content: flex-start;
+
+  /* Typography */
+  --ds-heading-font: "Georgia", "Source Serif Pro", serif;
+  --ds-body-font: "Georgia", "Source Serif Pro", serif;
+  --ds-heading-weight: 400;
+  --ds-heading-letter-spacing: -0.01em;
+
+  background: var(--ds-bg);
+  color: var(--ds-fg);
+}
+
+.theme-editorial h1,
+.theme-editorial h2,
+.theme-editorial h3,
+.theme-editorial h4,
+.theme-editorial h5,
+.theme-editorial h6 {
+  color: var(--ds-heading);
+  font-family: var(--ds-heading-font);
+  font-weight: var(--ds-heading-weight);
+  line-height: 1.1;
+  letter-spacing: var(--ds-heading-letter-spacing);
+  margin-bottom: 0.8em;
+}
+
+.theme-editorial h1 { font-size: 3.8em; font-style: italic; }
+.theme-editorial h2 { font-size: 2.2em; text-transform: uppercase; letter-spacing: 0.1em; }
+.theme-editorial h3 { font-size: 1.6em; border-left: 2px solid var(--ds-accent); padding-left: 0.5em; }
+
+.theme-editorial a {
+  color: var(--ds-link);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.theme-editorial a:hover {
+  color: var(--ds-link-hover);
+}
+
+.theme-editorial blockquote {
+  font-size: 1.8em;
+  font-family: var(--ds-heading-font);
+  font-style: italic;
+  line-height: 1.3;
+  margin: 1.5em 0;
+  color: var(--ds-heading);
+  position: relative;
+  padding: 0 1em;
+  max-width: 90%;
+}
+
+.theme-editorial blockquote::before {
+  content: "“";
+  position: absolute;
+  left: -0.2em;
+  top: -0.2em;
+  font-size: 3em;
+  color: var(--ds-accent);
+  opacity: 0.3;
+}
+
+.theme-editorial .slide {
+  font-family: var(--ds-body-font);
+  font-size: 26px;
+  line-height: 1.6;
+}
+
+.theme-editorial code {
+  background: var(--ds-code-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: "Courier New", monospace;
+}
+
+.theme-editorial pre {
+  background: var(--ds-pre-bg);
+  border: 1px solid var(--ds-border);
+  padding: 2em;
+  border-radius: 4px;
+  text-align: left;
+}

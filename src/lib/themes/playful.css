@@ -1,0 +1,91 @@
+/* Decksmith Theme: Playful — Vibrant and lighthearted. */
+.theme-playful {
+  --ds-bg: #fffcf2;
+  --ds-fg: #252422;
+  --ds-heading: #252422;
+  --ds-link: #eb5e28;
+  --ds-link-hover: #cc5a27;
+  --ds-accent: #eb5e28;
+  --ds-muted: #403d39;
+  --ds-border: #ccc5b9;
+  --ds-code-bg: #fffcf2;
+  --ds-pre-bg: #ccc5b9;
+  --ds-selection-bg: #eb5e28;
+  --ds-selection-fg: #ffffff;
+
+  /* Layout and Density */
+  --ds-slide-padding: 60px;
+  --ds-slide-text-align: center;
+  --ds-slide-align-items: center;
+  --ds-slide-justify-content: center;
+
+  /* Typography */
+  --ds-heading-font: "Comic Sans MS", "Quicksand", system-ui, sans-serif;
+  --ds-body-font: "Quicksand", system-ui, sans-serif;
+  --ds-heading-weight: 700;
+  --ds-heading-letter-spacing: 0;
+
+  /* Motion Defaults */
+  --ds-transition-duration: 1000ms;
+  --ds-transition-timing: cubic-bezier(0.34, 1.56, 0.64, 1); /* easeOutBack */
+
+  background: var(--ds-bg);
+  color: var(--ds-fg);
+}
+
+.theme-playful h1,
+.theme-playful h2,
+.theme-playful h3,
+.theme-playful h4,
+.theme-playful h5,
+.theme-playful h6 {
+  color: var(--ds-heading);
+  font-family: var(--ds-heading-font);
+  font-weight: var(--ds-heading-weight);
+  line-height: 1.2;
+  letter-spacing: var(--ds-heading-letter-spacing);
+  margin-bottom: 0.5em;
+  transform: rotate(-1deg);
+}
+
+.theme-playful h1 { font-size: 4em; color: var(--ds-accent); text-shadow: 2px 2px 0px rgba(0,0,0,0.05); }
+.theme-playful h2 { font-size: 2.5em; transform: rotate(1deg); }
+.theme-playful h3 { font-size: 1.8em; }
+
+.theme-playful a {
+  color: var(--ds-link);
+  text-decoration: underline wavy;
+}
+
+.theme-playful blockquote {
+  font-size: 1.4em;
+  padding: 1.5em;
+  background: var(--ds-accent);
+  color: white;
+  border-radius: 40px 10px 40px 10px;
+  margin: 1.5em 0;
+  font-weight: 700;
+}
+
+.theme-playful .slide {
+  font-family: var(--ds-body-font);
+  font-size: 28px;
+  line-height: 1.4;
+}
+
+.theme-playful code {
+  background: var(--ds-code-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 10px;
+  border: 2px solid var(--ds-border);
+  font-size: 0.9em;
+}
+
+.theme-playful pre {
+  background: white;
+  border: 4px solid var(--ds-border);
+  padding: 2em;
+  border-radius: 20px;
+  text-align: left;
+  box-shadow: 8px 8px 0px var(--ds-border);
+}

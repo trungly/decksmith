@@ -1,0 +1,96 @@
+/* Decksmith Theme: Cinematic — High-impact and dramatic. */
+.theme-cinematic {
+  --ds-bg: #050505;
+  --ds-fg: #ffffff;
+  --ds-heading: #ffffff;
+  --ds-link: #ff3e00;
+  --ds-link-hover: #ff6033;
+  --ds-accent: #ff3e00;
+  --ds-muted: #888888;
+  --ds-border: rgba(255, 255, 255, 0.1);
+  --ds-code-bg: rgba(255, 255, 255, 0.05);
+  --ds-pre-bg: #111111;
+  --ds-selection-bg: #ff3e00;
+  --ds-selection-fg: #ffffff;
+
+  /* Layout and Density */
+  --ds-slide-padding: 100px;
+  --ds-slide-text-align: center;
+  --ds-slide-align-items: center;
+  --ds-slide-justify-content: center;
+
+  /* Typography */
+  --ds-heading-font: "Inter", system-ui, sans-serif;
+  --ds-body-font: "Inter", system-ui, sans-serif;
+  --ds-heading-weight: 800;
+  --ds-heading-letter-spacing: -0.06em;
+
+  /* Motion Defaults */
+  --ds-transition-duration: 1200ms;
+  --ds-transition-timing: cubic-bezier(0.645, 0.045, 0.355, 1); /* easeInOutQuart */
+
+  background: var(--ds-bg);
+  color: var(--ds-fg);
+}
+
+.theme-cinematic h1,
+.theme-cinematic h2,
+.theme-cinematic h3,
+.theme-cinematic h4,
+.theme-cinematic h5,
+.theme-cinematic h6 {
+  color: var(--ds-heading);
+  font-family: var(--ds-heading-font);
+  font-weight: var(--ds-heading-weight);
+  line-height: 0.95;
+  letter-spacing: var(--ds-heading-letter-spacing);
+  text-transform: uppercase;
+  margin-bottom: 0.2em;
+}
+
+.theme-cinematic h1 { font-size: 6em; background: linear-gradient(to bottom, #fff 0%, #888 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.theme-cinematic h2 { font-size: 3.5em; color: var(--ds-accent); }
+.theme-cinematic h3 { font-size: 2em; letter-spacing: 0.2em; }
+
+.theme-cinematic a {
+  color: var(--ds-link);
+  text-decoration: none;
+  font-weight: 600;
+}
+.theme-cinematic a:hover {
+  color: var(--ds-link-hover);
+  text-shadow: 0 0 10px var(--ds-accent);
+}
+
+.theme-cinematic blockquote {
+  font-size: 2.2em;
+  font-weight: 200;
+  text-align: center;
+  max-width: 90%;
+  line-height: 1.2;
+  margin: 1em 0;
+  color: #ccc;
+}
+
+.theme-cinematic .slide {
+  font-family: var(--ds-body-font);
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.theme-cinematic code {
+  background: var(--ds-code-bg);
+  padding: 0.2em 0.5em;
+  border-radius: 0px;
+  font-size: 0.8em;
+}
+
+.theme-cinematic pre {
+  background: var(--ds-pre-bg);
+  border: 1px solid var(--ds-border);
+  padding: 2.5em;
+  border-radius: 0px;
+  text-align: left;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}

@@ -1,0 +1,91 @@
+/* Decksmith Theme: Technical — Code and data-first. */
+.theme-technical {
+  --ds-bg: #0d1117;
+  --ds-fg: #c9d1d9;
+  --ds-heading: #f0f6fc;
+  --ds-link: #58a6ff;
+  --ds-link-hover: #79b8ff;
+  --ds-accent: #238636;
+  --ds-muted: #8b949e;
+  --ds-border: #30363d;
+  --ds-code-bg: rgba(110, 118, 129, 0.4);
+  --ds-pre-bg: #161b22;
+  --ds-selection-bg: #1f6feb;
+  --ds-selection-fg: #ffffff;
+
+  /* Layout and Density */
+  --ds-slide-padding: 40px;
+  --ds-slide-text-align: left;
+  --ds-slide-align-items: flex-start;
+  --ds-slide-justify-content: flex-start;
+
+  /* Typography */
+  --ds-heading-font: "JetBrains Mono", "Fira Code", monospace;
+  --ds-body-font: "Inter", system-ui, sans-serif;
+  --ds-heading-weight: 500;
+  --ds-heading-letter-spacing: -0.01em;
+
+  /* Motion Defaults */
+  --ds-transition-duration: 400ms;
+  --ds-transition-timing: cubic-bezier(0.23, 1, 0.32, 1); /* easeOutQuint */
+
+  background: var(--ds-bg);
+  color: var(--ds-fg);
+}
+
+.theme-technical h1,
+.theme-technical h2,
+.theme-technical h3,
+.theme-technical h4,
+.theme-technical h5,
+.theme-technical h6 {
+  color: var(--ds-heading);
+  font-family: var(--ds-heading-font);
+  font-weight: var(--ds-heading-weight);
+  line-height: 1.2;
+  letter-spacing: var(--ds-heading-letter-spacing);
+  margin-bottom: 0.5em;
+}
+
+.theme-technical h1 { font-size: 2.5em; border-bottom: 4px solid var(--ds-accent); display: inline-block; padding-bottom: 0.1em; }
+.theme-technical h2 { font-size: 1.8em; color: var(--ds-accent); }
+.theme-technical h3 { font-size: 1.4em; font-family: var(--ds-body-font); font-weight: 700; }
+
+.theme-technical a {
+  color: var(--ds-link);
+  text-decoration: none;
+}
+.theme-technical a:hover {
+  color: var(--ds-link-hover);
+  text-decoration: underline;
+}
+
+.theme-technical blockquote {
+  border-left: 4px solid var(--ds-border);
+  padding-left: 1.5em;
+  margin: 1.5em 0;
+  color: var(--ds-muted);
+}
+
+.theme-technical .slide {
+  font-family: var(--ds-body-font);
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+.theme-technical code {
+  background: var(--ds-code-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: var(--ds-heading-font);
+}
+
+.theme-technical pre {
+  background: var(--ds-pre-bg);
+  border: 1px solid var(--ds-border);
+  padding: 1.5em;
+  border-radius: 6px;
+  text-align: left;
+  width: 100%;
+}

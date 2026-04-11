@@ -126,8 +126,8 @@
   .code-block {
     width: 100%;
     text-align: left;
-    font-size: 0.55em;
-    border-radius: 8px;
+    font-size: 0.85em;
+    border-radius: var(--ds-code-radius, 8px);
     overflow: hidden;
   }
 
@@ -135,15 +135,17 @@
     margin: 0;
     padding: 1em;
     overflow-x: auto;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 8px;
+    background: var(--ds-pre-bg, rgba(0, 0, 0, 0.4));
+    border-radius: var(--ds-code-radius, 8px);
+    border: 1px solid var(--ds-border, transparent);
   }
 
   code {
-    font-family:
-      "Fira Code", "Cascadia Code", "JetBrains Mono", "Consolas", monospace;
+    font-family: var(--ds-code-font, "Fira Code", "Cascadia Code", "JetBrains Mono", "Consolas", monospace);
     line-height: 1.6;
     tab-size: 2;
+    background: none !important;
+    padding: 0 !important;
   }
 
   .code-line {
@@ -157,7 +159,7 @@
   }
 
   .code-line.highlighted {
-    background: rgba(255, 255, 100, 0.12);
+    background: var(--ds-code-highlight-bg, rgba(255, 255, 100, 0.12));
     opacity: 1;
   }
 
@@ -173,7 +175,7 @@
     margin-right: 0.5em;
     opacity: 0.35;
     user-select: none;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid var(--ds-border, rgba(255, 255, 255, 0.1));
   }
 
   .code-line.highlighted .line-number {

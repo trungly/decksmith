@@ -25,7 +25,15 @@ export type FragmentStyle =
   | "highlight-current-green"
   | "highlight-current-blue";
 
-export type ThemeName = "obsidian" | "air" | "dusk" | "parchment" | "ember";
+export type ThemeName =
+  | "obsidian"
+  | "air"
+  | "executive"
+  | "startup"
+  | "editorial"
+  | "technical"
+  | "playful"
+  | "cinematic";
 
 export interface SlideInfo {
   h: number;

@@ -18,9 +18,12 @@
   // Import themes
   import "../themes/obsidian.css";
   import "../themes/air.css";
-  import "../themes/dusk.css";
-  import "../themes/parchment.css";
-  import "../themes/ember.css";
+  import "../themes/executive.css";
+  import "../themes/startup.css";
+  import "../themes/editorial.css";
+  import "../themes/technical.css";
+  import "../themes/playful.css";
+  import "../themes/cinematic.css";
 
   interface Props {
     theme?: ThemeName;

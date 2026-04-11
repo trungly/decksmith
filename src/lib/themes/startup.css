@@ -1,0 +1,93 @@
+/* Decksmith Theme: Startup — Modern, bright, bold. */
+.theme-startup {
+  --ds-bg: #fdfdfd;
+  --ds-fg: #1d1d1f;
+  --ds-heading: #000000;
+  --ds-link: #3d5afe;
+  --ds-link-hover: #1a237e;
+  --ds-accent: #3d5afe;
+  --ds-muted: #86868b;
+  --ds-border: rgba(0, 0, 0, 0.05);
+  --ds-code-bg: rgba(0, 0, 0, 0.04);
+  --ds-pre-bg: #f5f5f7;
+  --ds-selection-bg: #3d5afe;
+  --ds-selection-fg: #ffffff;
+
+  /* Layout and Density */
+  --ds-slide-padding: 50px;
+  --ds-slide-text-align: center;
+  --ds-slide-align-items: center;
+  --ds-slide-justify-content: center;
+
+  /* Typography */
+  --ds-heading-font: "SF Pro Display", "Inter", system-ui, sans-serif;
+  --ds-body-font: "SF Pro Text", "Inter", system-ui, sans-serif;
+  --ds-heading-weight: 700;
+  --ds-heading-letter-spacing: -0.04em;
+
+  background: var(--ds-bg);
+  color: var(--ds-fg);
+}
+
+.theme-startup h1,
+.theme-startup h2,
+.theme-startup h3,
+.theme-startup h4,
+.theme-startup h5,
+.theme-startup h6 {
+  color: var(--ds-heading);
+  font-family: var(--ds-heading-font);
+  font-weight: var(--ds-heading-weight);
+  line-height: 1.05;
+  letter-spacing: var(--ds-heading-letter-spacing);
+  margin-bottom: 0.5em;
+}
+
+.theme-startup h1 { font-size: 4em; }
+.theme-startup h2 { font-size: 2.5em; }
+.theme-startup h3 { font-size: 1.8em; }
+
+.theme-startup a {
+  color: var(--ds-link);
+  text-decoration: none;
+}
+.theme-startup a:hover {
+  color: var(--ds-link-hover);
+  text-decoration: underline;
+}
+
+.theme-startup blockquote {
+  font-size: 1.2em;
+  padding: 1.5em;
+  background: var(--ds-pre-bg);
+  border-radius: 20px;
+  margin: 1.5em 0;
+  color: var(--ds-fg);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.4;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.theme-startup .slide {
+  font-family: var(--ds-body-font);
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+.theme-startup code {
+  background: var(--ds-code-bg);
+  padding: 0.1em 0.4em;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+.theme-startup pre {
+  background: var(--ds-pre-bg);
+  border: 1px solid var(--ds-border);
+  padding: 2em;
+  border-radius: 12px;
+  text-align: left;
+}

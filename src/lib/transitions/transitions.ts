@@ -35,10 +35,16 @@ export function getTransitionStyles(
   transition: TransitionType,
   speed: "default" | "fast" | "slow" = "default",
 ): string {
-  const duration =
-    speed === "fast" ? "400ms" : speed === "slow" ? "1200ms" : "800ms";
+  const durationMap = {
+    fast: "400ms",
+    slow: "1200ms",
+    default: "800ms",
+  };
 
-  const base = `transition: all ${duration} cubic-bezier(0.26, 0.86, 0.44, 0.985);`;
+  const duration = `var(--ds-transition-duration, ${durationMap[speed]})`;
+  const timing = "var(--ds-transition-timing, cubic-bezier(0.26, 0.86, 0.44, 0.985))";
+
+  const base = `transition: all ${duration} ${timing};`;
 
   if (position === "current") {
     return `${base} transform: translate(0, 0) scale(1); opacity: 1; visibility: visible; z-index: 2;`;
