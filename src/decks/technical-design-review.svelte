@@ -38,21 +38,24 @@
   <!-- Slide 4: Code Comparison -->
   <Slide h={4} v={0}>
     <h2>API Comparison</h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 1em;">
-      <div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1em; margin-top: 1em; width: 100%;">
+      <div style="min-width: 0;">
         <h4>Before</h4>
         <Code code={`const res = await openai.chat.completions.create({
   model: "gpt-4",
   messages: [{ role: "user", content: \`Generate... \${context}\` }]
 });`} language="typescript" />
       </div>
-      <div>
+      <div style="min-width: 0;">
         <h4>After</h4>
         <Code code={`const pipeline = new Pipeline(provider);
-const result = await pipeline.execute("main-prompt", {
+const result = await pipeline.execute(
+  "main-prompt",
+  {
   context: "...",
   fragments: ["summary", "footer"]
-});`} language="typescript" />
+  }
+);`} language="typescript" />
       </div>
     </div>
   </Slide>

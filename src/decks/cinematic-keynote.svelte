@@ -12,7 +12,7 @@
 
   <!-- Slide 2: The Raw Input -->
   <Slide h={2} v={0}>
-    <h2>The Rough Edge</h2>
+    <h2 style="margin: 0 0 0.2em; font-size: 2.8em;">The Rough Edge</h2>
     <div style="text-align: left; margin: 2em auto; max-width: 600px; font-size: 1.4em; opacity: 0.8; line-height: 1.6;">
       <p>AI gives us the raw material. It's fast, but it's often unpolished. A block of stone waiting for the chisel.</p>
     </div>
@@ -21,12 +21,12 @@
   <!-- Slide 3: The Iterative Chisel -->
   <Slide h={3} v={0}>
     <h2>Quality is a Loop</h2>
-    <div style="display: flex; justify-content: center; align-items: center; height: 300px; font-size: 2em; gap: 1em;">
-      <div style="border: 2px solid var(--ds-accent); padding: 1em; border-radius: 50%;">Loop</div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin: 1.5em auto 0; max-width: 760px; width: 100%; font-size: 1.4em; gap: 0.5em 0.9em;">
+      <div style="border: 2px solid var(--ds-accent); padding: 0.75em; border-radius: 50%; min-width: 4.2em; text-align: center;">Loop</div>
       <div style="font-size: 0.5em; opacity: 0.4;">→</div>
-      <div style="border: 2px solid var(--ds-accent); padding: 1em; border-radius: 50%;">Refine</div>
+      <div style="border: 2px solid var(--ds-accent); padding: 0.75em; border-radius: 50%; min-width: 4.2em; text-align: center;">Refine</div>
       <div style="font-size: 0.5em; opacity: 0.4;">→</div>
-      <div style="border: 2px solid var(--ds-accent); padding: 1em; border-radius: 50%;">Perfect</div>
+      <div style="border: 2px solid var(--ds-accent); padding: 0.75em; border-radius: 50%; min-width: 4.2em; text-align: center;">Perfect</div>
     </div>
   </Slide>
 
