@@ -1,6 +1,6 @@
 <script lang="ts">
   import { getContext, onMount } from "svelte";
-  import type { DeckState } from "../state/deck-state.svelte.js";
+  import type { DeckState } from "../state/deck-state.svelte.ts";
 
   const deck = getContext<DeckState>("deck");
 

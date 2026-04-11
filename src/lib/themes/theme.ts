@@ -1,4 +1,4 @@
-import type { ThemeName } from "../types.js";
+import type { ThemeName } from "../types.ts";
 
 export const THEMES: Record<ThemeName, { name: string; description: string }> =
   {

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { getContext, onMount, tick } from "svelte";
-  import type { DeckState } from "../state/deck-state.svelte.js";
+  import type { DeckState } from "../state/deck-state.svelte.ts";
 
   interface Props {
     slideH?: number;

@@ -1,4 +1,4 @@
-import type { DeckState } from "../state/deck-state.svelte.js";
+import type { DeckState } from "../state/deck-state.svelte.ts";
 
 export function parseHash(): { h: number; v: number; f: number } {
   const hash = window.location.hash.replace(/^#\/?/, "");

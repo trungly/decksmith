@@ -3,7 +3,7 @@ import {
   type SlideInfo,
   type SlidePosition,
   DEFAULT_CONFIG,
-} from "../types.js";
+} from "../types.ts";
 
 export class DeckState {
   // Core navigation state

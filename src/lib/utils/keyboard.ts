@@ -1,5 +1,5 @@
-import type { DeckState } from "../state/deck-state.svelte.js";
-import { openSpeakerWindow } from "./speaker.js";
+import type { DeckState } from "../state/deck-state.svelte.ts";
+import { openSpeakerWindow } from "./speaker.ts";
 
 export function setupKeyboard(deck: DeckState): () => void {
   function handleKeydown(e: KeyboardEvent) {

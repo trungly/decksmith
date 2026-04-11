@@ -1,4 +1,4 @@
-import type { DeckConfig } from "../types.js";
+import type { DeckConfig } from "../types.ts";
 
 export function computeScale(config: DeckConfig): number {
   const windowW = window.innerWidth;
