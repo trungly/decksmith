@@ -445,10 +445,10 @@ src/
 ## Build & Run
 
 ```bash
-npm install
-npm start         # Development server
-npm run build     # Production build
-npm run preview   # Preview production build
+bun install
+bun run dev       # Development server
+bun run build     # Production build
+bun run preview   # Preview production build
 ```
 
 Edit `src/App.svelte` to build your presentation.

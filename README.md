@@ -29,13 +29,15 @@ Clone this repo to start a presentation:
 ```bash
 git clone https://github.com/trungly/decksmith.git my-presentation
 cd my-presentation
-npm install
-npm start
+bun install
+bun run playground
 ```
 
 Open `http://localhost:5173` and edit `src/App.svelte`. Changes hot-reload instantly.
 
-When you're ready to share it, build a static site with `npm run build`. The output goes to `dist/`.
+When you're ready to share it, build a static site with `bun run build`. The output goes to `dist/`.
+
+For a standard dev server without forcing host/port/browser open, use `bun run dev`.
 
 ## Integrated Playground
 

@@ -4,21 +4,20 @@ Decksmith is typically used as a standalone local tool. The normal workflow is t
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) 18 or later
-- npm (included with Node.js)
+- [Bun](https://bun.sh/) 1.0 or later
 
 ## Clone Decksmith
 
 ```bash
 git clone https://github.com/trungly/decksmith.git my-presentation
 cd my-presentation
-npm install
+bun install
 ```
 
 ## Development
 
 ```bash
-npm start
+bun run playground
 ```
 
 Opens a local dev server (default `http://localhost:5173`). Edit `src/App.svelte` and changes hot-reload instantly.
@@ -34,7 +33,7 @@ Import Decksmith components directly from `decksmith`:
 ## Production Build
 
 ```bash
-npm run build
+bun run build
 ```
 
 Outputs a static site to `dist/`. Deploy to any static hosting (Netlify, Vercel, GitHub Pages, S3, etc.).
@@ -42,7 +41,7 @@ Outputs a static site to `dist/`. Deploy to any static hosting (Netlify, Vercel,
 Preview the production build locally:
 
 ```bash
-npm run preview
+bun run preview
 ```
 
 ## PDF Export
@@ -72,8 +71,9 @@ my-presentation/
 
 | Command | Description |
 |---------|-------------|
-| `npm start` | Start development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-| `npm run lint` | Run ESLint |
-| `npm run format` | Format with Prettier |
+| `bun run playground` | Start local playground and open browser |
+| `bun run dev` | Start development server |
+| `bun run build` | Build for production |
+| `bun run preview` | Preview production build |
+| `bun run lint` | Run ESLint |
+| `bun run format` | Format with Prettier |

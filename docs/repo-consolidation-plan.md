@@ -53,14 +53,14 @@ docs/           # library docs + this consolidation plan
 3. Validate quality gates locally.
 
    ```bash
-   npm run lint
-   npm run build
+   bun run lint
+   bun run build
    ```
 
    Optional e2e smoke:
 
    ```bash
-   npx playwright test
+   bun run test:e2e
    ```
 
 4. Open one migration PR with commit groups in this order:
@@ -75,8 +75,8 @@ docs/           # library docs + this consolidation plan
 
 - [ ] Playground deck selector works for all options, including DevOps Strategy
 - [ ] Overview thumbnails show correct first slide (no blank placeholder)
-- [ ] `npm run lint` passes
-- [ ] `npm run build` passes
+- [ ] `bun run lint` passes
+- [ ] `bun run build` passes
 - [ ] Optional Playwright smoke test passes
 - [ ] Local-only tooling artifacts are either removed or documented intentionally
 - [ ] README mentions integrated playground usage
