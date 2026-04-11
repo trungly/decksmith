@@ -1,11 +1,11 @@
 <script lang="ts">
   import { getContext, onMount, setContext, type Snippet } from "svelte";
-  import type { DeckState } from "../state/deck-state.svelte.js";
-  import type { TransitionType } from "../types.js";
+  import type { DeckState } from "../state/deck-state.svelte.ts";
+  import type { TransitionType } from "../types.ts";
   import {
     getSlidePosition,
     getTransitionStyles,
-  } from "../transitions/transitions.js";
+  } from "../transitions/transitions.ts";
 
   interface Props {
     h?: number;

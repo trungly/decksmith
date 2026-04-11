@@ -1,4 +1,4 @@
-import type { TransitionType } from "../types.js";
+import type { TransitionType } from "../types.ts";
 
 /**
  * Slide position relative to the current slide.

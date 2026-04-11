@@ -1,4 +1,4 @@
-import type { DeckState } from "../state/deck-state.svelte.js";
+import type { DeckState } from "../state/deck-state.svelte.ts";
 
 const SWIPE_THRESHOLD = 40;
 

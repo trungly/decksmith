@@ -37,6 +37,16 @@ Open `http://localhost:5173` and edit `src/App.svelte`. Changes hot-reload insta
 
 When you're ready to share it, build a static site with `npm run build`. The output goes to `dist/`.
 
+## Integrated Playground
+
+This repository includes both the core Decksmith library and an integrated playground experience.
+
+- `src/lib` contains the publishable framework components and runtime.
+- `src/App.svelte` is the local deck selector playground shell.
+- `src/decks` contains curated sample decks used for demos and regression checks.
+
+Use the top-right selector in the running app to switch between deck examples and quickly validate navigation, overview mode, and theme behavior.
+
 ## Minimal Presentation
 
 Place this in `src/App.svelte`:

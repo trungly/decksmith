@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getContext, type Snippet } from "svelte";
-  import type { DeckState } from "../state/deck-state.svelte.js";
-  import type { FragmentStyle } from "../types.js";
+  import type { DeckState } from "../state/deck-state.svelte.ts";
+  import type { FragmentStyle } from "../types.ts";
 
   interface Props {
     index?: number;

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getContext, tick } from "svelte";
   import { fade } from "svelte/transition";
-  import type { DeckState } from "../state/deck-state.svelte.js";
+  import type { DeckState } from "../state/deck-state.svelte.ts";
 
   const deck = getContext<DeckState>("deck");
 
@@ -11,12 +11,13 @@
   }
 
   // Auto-focus current slide button when overview opens
-  async function autoFocus(node: HTMLElement) {
-    await tick();
-    const current = node.querySelector<HTMLElement>(
-      "button[aria-current='step']",
-    );
-    current?.focus();
+  function autoFocus(node: HTMLElement) {
+    tick().then(() => {
+      const current = node.querySelector<HTMLElement>(
+        "button[aria-current='step']",
+      );
+      current?.focus();
+    });
   }
 
   const THUMB_W = 192;
@@ -27,8 +28,9 @@
 
   function slidePreview(node: HTMLElement, params: { h: number; v: number }) {
     function populate({ h, v }: { h: number; v: number }) {
+      const domH = h + 1;
       const slideEl = document.querySelector<HTMLElement>(
-        `.deck-slides .slide[data-h="${h}"][data-v="${v}"]`,
+        `.deck-slides .slide[data-h="${domH}"][data-v="${v}"]`,
       );
       if (!slideEl) return;
       node.innerHTML = slideEl.innerHTML;

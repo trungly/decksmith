@@ -1,6 +1,6 @@
 <script lang="ts">
   import { getContext } from "svelte";
-  import type { DeckState } from "../state/deck-state.svelte.js";
+  import type { DeckState } from "../state/deck-state.svelte.ts";
   import hljs from "highlight.js";
   import "highlight.js/styles/atom-one-dark.css";
 

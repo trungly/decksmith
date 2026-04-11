@@ -1,14 +1,14 @@
 <script lang="ts">
   import { setContext, onMount, type Snippet } from "svelte";
-  import { DeckState } from "../state/deck-state.svelte.js";
-  import type { TransitionType, ThemeName, ScrollLayout } from "../types.js";
-  import { setupKeyboard } from "../utils/keyboard.js";
-  import { setupTouch } from "../utils/touch.js";
-  import { setupHashRouting, updateHash } from "../utils/hash.js";
-  import { computeScale } from "../utils/scaling.js";
-  import { sendSpeakerUpdate } from "../utils/speaker.js";
-  import { setupPrintStyles, isPrintMode } from "../utils/pdf.js";
-  import { autoAnimate } from "../utils/auto-animate.js";
+  import { DeckState } from "../state/deck-state.svelte.ts";
+  import type { TransitionType, ThemeName, ScrollLayout } from "../types.ts";
+  import { setupKeyboard } from "../utils/keyboard.ts";
+  import { setupTouch } from "../utils/touch.ts";
+  import { setupHashRouting, updateHash } from "../utils/hash.ts";
+  import { computeScale } from "../utils/scaling.ts";
+  import { sendSpeakerUpdate } from "../utils/speaker.ts";
+  import { setupPrintStyles, isPrintMode } from "../utils/pdf.ts";
+  import { autoAnimate } from "../utils/auto-animate.ts";
   import Controls from "./Controls.svelte";
   import Progress from "./Progress.svelte";
   import SlideNumber from "./SlideNumber.svelte";
