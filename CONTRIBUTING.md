@@ -6,25 +6,24 @@ Glad you want to help out! Here's the short version of how things work.
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) v18 or later
-- npm v9 or later
+- [Bun](https://bun.sh/) 1.0 or later
 
 ### Local Development Setup
 
 ```bash
 git clone git@github.com:trungly/decksmith.git my-presentation
 cd my-presentation
-npm install
-npm start          # Start dev server at http://localhost:5173
+bun install
+bun start          # Start dev server at http://localhost:5173
 ```
 
 Other useful commands:
 
 ```bash
-npm run build      # Production build
-npm run lint       # Run ESLint
-npm run format     # Format code with Prettier
-npm run format:check  # Check formatting without writing
+bun run build      # Production build
+bun run lint       # Run ESLint
+bun run format     # Format code with Prettier
+bun run format:check  # Check formatting without writing
 ```
 
 ## How to Contribute
@@ -43,7 +42,7 @@ to write a formal proposal — a quick description is fine.
 
 1. Fork the repo and create a branch from `main`.
 2. Keep the change focused — one thing per PR is easier to review.
-3. Make sure it lints (`npm run lint`) and is formatted (`npm run format:check`).
+3. Make sure it lints (`bun run lint`) and is formatted (`bun run format:check`).
 4. Fill in the PR description briefly so I know what it does.
 
 ### Commit Messages

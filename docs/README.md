@@ -11,13 +11,13 @@ It was originally inspired by [Reveal.js](https://revealjs.com/).
 ```bash
 git clone https://github.com/trungly/decksmith.git my-presentation
 cd my-presentation
-npm install
+bun install
 ```
 
 2. Start the development server:
 
 ```bash
-npm start
+bun start
 ```
 
 3. Edit `src/App.svelte`. The dev server hot-reloads on every save.
@@ -25,7 +25,7 @@ npm start
 4. Build for production when you're ready to share:
 
 ```bash
-npm run build
+bun run build
 ```
 
 The output goes to `dist/` as a static site you can deploy anywhere.

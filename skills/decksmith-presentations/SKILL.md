@@ -38,7 +38,7 @@ Create presentations by generating a single Svelte component (`src/App.svelte`) 
 </Deck>
 ```
 
-Run with `npm install && npm start`, then open http://localhost:5173.
+Run with `bun install && bun start`, then open http://localhost:5173.
 
 ## Rules for Code Generation
 
