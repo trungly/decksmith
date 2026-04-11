@@ -1,9 +1,9 @@
 # Themes
 
-Decksmith includes 5 built-in themes. Set the theme on the `<Deck>` component:
+Decksmith includes 8 built-in themes. Set the theme on the `<Deck>` component:
 
 ```svelte
-<Deck theme="dusk">
+<Deck theme="obsidian">
 ```
 
 ## Built-in Themes
@@ -12,9 +12,12 @@ Decksmith includes 5 built-in themes. Set the theme on the `<Deck>` component:
 | ----------- | ------------------- | -------------------- | ------------------- | ---------------------- |
 | `obsidian` | #0f1117 (deep dark) | #c9d1d9 (light gray) | #58a6ff (blue) | Modern, high contrast |
 | `air` | #f8fafc (off-white) | #334155 (slate) | #2563eb (blue) | Clean, minimal |
-| `dusk` | #1e2433 (deep navy) | #a9b1d6 (cool gray) | #7aa2f7 (periwinkle) | Professional, focused |
-| `parchment` | #f6f1e7 (warm cream) | #3d2e1e (warm brown) | #8b5e3c (amber) | Classic, editorial |
-| `ember` | #1a1520 (dark plum) | #ddd0e6 (lavender) | #e07b99 (rose-coral) | Bold, dramatic |
+| `executive` | #ffffff (white) | #1a1a1a (dark gray) | #0056b3 (dark blue) | Clean, restrained, corporate |
+| `startup` | #fdfdfd (off-white) | #1d1d1f (near black) | #3d5afe (indigo) | Modern, bright, bold |
+| `editorial` | #fcfaf7 (warm cream) | #2c241e (warm brown) | #8d6e63 (taupe) | Serif, spacious, editorial |
+| `technical` | #0d1117 (dark) | #c9d1d9 (light gray) | #238636 (green) | Code-first, data-heavy |
+| `playful` | #fffcf2 (warm white) | #252422 (dark) | #eb5e28 (orange) | Vibrant, lighthearted |
+| `cinematic` | #050505 (near black) | #ffffff (white) | #ff3e00 (red-orange) | High-impact, dramatic |
 
 ## CSS Variables
 
@@ -66,8 +69,8 @@ Override theme variables with inline styles or a `<style>` block:
 
 ## Typography
 
-- **Obsidian, Air, Dusk, Ember**: `system-ui` / `-apple-system` / `"Segoe UI"` sans-serif
-- **Parchment**: `Georgia` / `"Times New Roman"` serif for both headings and body
+- **Obsidian, Air, Technical, Startup, Executive, Playful, Cinematic**: `system-ui` / `-apple-system` / `"Segoe UI"` sans-serif
+- **Editorial**: `Georgia` / `"Times New Roman"` serif for both headings and body
 
 ### Font sizes (all themes)
 
@@ -75,5 +78,5 @@ Override theme variables with inline styles or a `<style>` block:
 - **h2**: 1.8em
 - **h3**: 1.3em
 - **Body**: 24px base
-- **Line height**: 1.5 (1.7 for Parchment)
+- **Line height**: 1.5 (1.7 for Editorial)
 - **Code**: 0.9em, monospace, subtle background

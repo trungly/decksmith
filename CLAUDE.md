@@ -68,7 +68,7 @@ Wraps all slides. One per presentation.
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `theme` | `"obsidian" \| "air" \| "dusk" \| "parchment" \| "ember"` | `"obsidian"` | Visual theme |
+| `theme` | `"obsidian" \| "air" \| "executive" \| "startup" \| "editorial" \| "technical" \| "playful" \| "cinematic"` | `"obsidian"` | Visual theme |
 | `transition` | `"none" \| "fade" \| "slide" \| "convex" \| "concave" \| "zoom"` | `"slide"` | Default slide transition |
 | `transitionSpeed` | `"default" \| "fast" \| "slow"` | `"default"` | Transition duration (400ms / 800ms / 1200ms) |
 | `width` | `number` | `960` | Base slide width in px |
@@ -177,9 +177,12 @@ Each step acts as a fragment. Non-highlighted lines dim to 35% opacity.
 |-------|-----------|------|--------|-------------|
 | `obsidian` | #0f1117 | #c9d1d9 | #58a6ff | Deep dark, high contrast, modern |
 | `air` | #f8fafc | #334155 | #2563eb | Light, clean, minimal |
-| `dusk` | #1e2433 | #a9b1d6 | #7aa2f7 | Deep navy, professional, focused |
-| `parchment` | #f6f1e7 | #3d2e1e | #8b5e3c | Warm cream, serif, classic editorial |
-| `ember` | #1a1520 | #ddd0e6 | #e07b99 | Dark plum, rose-coral accents, dramatic |
+| `executive` | #ffffff | #1a1a1a | #0056b3 | Clean, restrained, corporate |
+| `startup` | #fdfdfd | #1d1d1f | #3d5afe | Modern, bright, bold |
+| `editorial` | #fcfaf7 | #2c241e | #8d6e63 | Serif, spacious, narrative-focused |
+| `technical` | #0d1117 | #c9d1d9 | #238636 | Code-first, data-heavy, engineering |
+| `playful` | #fffcf2 | #252422 | #eb5e28 | Vibrant, lighthearted, casual |
+| `cinematic` | #050505 | #ffffff | #ff3e00 | High-impact, dramatic, storytelling |
 
 ### CSS Variables (for custom styling within slides)
 
@@ -217,10 +220,10 @@ Set globally on `<Deck>` or per-slide on `<Slide>`.
 
 | Audience / Context | Recommended Theme |
 |--------------------|-------------------|
-| Tech conference | `obsidian` or `dusk` |
-| Business / corporate | `parchment` or `air` |
-| Academic / research | `air` or `parchment` |
-| Creative / bold | `ember` |
+| Tech conference | `obsidian` or `technical` |
+| Business / corporate | `executive` or `air` |
+| Academic / research | `air` or `editorial` |
+| Creative / bold | `playful` or `cinematic` |
 | General purpose | `obsidian` |
 
 ### Transition by Content Type

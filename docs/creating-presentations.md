@@ -105,8 +105,8 @@ Add notes visible only in the speaker view (press `S`):
   import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
 </script>
 
-<Deck theme="dusk" transition="fade">
-  <Slide h={0} v={0}>
+<Deck theme="obsidian" transition="fade">
+  <Slide h={1} v={0}>
     <h1>My Talk</h1>
     <p>By Author Name</p>
     <Notes text="Welcome everyone." />

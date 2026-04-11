@@ -16,7 +16,7 @@ Decksmith was originally inspired by [Reveal.js](https://revealjs.com/).
 - **Code Highlighting** — Syntax highlighting with line-by-line step-through
 - **Auto-Animate** — Automatically animate matching elements between slides
 - **Scroll View** — Render as a scrollable page
-- **Themes** — 5 built-in themes (Obsidian, Air, Dusk, Parchment, Ember)
+- **Themes** — 8 built-in themes (Obsidian, Air, Executive, Startup, Editorial, Technical, Playful, Cinematic)
 - **Hash Routing** — URL reflects current slide for deep-linking
 - **Auto-Scaling** — Content scales to fit any viewport
 - **PDF Export** — Print-friendly layout via `?print-pdf`
@@ -95,7 +95,7 @@ Wraps all slides. One per presentation.
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `theme` | `"obsidian" \| "air" \| "dusk" \| "parchment" \| "ember"` | `"obsidian"` | Visual theme |
+| `theme` | `"obsidian" \| "air" \| "executive" \| "startup" \| "editorial" \| "technical" \| "playful" \| "cinematic"` | `"obsidian"` | Visual theme |
 | `transition` | `"none" \| "fade" \| "slide" \| "convex" \| "concave" \| "zoom"` | `"slide"` | Default slide transition |
 | `transitionSpeed` | `"default" \| "fast" \| "slow"` | `"default"` | Transition duration (400ms / 800ms / 1200ms) |
 | `width` | `number` | `960` | Base slide width in px |
@@ -375,7 +375,7 @@ Set the theme on the `<Deck>` component:
 <Deck theme="obsidian">
 ```
 
-Available: `obsidian` (default), `air`, `dusk`, `parchment`, `ember`
+Available: `obsidian` (default), `air`, `executive`, `startup`, `editorial`, `technical`, `playful`, `cinematic`
 
 ## Documentation
 

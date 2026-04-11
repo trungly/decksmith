@@ -1,6 +1,6 @@
 # Corporate Presentation
 
-A business-focused template using the parchment theme.
+A business-focused template using the executive theme.
 
 Paste this into `src/App.svelte`:
 
@@ -9,7 +9,7 @@ Paste this into `src/App.svelte`:
   import { Deck, Slide, Fragment, Notes } from "decksmith";
 </script>
 
-<Deck theme="parchment" transition="fade" transitionSpeed="fast">
+<Deck theme="executive" transition="fade" transitionSpeed="fast">
   <Slide h={0} v={0}>
     <h1>Q4 Business Review</h1>
     <p>December 2025</p>

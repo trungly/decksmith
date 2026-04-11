@@ -18,7 +18,7 @@ Root container for a presentation. One per presentation.
 
 | Prop | Type | Default |
 |------|------|---------|
-| `theme` | `"obsidian" \| "air" \| "dusk" \| "parchment" \| "ember"` | `"obsidian"` |
+| `theme` | `"obsidian" \| "air" \| "executive" \| "startup" \| "editorial" \| "technical" \| "playful" \| "cinematic"` | `"obsidian"` |
 | `transition` | `"none" \| "fade" \| "slide" \| "convex" \| "concave" \| "zoom"` | `"slide"` |
 | `transitionSpeed` | `"default" \| "fast" \| "slow"` | `"default"` |
 | `width` | `number` | `960` |
@@ -147,7 +147,7 @@ type FragmentStyle =
 ### `ThemeName`
 
 ```typescript
-type ThemeName = "obsidian" | "air" | "dusk" | "parchment" | "ember"
+type ThemeName = "obsidian" | "air" | "executive" | "startup" | "editorial" | "technical" | "playful" | "cinematic"
 ```
 
 ### `ScrollLayout`

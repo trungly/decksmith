@@ -36,7 +36,7 @@ Only import the components you use.
 ## Valid Prop Values
 
 ### Themes
-`"obsidian"` | `"air"` | `"dusk"` | `"parchment"` | `"ember"`
+`"obsidian"` | `"air"` | `"executive"` | `"startup"` | `"editorial"` | `"technical"` | `"playful"` | `"cinematic"`
 
 ### Transitions
 `"none"` | `"fade"` | `"slide"` | `"convex"` | `"concave"` | `"zoom"`
@@ -178,10 +178,10 @@ Only import the components you use.
 
 | Audience/Context | Recommended Theme |
 |-----------------|-------------------|
-| Tech conference | `obsidian` or `dusk` |
-| Business/corporate | `parchment` or `air` |
-| Academic/research | `air` or `parchment` |
-| Creative/bold | `ember` |
+| Tech conference | `obsidian` or `technical` |
+| Business/corporate | `executive` or `air` |
+| Academic/research | `air` or `editorial` |
+| Creative/bold | `playful` or `cinematic` |
 | General purpose | `obsidian` |
 
 ## Transition Selection Guide
@@ -227,8 +227,8 @@ User prompt: "Create a presentation about REST APIs with 4 slides"
   import { Deck, Slide, Fragment, Notes, Code } from "decksmith";
 </script>
 
-<Deck theme="dusk" transition="slide">
-  <Slide h={0} v={0}>
+<Deck theme="technical" transition="slide">
+  <Slide h={1} v={0}>
     <h1>REST APIs</h1>
     <p>Designing Clean, Scalable Interfaces</p>
     <Notes text="Introduce REST as the dominant API paradigm for web services." />

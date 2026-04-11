@@ -9,7 +9,7 @@ Paste this into `src/App.svelte`:
   import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
 </script>
 
-<Deck theme="dusk" transition="slide">
+<Deck theme="technical" transition="slide">
   <!-- Title -->
   <Slide h={0} v={0}>
     <h1>Building Modern Web Apps</h1>
