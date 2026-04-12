@@ -135,6 +135,72 @@ export interface CodeProps {
   lineNumberStart?: number;
 }
 
+export type DiagramType =
+  | "flow"
+  | "timeline"
+  | "hierarchy"
+  | "comparison"
+  | "matrix"
+  | "pyramid";
+
+export type DiagramLayout = "horizontal" | "vertical" | "auto";
+export type DiagramDensity = "compact" | "normal" | "roomy";
+export type DiagramEmphasis = "neutral" | "info" | "success" | "warning" | "danger";
+
+export interface DiagramNode {
+  id: string;
+  label: string;
+  detail?: string;
+  icon?: string;
+  group?: string;
+  value?: number | string;
+  children?: DiagramNode[];
+}
+
+export interface DiagramEdge {
+  from: string;
+  to: string;
+  label?: string;
+  kind?: "solid" | "dashed" | "arrow";
+}
+
+export interface DiagramProps {
+  type: DiagramType;
+  title?: string;
+  nodes?: DiagramNode[];
+  edges?: DiagramEdge[];
+  layout?: DiagramLayout;
+  density?: DiagramDensity;
+  emphasis?: DiagramEmphasis;
+  className?: string;
+  ariaLabel?: string;
+}
+
+export type ChartType = "line" | "bar" | "area" | "donut";
+export type ChartLegend = "hidden" | "top" | "right" | "bottom";
+export type ChartAxisMode = "hidden" | "minimal" | "standard";
+export type ChartValueFormat = "number" | "compact" | "percent" | "currency";
+export type ChartPalette = "neutral" | "brand" | "categorical";
+
+export interface ChartRow {
+  [key: string]: string | number | null;
+}
+
+export interface ChartProps {
+  type: ChartType;
+  title?: string;
+  rows?: ChartRow[];
+  xKey?: string;
+  yKeys?: string[];
+  legend?: ChartLegend;
+  axis?: ChartAxisMode;
+  valueFormat?: ChartValueFormat;
+  palette?: ChartPalette;
+  renderer?: "auto" | "svg" | "external";
+  className?: string;
+  ariaLabel?: string;
+}
+
 export declare class DeckState {
   currentH: number;
   currentV: number;
@@ -176,5 +242,7 @@ export declare const Fragment: Component<FragmentProps>;
 export declare const Notes: Component<NotesProps>;
 export declare const Markdown: Component<MarkdownProps>;
 export declare const Code: Component<CodeProps>;
+export declare const Diagram: Component<DiagramProps>;
+export declare const Chart: Component<ChartProps>;
 
 export declare const THEMES: Record<ThemeName, ThemeDefinition>;

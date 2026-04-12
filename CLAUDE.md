@@ -1,12 +1,12 @@
 # Decksmith — AI Agent Reference
 
-Decksmith is a standalone local presentation tool built with Svelte 5. Presentations typically live in `src/App.svelte` and use Decksmith's `<Deck>`, `<Slide>`, `<Fragment>`, `<Notes>`, `<Markdown>`, and `<Code>` components.
+Decksmith is a standalone local presentation tool built with Svelte 5. Presentations typically live in `src/App.svelte` and use Decksmith's `<Deck>`, `<Slide>`, `<Fragment>`, `<Notes>`, `<Markdown>`, `<Code>`, `<Diagram>`, and `<Chart>` components.
 
 ## Quick Start Template
 
 ```svelte
 <script lang="ts">
-  import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";
+  import { Deck, Slide, Fragment, Notes, Markdown, Code, Diagram, Chart } from "decksmith";
 </script>
 
 <Deck theme="obsidian" transition="slide">
@@ -40,7 +40,7 @@ Follow these rules when generating or editing a Decksmith presentation:
 6. **Use valid prop values only.** See enums in Component API below.
 7. **Inline styles only.** Do not generate `<style>` blocks unless specifically needed for global selectors.
 8. **Escape backticks in template literals.** When `code` or `content` props contain backticks, escape them: `` \` ``.
-9. **Import only what you use.** `import { Deck, Slide, Fragment, Notes, Markdown, Code } from "decksmith";`
+9. **Import only what you use.** `import { Deck, Slide, Fragment, Notes, Markdown, Code, Diagram, Chart } from "decksmith";`
 10. **Return complete files.** Never return partial snippets when editing — always the full `src/App.svelte`.
 
 ## Slide Coordinate System

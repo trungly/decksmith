@@ -14,6 +14,8 @@ Decksmith was originally inspired by [Reveal.js](https://revealjs.com/).
 - **Speaker Notes** — Separate speaker window with timer and notes
 - **Markdown** — Write slide content in Markdown
 - **Code Highlighting** — Syntax highlighting with line-by-line step-through
+- **Diagram Primitive** — Native flow/timeline/hierarchy/comparison visuals
+- **Chart Primitive** — Native line/bar/area/donut visualizations
 - **Auto-Animate** — Automatically animate matching elements between slides
 - **Scroll View** — Render as a scrollable page
 - **Themes** — 8 built-in themes (Obsidian, Air, Executive, Startup, Editorial, Technical, Playful, Cinematic)

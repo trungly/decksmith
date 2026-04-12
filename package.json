@@ -1,6 +1,6 @@
 {
   "name": "decksmith",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "description": "A Svelte 5 presentation framework originally inspired by Reveal.js",
   "license": "MIT",
