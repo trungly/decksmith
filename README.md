@@ -60,7 +60,7 @@ Place this in `src/App.svelte`:
   import { Deck, Slide, Fragment } from "decksmith";
 </script>
 
-<Deck theme="obsidian" transition="slide">
+<Deck theme="obsidian" transition="slide" height={540}>
   <Slide h={1} v={0}>
     <h1>Hello World</h1>
   </Slide>
@@ -103,7 +103,7 @@ Wraps all slides. One per presentation.
 | `transition` | `"none" \| "fade" \| "slide" \| "convex" \| "concave" \| "zoom"` | `"slide"` | Default slide transition |
 | `transitionSpeed` | `"default" \| "fast" \| "slow"` | `"default"` | Transition duration (400ms / 800ms / 1200ms) |
 | `width` | `number` | `960` | Base slide width in px |
-| `height` | `number` | `700` | Base slide height in px |
+| `height` | `number` | `540` | Base slide height in px |
 | `controls` | `boolean` | `true` | Show navigation arrows |
 | `progress` | `boolean` | `true` | Show progress bar |
 | `slideNumber` | `boolean` | `true` | Show slide number |

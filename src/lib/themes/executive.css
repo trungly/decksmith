@@ -43,8 +43,8 @@
   margin-bottom: 0.5em;
 }
 
-.theme-executive h1 { font-size: 3.5em; }
-.theme-executive h2 { font-size: 2.2em; border-bottom: 2px solid var(--ds-border); padding-bottom: 0.2em; width: 100%; }
+.theme-executive h1 { font-size: 2.6em; }
+.theme-executive h2 { font-size: 2em; border-bottom: 2px solid var(--ds-border); padding-bottom: 0.2em; width: 100%; }
 .theme-executive h3 { font-size: 1.5em; color: var(--ds-accent); }
 
 .theme-executive a {

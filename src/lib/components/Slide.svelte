@@ -57,7 +57,14 @@
   });
 
   onMount(() => {
-    deck.registerSlide({ h: slideH, v: slideV, id, fragmentCount, autoAnimate, notes: "" });
+    deck.registerSlide({
+      h: slideH,
+      v: slideV,
+      id,
+      fragmentCount,
+      autoAnimate,
+      notes: "",
+    });
   });
 
   const position = $derived(
@@ -124,5 +131,19 @@
     perspective: 800px;
     overflow: hidden;
     text-align: var(--ds-slide-text-align, center);
+  }
+
+  /* Keep first/last child margins from visually shifting slide centering. */
+  .slide > :first-child {
+    margin-top: 0;
+  }
+
+  .slide > :last-child {
+    margin-bottom: 0;
+  }
+
+  /* Constrain plain text blocks so centered slides don't feel edge-heavy. */
+  .slide > :where(h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol) {
+    width: min(100%, var(--ds-content-max-width, 45ch));
   }
 </style>
