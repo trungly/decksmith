@@ -145,7 +145,12 @@ export type DiagramType =
 
 export type DiagramLayout = "horizontal" | "vertical" | "auto";
 export type DiagramDensity = "compact" | "normal" | "roomy";
-export type DiagramEmphasis = "neutral" | "info" | "success" | "warning" | "danger";
+export type DiagramEmphasis =
+  | "neutral"
+  | "info"
+  | "success"
+  | "warning"
+  | "danger";
 
 export interface DiagramNode {
   id: string;

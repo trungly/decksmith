@@ -11,7 +11,7 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
-    "types": ["svelte"]
+    "types": ["svelte", "node"]
   },
   "include": ["vite.config.ts"]
 }

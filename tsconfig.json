@@ -4,7 +4,6 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "baseUrl": ".",
     "paths": {
       "decksmith": ["./src/lib/index.js"]
     },
@@ -16,5 +15,10 @@
     "jsx": "preserve",
     "verbatimModuleSyntax": true
   },
-  "include": ["src/**/*.ts", "src/**/*.svelte"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.svelte",
+    "tests/**/*.ts",
+    "playwright.config.ts"
+  ]
 }

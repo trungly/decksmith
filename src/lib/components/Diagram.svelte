@@ -1,5 +1,5 @@
 <script lang="ts">
-  export type DiagramType =
+  type DiagramType =
     | "flow"
     | "timeline"
     | "hierarchy"
@@ -7,11 +7,11 @@
     | "matrix"
     | "pyramid";
 
-  export type DiagramLayout = "horizontal" | "vertical" | "auto";
-  export type DiagramDensity = "compact" | "normal" | "roomy";
-  export type DiagramEmphasis = "neutral" | "info" | "success" | "warning" | "danger";
+  type DiagramLayout = "horizontal" | "vertical" | "auto";
+  type DiagramDensity = "compact" | "normal" | "roomy";
+  type DiagramEmphasis = "neutral" | "info" | "success" | "warning" | "danger";
 
-  export interface DiagramNode {
+  interface DiagramNode {
     id: string;
     label: string;
     detail?: string;
@@ -21,7 +21,7 @@
     children?: DiagramNode[];
   }
 
-  export interface DiagramEdge {
+  interface DiagramEdge {
     from: string;
     to: string;
     label?: string;
@@ -52,7 +52,13 @@
   }: Props = $props();
 
   const hasNodes = $derived(nodes.length > 0);
-  const flowLayout = $derived(layout === "auto" ? (nodes.length <= 5 ? "horizontal" : "vertical") : layout);
+  const flowLayout = $derived(
+    layout === "auto"
+      ? nodes.length <= 5
+        ? "horizontal"
+        : "vertical"
+      : layout,
+  );
   const pyramidNodes = $derived([...nodes].reverse());
 </script>
 
@@ -113,7 +119,8 @@
                   <div class="node-line">
                     <span class="mini-dot"></span>
                     <strong>{child.label}</strong>
-                    {#if child.detail}<span class="detail">{child.detail}</span>{/if}
+                    {#if child.detail}<span class="detail">{child.detail}</span
+                      >{/if}
                   </div>
                 </li>
               {/each}
@@ -150,7 +157,11 @@
   .ds-diagram {
     border: 1px solid var(--ds-border, rgba(255, 255, 255, 0.2));
     border-radius: 12px;
-    background: color-mix(in srgb, var(--ds-code-bg, rgba(255, 255, 255, 0.06)), transparent 45%);
+    background: color-mix(
+      in srgb,
+      var(--ds-code-bg, rgba(255, 255, 255, 0.06)),
+      transparent 45%
+    );
     padding: 0.9rem;
     display: grid;
     gap: 0.7rem;
