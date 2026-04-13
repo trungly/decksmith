@@ -134,16 +134,16 @@
   }
 
   /* Keep first/last child margins from visually shifting slide centering. */
-  .slide > :first-child {
+  .slide :global(> :first-child) {
     margin-top: 0;
   }
 
-  .slide > :last-child {
+  .slide :global(> :last-child) {
     margin-bottom: 0;
   }
 
   /* Constrain plain text blocks so centered slides don't feel edge-heavy. */
-  .slide > :where(h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol) {
+  .slide :global(> :where(h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol)) {
     width: min(100%, var(--ds-content-max-width, 45ch));
   }
 </style>
