@@ -50,7 +50,7 @@
     transition = "slide",
     transitionSpeed = "default",
     width = 960,
-    height = 700,
+    height = 540,
     controls = true,
     progress = true,
     slideNumber = true,

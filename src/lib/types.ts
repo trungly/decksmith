@@ -71,7 +71,7 @@ export interface DeckConfig {
 
 export const DEFAULT_CONFIG: DeckConfig = {
   width: 960,
-  height: 700,
+  height: 540,
   transition: "slide",
   transitionSpeed: "default",
   controls: true,

@@ -14,10 +14,10 @@
   --ds-selection-fg: #2c241e;
 
   /* Layout and Density */
-  --ds-slide-padding: 80px;
+  --ds-slide-padding: 60px;
   --ds-slide-text-align: left;
   --ds-slide-align-items: flex-start;
-  --ds-slide-justify-content: flex-start;
+  --ds-slide-justify-content: center;
 
   /* Typography */
   --ds-heading-font: "Georgia", "Source Serif Pro", serif;
@@ -43,8 +43,8 @@
   margin-bottom: 0.8em;
 }
 
-.theme-editorial h1 { font-size: 3.8em; font-style: italic; }
-.theme-editorial h2 { font-size: 2.2em; text-transform: uppercase; letter-spacing: 0.1em; }
+.theme-editorial h1 { font-size: 2.6em; font-style: italic; }
+.theme-editorial h2 { font-size: 2em; text-transform: uppercase; letter-spacing: 0.1em; }
 .theme-editorial h3 { font-size: 1.6em; border-left: 2px solid var(--ds-accent); padding-left: 0.5em; }
 
 .theme-editorial a {

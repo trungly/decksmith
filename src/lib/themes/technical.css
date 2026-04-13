@@ -17,7 +17,7 @@
   --ds-slide-padding: 40px;
   --ds-slide-text-align: left;
   --ds-slide-align-items: flex-start;
-  --ds-slide-justify-content: flex-start;
+  --ds-slide-justify-content: center;
 
   /* Typography */
   --ds-heading-font: "JetBrains Mono", "Fira Code", monospace;
@@ -47,8 +47,8 @@
   margin-bottom: 0.5em;
 }
 
-.theme-technical h1 { font-size: 2.5em; border-bottom: 4px solid var(--ds-accent); display: inline-block; padding-bottom: 0.1em; }
-.theme-technical h2 { font-size: 1.8em; color: var(--ds-accent); }
+.theme-technical h1 { font-size: 2.3em; border-bottom: 4px solid var(--ds-accent); display: inline-block; padding-bottom: 0.1em; }
+.theme-technical h2 { font-size: 1.7em; color: var(--ds-accent); }
 .theme-technical h3 { font-size: 1.4em; font-family: var(--ds-body-font); font-weight: 700; }
 
 .theme-technical a {
