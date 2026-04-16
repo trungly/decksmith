@@ -60,7 +60,7 @@ test('overview closes with backdrop click', async ({ page }) => {
   await page.keyboard.press('Escape');
   const overview = page.locator('.deck-overview');
   await expect(overview).toBeVisible();
-  await overview.click();
+  await overview.click({ position: { x: 8, y: 8 } });
   await expect(overview).toBeHidden();
 });
 

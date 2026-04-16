@@ -67,7 +67,7 @@
       const current = overviewElement.querySelector<HTMLElement>(
         "button[aria-current='step']",
       );
-      current?.focus();
+      (current ?? overviewElement).focus();
     });
   });
 
