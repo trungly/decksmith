@@ -193,8 +193,11 @@
         const slideTop = slideEl.offsetTop;
         const slideBottom = slideTop + slideEl.offsetHeight;
         if (viewportCenter >= slideTop && viewportCenter < slideBottom) {
-          const h = parseInt(slideEl.dataset.h ?? "0", 10);
-          const v = parseInt(slideEl.dataset.v ?? "0", 10);
+          const h = Number.parseInt(slideEl.dataset.h ?? "", 10);
+          const v = Number.parseInt(slideEl.dataset.v ?? "", 10);
+          if (Number.isNaN(h) || Number.isNaN(v)) {
+            continue;
+          }
           if (h !== deck.currentH || v !== deck.currentV) {
             deck.goTo(h, v); // resets currentFragment to -1
           }
