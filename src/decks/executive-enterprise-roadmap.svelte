@@ -1,5 +1,13 @@
 <script lang="ts">
-  import { Deck, Slide, Fragment } from "decksmith";
+  import {
+    Deck,
+    Slide,
+    Fragment,
+    Split,
+    Card,
+    Table,
+    Stat,
+  } from "decksmith";
 </script>
 
 <Deck theme="executive" transition="fade">
@@ -15,16 +23,18 @@
     <h2>Strategic Context</h2>
     <div style="text-align: left; max-width: 800px; margin: 1em auto;">
       <p style="font-size: 1.1em; margin-bottom: 1.5em;">Our goal is to reduce technical debt and improve developer velocity by 30% through modular architecture.</p>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2em;">
-        <div>
-          <h4 style="color: var(--ds-accent);">Efficiency</h4>
-          <p style="font-size: 0.9em;">Consolidate redundant services into a shared platform layer.</p>
-        </div>
-        <div>
-          <h4 style="color: var(--ds-accent);">Reliability</h4>
-          <p style="font-size: 0.9em;">Targeting 99.99% uptime for core checkout and search services.</p>
-        </div>
-      </div>
+      <Split gap="2em">
+        {#snippet first()}
+          <Card title="Efficiency">
+            <p style="font-size: 0.9em;">Consolidate redundant services into a shared platform layer.</p>
+          </Card>
+        {/snippet}
+        {#snippet second()}
+          <Card title="Reliability">
+            <p style="font-size: 0.9em;">Targeting 99.99% uptime for core checkout and search services.</p>
+          </Card>
+        {/snippet}
+      </Split>
     </div>
   </Slide>
 
@@ -61,7 +71,7 @@
         <li><strong>Step 1:</strong> Interface definition and mock adapters</li>
         <li><strong>Step 2:</strong> Parallel run of modular vs monolithic pipeline</li>
         <li><strong>Step 3:</strong> Shadow-mode validation with production traffic</li>
-        <li><strong>Step 4:</strong> Gradual canary rollout (1% -> 10% -> 100%)</li>
+        <li><strong>Step 4:</strong> Gradual canary rollout (1% → 10% → 100%)</li>
       </ul>
     </div>
   </Slide>
@@ -69,43 +79,34 @@
   <!-- Slide 5: Risk Management -->
   <Slide h={5} v={0}>
     <h2>Risk Management</h2>
-    <table style="width: 100%; margin-top: 1em; border-collapse: collapse;">
-      <tbody>
-        <tr style="border-bottom: 2px solid rgba(0,0,0,0.1);">
-          <th style="padding: 0.5em; text-align: left;">Risk</th>
-          <th style="padding: 0.5em; text-align: left;">Impact</th>
-          <th style="padding: 0.5em; text-align: left;">Mitigation</th>
-        </tr>
-        <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-          <td style="padding: 0.5em;">Data Inconsistency</td>
-          <td style="padding: 0.5em; color: #d9534f;">Critical</td>
-          <td style="padding: 0.5em;">Dual-write with integrity checks</td>
-        </tr>
-        <tr>
-          <td style="padding: 0.5em;">Performance Regression</td>
-          <td style="padding: 0.5em; color: #f0ad4e;">Moderate</td>
-          <td style="padding: 0.5em;">Pre-production load benchmarks</td>
-        </tr>
-      </tbody>
-    </table>
+    <div style="margin-top: 1em;">
+      <Table
+        caption="Top risks"
+        headers={["Risk", "Impact", "Mitigation"]}
+        rows={[
+          ["Data inconsistency", "Critical", "Dual-write with integrity checks"],
+          ["Performance regression", "Moderate", "Pre-production load benchmarks"],
+        ]}
+        columnAlign={["left", "left", "left"]}
+      />
+    </div>
   </Slide>
 
   <!-- Slide 6: Outcomes -->
   <Slide h={6} v={0}>
     <h2>Measurable Outcomes</h2>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1em; margin-top: 2em;">
-      <div>
-        <div style="font-size: 2em; font-weight: bold;">-40%</div>
-        <p style="font-size: 0.7em;">Build Duration</p>
-      </div>
-      <div>
-        <div style="font-size: 2em; font-weight: bold;">+25%</div>
-        <p style="font-size: 0.7em;">Deployment Frequency</p>
-      </div>
-      <div>
-        <div style="font-size: 2em; font-weight: bold;">-15%</div>
-        <p style="font-size: 0.7em;">Cloud Infrastructure Spend</p>
-      </div>
+    <div style="margin-top: 2em;">
+      <Split columns={3} gap="1em">
+        {#snippet first()}
+          <Stat value="-40%" label="Build duration" delta="vs baseline" deltaTone="positive" />
+        {/snippet}
+        {#snippet second()}
+          <Stat value="+25%" label="Deployment frequency" delta="leading indicator" deltaTone="positive" />
+        {/snippet}
+        {#snippet third()}
+          <Stat value="-15%" label="Cloud spend" delta="annualized" deltaTone="positive" />
+        {/snippet}
+      </Split>
     </div>
   </Slide>
 
