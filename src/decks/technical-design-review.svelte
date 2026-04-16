@@ -2,7 +2,7 @@
   import { Deck, Slide, Code, Callout, Split, Card } from "decksmith";
 </script>
 
-<Deck theme="technical" transition="slide">
+<Deck theme="technical" transition="fade">
   <!-- Slide 1: Title -->
   <Slide h={1} v={0}>
     <h1>Modular Prompt Pipeline</h1>

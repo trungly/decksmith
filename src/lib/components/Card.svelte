@@ -72,7 +72,7 @@
     line-height: var(--ds-line-height, 1.55);
     color: var(--ds-fg);
   }
-  .ds-card-body :global(p:last-child) {
+  .ds-card-body > :global(p:last-child) {
     margin-bottom: 0;
   }
   .ds-card-footer {

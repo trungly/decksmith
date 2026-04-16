@@ -32,9 +32,15 @@
     if (value === null || value === undefined) return "";
     return String(value);
   }
+
+  const regionName = $derived(ariaLabel?.trim() || caption?.trim() || "");
 </script>
 
-<div class={`ds-table-wrap ${className}`.trim()} role="region" aria-label={ariaLabel}>
+<div
+  class={`ds-table-wrap ${className}`.trim()}
+  role={regionName ? "region" : undefined}
+  aria-label={regionName || undefined}
+>
   <table class="ds-table" class:striped class:compact>
     {#if caption}
       <caption class="ds-table-caption">{caption}</caption>
