@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Deck, Slide, Fragment } from "decksmith";
+  import { Deck, Slide, Fragment, Split, Card, Callout, Table } from "decksmith";
 </script>
 
 <Deck theme="editorial" transition="fade">
@@ -25,17 +25,21 @@
   <!-- Slide 3: Growth Initiative Options -->
   <Slide h={3} v={0}>
     <h2>Growth Initiative Options</h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2em; margin-top: 2em;">
-      <div>
-        <h4 style="border-bottom: 1px solid var(--ds-border); padding-bottom: 0.5em;">Option A: Expansion</h4>
-        <p style="font-size: 0.9em; opacity: 0.8;">Launch enterprise tier and dedicated sales outbound.</p>
-        <p style="font-weight: bold; margin-top: 0.5em;">Cost: $50k/mo</p>
-      </div>
-      <div>
-        <h4 style="border-bottom: 1px solid var(--ds-border); padding-bottom: 0.5em;">Option B: Innovation</h4>
-        <p style="font-size: 0.9em; opacity: 0.8;">Build the "Context Engine" for automated asset ingestion.</p>
-        <p style="font-weight: bold; margin-top: 0.5em;">Cost: $20k/mo</p>
-      </div>
+    <div style="margin-top: 2em;">
+      <Split gap="2em">
+        {#snippet first()}
+          <Card title="Option A: Expansion" subtitle="Enterprise outbound">
+            <p style="font-size: 0.9em; opacity: 0.8;">Launch enterprise tier and dedicated sales outbound.</p>
+            <p style="font-weight: bold; margin-top: 0.5em;">Cost: $50k/mo</p>
+          </Card>
+        {/snippet}
+        {#snippet second()}
+          <Card title="Option B: Innovation" subtitle="Context engine">
+            <p style="font-size: 0.9em; opacity: 0.8;">Build the "Context Engine" for automated asset ingestion.</p>
+            <p style="font-weight: bold; margin-top: 0.5em;">Cost: $20k/mo</p>
+          </Card>
+        {/snippet}
+      </Split>
     </div>
   </Slide>
 
@@ -44,7 +48,7 @@
     <h2>Decision Criteria</h2>
     <div style="text-align: left; margin-top: 1.5em;">
       <Fragment index={0} style="fade-in">
-        <p>📊 <strong>Runway:</strong> Maintain >18 months of cash.</p>
+        <p>📊 <strong>Runway:</strong> Maintain &gt;18 months of cash.</p>
       </Fragment>
       <Fragment index={1} style="fade-in">
         <p>📈 <strong>Defensibility:</strong> Can competition copy us in 6 months?</p>
@@ -58,18 +62,29 @@
   <!-- Slide 5: Recommendation -->
   <Slide h={5} v={0}>
     <h2>Recommendation: Innovation First</h2>
-    <div style="background: rgba(var(--ds-accent-rgb), 0.05); padding: 1.5em; border-left: 4px solid var(--ds-accent); margin-top: 1em;">
-      <p style="font-size: 1.3em; font-family: serif; font-style: italic;">"Build the platform that others can't ignore, then build the sales team that won't have to sell."</p>
+    <div style="margin-top: 1em;">
+      <Callout variant="neutral" title="Founder note">
+        <p style="font-size: 1.3em; font-family: serif; font-style: italic; margin: 0;">
+          "Build the platform that others can't ignore, then build the sales team that won't have to sell."
+        </p>
+      </Callout>
     </div>
   </Slide>
 
   <!-- Slide 6: 30-Day Plan -->
   <Slide h={6} v={0}>
     <h2>The 30-Day Plan</h2>
-    <div style="text-align: left; margin-top: 1.5em; border-top: 1px solid var(--ds-border); padding-top: 1.5em;">
-      <p>📅 <strong>Week 1:</strong> Prototype Context Engine v1 (internal only)</p>
-      <p>📅 <strong>Week 2:</strong> Design beta program for top 5% of power users</p>
-      <p>📅 <strong>Week 4:</strong> First 'Context-Aware' deck live for beta users</p>
+    <div style="margin-top: 1em;">
+      <Table
+        caption="Milestones"
+        headers={["When", "Focus", "Outcome"]}
+        rows={[
+          ["Week 1", "Context Engine v1", "Internal prototype only"],
+          ["Week 2", "Beta design", "Top 5% power users invited"],
+          ["Week 4", "Ship", "First context-aware deck in beta"],
+        ]}
+        compact
+      />
     </div>
   </Slide>
 </Deck>

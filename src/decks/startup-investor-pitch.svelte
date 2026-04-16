@@ -1,5 +1,15 @@
 <script lang="ts">
-  import { Deck, Slide, Notes } from "decksmith";
+  import {
+    Deck,
+    Slide,
+    Notes,
+    Callout,
+    Stat,
+    Split,
+    Card,
+    Media,
+    Table,
+  } from "decksmith";
 </script>
 
 <Deck theme="startup" transition="slide">
@@ -13,10 +23,12 @@
   <!-- Slide 2: Problem -->
   <Slide h={2} v={0}>
     <h2>The Problem</h2>
-    <div style="text-align: left; margin-top: 1em;">
-      <p>⚠️ Slides are slow and tedious to build manually.</p>
-      <p>⚠️ Existing tools lack technical context (code, docs).</p>
-      <p>⚠️ Consistency across teams is hard to maintain.</p>
+    <div style="margin-top: 1em;">
+      <Callout variant="warning" title="What slows teams down today">
+        <p>Slides are slow and tedious to build manually.</p>
+        <p>Existing tools lack technical context (code, docs).</p>
+        <p>Consistency across teams is hard to maintain.</p>
+      </Callout>
     </div>
     <Notes text="Engineers hate slides because they're disconnected from their workflow." />
   </Slide>
@@ -25,15 +37,19 @@
   <Slide h={3} v={0}>
     <h2>The Solution</h2>
     <p>Decksmith is a code-first, AI-native framework for presentations.</p>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 1em;">
-      <div style="background: rgba(0,0,0,0.05); padding: 1em; border-radius: 8px;">
-        <h3>AI-Powered</h3>
-        <p>Generates content from docs and codebase.</p>
-      </div>
-      <div style="background: rgba(0,0,0,0.05); padding: 1em; border-radius: 8px;">
-        <h3>Developer-First</h3>
-        <p>Uses Svelte, Markdown, and standard Git workflows.</p>
-      </div>
+    <div style="margin-top: 1em;">
+      <Split gap="1em">
+        {#snippet first()}
+          <Card title="AI-Powered">
+            <p>Generates content from docs and codebase.</p>
+          </Card>
+        {/snippet}
+        {#snippet second()}
+          <Card title="Developer-First">
+            <p>Uses Svelte, Markdown, and standard Git workflows.</p>
+          </Card>
+        {/snippet}
+      </Split>
     </div>
     <Notes text="We bridge the gap between engineering and communication." />
   </Slide>
@@ -41,15 +57,18 @@
   <!-- Slide 4: Traction -->
   <Slide h={4} v={0}>
     <h2>Traction</h2>
-    <div style="display: flex; justify-content: space-around; margin-top: 2em;">
-      <div>
-        <div style="font-size: 3em; font-weight: bold; color: var(--ds-accent);">50k</div>
-        <p>Beta Users</p>
-      </div>
-      <div>
-        <div style="font-size: 3em; font-weight: bold; color: var(--ds-accent);">200%</div>
-        <p>MoM Growth</p>
-      </div>
+    <div style="margin-top: 1.5em;">
+      <Split columns={3} gap="1rem">
+        {#snippet first()}
+          <Stat value="50k" label="Beta users" delta="Strong waitlist" deltaTone="positive" />
+        {/snippet}
+        {#snippet second()}
+          <Stat value="200%" label="MoM growth" delta="Early curve" deltaTone="positive" />
+        {/snippet}
+        {#snippet third()}
+          <Stat value="0" label="Slides named “final_v7”" delta="(we hope)" deltaTone="neutral" />
+        {/snippet}
+      </Split>
     </div>
     <Notes text="Our initial open-source launch saw incredible adoption." />
   </Slide>
@@ -58,8 +77,21 @@
   <Slide h={5} v={0}>
     <h2>Product Demo</h2>
     <p>From prompt to polished deck in seconds.</p>
-    <div style="background: #1e1e1e; padding: 1.5em; border-radius: 8px; margin-top: 1em; font-family: monospace;">
-      <span style="color: #569cd6;">prompt></span> Build me a pitch for our new microservices architecture...
+    <div style="margin-top: 1em;">
+      <Media
+        kind="image"
+        src="https://picsum.photos/seed/decksmith-demo/880/495"
+        alt="Illustrative deck builder screenshot"
+        caption="Concept: prompt in, structured slides out."
+        objectFit="cover"
+      />
+    </div>
+    <div style="margin-top: 1em;">
+      <Callout variant="info" title="Try it">
+        <p style="font-family: monospace; font-size: 0.9em; margin: 0;">
+          <span style="color: var(--ds-link);">prompt&gt;</span> Build me a pitch for our new microservices architecture…
+        </p>
+      </Callout>
     </div>
     <Notes text="The AI understands your components and generates the structure." />
   </Slide>
@@ -67,10 +99,17 @@
   <!-- Slide 6: Business Model -->
   <Slide h={6} v={0}>
     <h2>Business Model</h2>
-    <div style="text-align: left; margin-top: 1em;">
-      <p><strong>Free:</strong> For individuals and open source.</p>
-      <p><strong>Pro:</strong> $20/mo with advanced AI features.</p>
-      <p><strong>Enterprise:</strong> SSO, audit logs, and custom themes.</p>
+    <div style="margin-top: 1em;">
+      <Table
+        caption="Packaging"
+        headers={["Tier", "Who it's for", "Highlights"]}
+        rows={[
+          ["Free", "Individuals & open source", "Core authoring, community themes"],
+          ["Pro", "Power users & small teams", "$20/mo — advanced AI features"],
+          ["Enterprise", "IT & compliance", "SSO, audit logs, custom themes"],
+        ]}
+        columnAlign={["left", "left", "left"]}
+      />
     </div>
     <Notes text="SaaS model with a strong free tier to drive adoption." />
   </Slide>
@@ -80,8 +119,10 @@
     <h2>Go-to-Market</h2>
     <p>Developer advocacy and community-led growth.</p>
     <div style="margin-top: 1em;">
-      <p>🚀 Launching at DevConf 2026</p>
-      <p>🤝 Strategic partnerships with cloud providers</p>
+      <Callout variant="success" title="Near-term beats">
+        <p>Launching at DevConf 2026</p>
+        <p>Strategic partnerships with cloud providers</p>
+      </Callout>
     </div>
     <Notes text="Focusing on the platforms where developers already live." />
   </Slide>
@@ -89,15 +130,31 @@
   <!-- Slide 8: Team -->
   <Slide h={8} v={0}>
     <h2>The Team</h2>
-    <div style="display: flex; justify-content: center; gap: 2em; margin-top: 1em;">
-      <div>
-        <div style="width: 100px; height: 100px; background: #ccc; border-radius: 50%; margin: 0 auto;"></div>
-        <p><strong>CEO</strong><br/>Serial Entrepreneur</p>
-      </div>
-      <div>
-        <div style="width: 100px; height: 100px; background: #ccc; border-radius: 50%; margin: 0 auto;"></div>
-        <p><strong>CTO</strong><br/>Ex-FAANG Lead</p>
-      </div>
+    <div style="margin-top: 1em;">
+      <Split gap="2rem">
+        {#snippet first()}
+          <Card title="CEO" subtitle="Serial entrepreneur">
+            {#snippet footer()}
+              <span>Go-to-market & fundraising</span>
+            {/snippet}
+            <div
+              style="width: 100px; height: 100px; background: var(--ds-border); border-radius: 50%; margin: 0 auto;"
+              aria-hidden="true"
+            ></div>
+          </Card>
+        {/snippet}
+        {#snippet second()}
+          <Card title="CTO" subtitle="Ex-FAANG lead">
+            {#snippet footer()}
+              <span>Platform & AI architecture</span>
+            {/snippet}
+            <div
+              style="width: 100px; height: 100px; background: var(--ds-border); border-radius: 50%; margin: 0 auto;"
+              aria-hidden="true"
+            ></div>
+          </Card>
+        {/snippet}
+      </Split>
     </div>
     <Notes text="We have the technical and business expertise." />
   </Slide>
@@ -106,17 +163,21 @@
   <Slide h={9} v={0}>
     <h2>Why Now?</h2>
     <p>The convergence of generative AI and developer-centric workflows.</p>
+    <div style="margin-top: 1em;">
+      <Callout variant="neutral" title="The shift">
+        <p>Traditional tools have not evolved for the modern tech stack.</p>
+      </Callout>
+    </div>
     <Notes text="Traditional tools haven't evolved for the modern tech stack." />
   </Slide>
 
   <!-- Slide 10: The Ask -->
   <Slide h={10} v={0}>
     <h2>The Ask</h2>
-    <div style="font-size: 2em; margin-top: 1em;">
-      Raising <strong>$2M Seed</strong>
+    <div style="margin-top: 0.5em;">
+      <Stat value="$2M seed" label="To scale AI engineering and reach 1M users" />
     </div>
-    <p>To scale our AI engineering and reach 1M users.</p>
-    <p style="margin-top: 2em; opacity: 0.6;">invest@decksmith.ai</p>
+    <p style="margin-top: 1rem; opacity: 0.6;">invest@decksmith.ai</p>
     <Notes text="Join us in building the future of presentations." />
   </Slide>
 </Deck>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Deck, Slide, Notes, Fragment } from "decksmith";
+  import { Deck, Slide, Notes, Fragment, Split, Card, Callout, Media } from "decksmith";
 </script>
 
 <Deck theme="cinematic" transition="slide">
@@ -19,13 +19,12 @@
   <!-- Slide 2: The Raw Input -->
   <Slide h={2} v={0}>
     <h2 style="margin: 0 0 0.2em; font-size: 2.8em;">The Rough Edge</h2>
-    <div
-      style="text-align: left; margin: 2em auto; max-width: 600px; font-size: 1.4em; opacity: 0.8; line-height: 1.6;"
-    >
-      <p>
-        AI gives us the raw material. It's fast, but it's often unpolished. A
-        block of stone waiting for the chisel.
-      </p>
+    <div style="margin: 2em auto 0; max-width: 640px;">
+      <Callout variant="neutral" title="The honest truth">
+        <p style="font-size: 1.15em; opacity: 0.9; line-height: 1.6; margin: 0;">
+          AI gives us the raw material. It's fast, but it's often unpolished. A block of stone waiting for the chisel.
+        </p>
+      </Callout>
     </div>
   </Slide>
 
@@ -53,44 +52,52 @@
         Perfect
       </div>
     </div>
+    <div style="margin-top: 2em;">
+      <Media
+        kind="image"
+        src="https://picsum.photos/seed/polished-pixel/900/420"
+        alt="Abstract texture suggesting refinement"
+        caption="Texture as metaphor: iteration turns noise into signal."
+        objectFit="cover"
+      />
+    </div>
   </Slide>
 
   <!-- Slide 4: Real World Example -->
   <Slide h={4} v={0}>
     <h2>A Case Study in Polish</h2>
-    <div
-      style="display: grid; grid-template-columns: 1fr 1fr; gap: 2em; margin-top: 2em;"
-    >
-      <Fragment index={0} style="fade-in">
-        <div
-          style="background: rgba(0,0,0,0.1); padding: 2em; border-radius: 12px; text-align: left;"
-        >
-          <h4 style="color: #f00;">Before</h4>
-          <p style="font-size: 0.8em; opacity: 0.6;">
-            A functional but soulless dashboard generated in 3 seconds.
-          </p>
-        </div>
-      </Fragment>
-      <Fragment index={1} style="fade-in">
-        <div
-          style="background: rgba(var(--ds-accent-rgb), 0.1); padding: 2em; border-radius: 12px; text-align: left;"
-        >
-          <h4 style="color: var(--ds-accent);">After</h4>
-          <p style="font-size: 0.8em; opacity: 0.6;">
-            Hand-tuned typography, intentional spacing, and curated
-            interactions.
-          </p>
-        </div>
-      </Fragment>
+    <div style="margin-top: 2em;">
+      <Split gap="2em" align="start">
+        {#snippet first()}
+          <Fragment index={0} style="fade-in">
+            <Card title="Before" subtitle="Fast, flat">
+              <p style="font-size: 0.85em; opacity: 0.75;">
+                A functional but soulless dashboard generated in 3 seconds.
+              </p>
+            </Card>
+          </Fragment>
+        {/snippet}
+        {#snippet second()}
+          <Fragment index={1} style="fade-in">
+            <Card title="After" subtitle="Intentional craft">
+              <p style="font-size: 0.85em; opacity: 0.75;">
+                Hand-tuned typography, intentional spacing, and curated interactions.
+              </p>
+            </Card>
+          </Fragment>
+        {/snippet}
+      </Split>
     </div>
   </Slide>
 
   <!-- Slide 5: The Human Element -->
   <Slide h={5} v={0}>
     <h2>The Human in the Loop</h2>
-    <p style="font-size: 1.8em; margin-top: 1.5em; font-weight: 300;">
-      AI is our collaborator, not our replacement.
-    </p>
+    <div style="margin-top: 1.5em;">
+      <Callout variant="success" title="How we work">
+        <p style="font-size: 1.6em; font-weight: 300; margin: 0;">AI is our collaborator, not our replacement.</p>
+      </Callout>
+    </div>
     <Notes text="We provide the vision, AI provides the speed." />
   </Slide>
 

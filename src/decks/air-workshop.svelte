@@ -1,5 +1,8 @@
 <script lang="ts">
-  import { Deck, Slide, Code, Fragment } from "decksmith";
+  import { Deck, Slide, Code, Fragment, Callout, Split, Stat, Table } from "decksmith";
+
+  const chainOfThoughtExample =
+    '"Think step by step before generating the final implementation."';
 </script>
 
 <Deck theme="air" transition="slide">
@@ -12,9 +15,10 @@
   <!-- Slide 2: The Core Principle -->
   <Slide h={2} v={0}>
     <h2>The Golden Rule</h2>
-    <div style="background: rgba(0,0,0,0.02); padding: 2em; border-radius: 20px; border: 1px solid rgba(0,0,0,0.05); margin-top: 1em;">
-      <p style="font-size: 1.5em; color: var(--ds-accent);">Context is King 👑</p>
-      <p style="opacity: 0.7;">An AI only knows what you tell it. The better the context, the better the code.</p>
+    <div style="margin-top: 1em;">
+      <Callout variant="info" title="Context is king 👑">
+        <p style="opacity: 0.85;">An AI only knows what you tell it. The better the context, the better the code.</p>
+      </Callout>
     </div>
   </Slide>
 
@@ -43,7 +47,9 @@
     <p style="font-size: 0.9em; opacity: 0.6; margin-bottom: 1em;">Turn this into a "pro" prompt:</p>
     <Code code='"Write a script to clean some data"' language="markdown" />
     <div style="margin-top: 1em;">
-      <p style="font-style: italic;">Hint: Consider the format, the cleaning logic, and the error handling.</p>
+      <Callout variant="warning" title="Hints">
+        <p style="margin: 0; font-style: italic;">Consider the format, the cleaning logic, and the error handling.</p>
+      </Callout>
     </div>
   </Slide>
 
@@ -51,25 +57,35 @@
   <Slide h={5} v={0}>
     <h2>Chain of Thought</h2>
     <p>Ask the AI to explain its reasoning <strong>before</strong> writing code.</p>
-    <Code code='"Think step by step before generating the final implementation."' language="markdown" />
+    <Code code={chainOfThoughtExample} language="markdown" />
+    <div style="margin-top: 1em;">
+      <Table
+        caption="More patterns"
+        headers={["Step", "Example"]}
+        rows={[
+          ["Prime", '"Think step by step before coding."'],
+          ["Verify", '"List assumptions, then implement."'],
+        ]}
+        compact
+      />
+    </div>
   </Slide>
 
   <!-- Slide 6: Feedback Loop -->
   <Slide h={6} v={0}>
-    <h2>品質 Loop</h2>
-    <div style="display: flex; justify-content: space-around; margin-top: 2em;">
-      <div style="text-align: center;">
-        <div style="font-size: 2em;">1</div>
-        <p>Generate</p>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 2em;">2</div>
-        <p>Review</p>
-      </div>
-      <div style="text-align: center;">
-        <div style="font-size: 2em;">3</div>
-        <p>Refine</p>
-      </div>
+    <h2>Quality loop</h2>
+    <div style="margin-top: 2em;">
+      <Split columns={3} gap="1.25em">
+        {#snippet first()}
+          <Stat value="1" label="Generate" />
+        {/snippet}
+        {#snippet second()}
+          <Stat value="2" label="Review" />
+        {/snippet}
+        {#snippet third()}
+          <Stat value="3" label="Refine" />
+        {/snippet}
+      </Split>
     </div>
   </Slide>
 

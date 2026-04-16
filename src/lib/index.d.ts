@@ -1,4 +1,4 @@
-import type { Component } from "svelte";
+import type { Component, Snippet } from "svelte";
 
 export type TransitionType =
   | "none"
@@ -206,6 +206,83 @@ export interface ChartProps {
   ariaLabel?: string;
 }
 
+export type CalloutVariant =
+  | "neutral"
+  | "info"
+  | "success"
+  | "warning"
+  | "danger";
+
+export interface CalloutProps {
+  variant?: CalloutVariant;
+  title?: string;
+  className?: string;
+  ariaLabel?: string;
+  children?: Snippet;
+}
+
+export type StatDeltaTone = "neutral" | "positive" | "negative";
+
+export interface StatProps {
+  value: string;
+  label: string;
+  delta?: string;
+  deltaTone?: StatDeltaTone;
+  className?: string;
+  ariaLabel?: string;
+}
+
+export interface SplitProps {
+  columns?: 2 | 3;
+  gap?: string;
+  ratios?: string;
+  align?: "start" | "center" | "stretch";
+  className?: string;
+  first?: Snippet;
+  second?: Snippet;
+  third?: Snippet;
+}
+
+export interface CardProps {
+  title?: string;
+  subtitle?: string;
+  className?: string;
+  ariaLabel?: string;
+  children?: Snippet;
+  footer?: Snippet;
+}
+
+export type MediaKind = "image" | "video";
+
+export interface MediaProps {
+  kind: MediaKind;
+  src: string;
+  alt?: string;
+  caption?: string;
+  aspectRatio?: string;
+  objectFit?: "cover" | "contain";
+  poster?: string;
+  controls?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  playsinline?: boolean;
+  className?: string;
+}
+
+export type TableCell = string | number | null | undefined;
+export type TableColumnAlign = "left" | "center" | "right";
+
+export interface TableProps {
+  headers: string[];
+  rows?: TableCell[][];
+  columnAlign?: TableColumnAlign[];
+  striped?: boolean;
+  compact?: boolean;
+  className?: string;
+  caption?: string;
+  ariaLabel?: string;
+}
+
 export declare class DeckState {
   currentH: number;
   currentV: number;
@@ -249,5 +326,11 @@ export declare const Markdown: Component<MarkdownProps>;
 export declare const Code: Component<CodeProps>;
 export declare const Diagram: Component<DiagramProps>;
 export declare const Chart: Component<ChartProps>;
+export declare const Callout: Component<CalloutProps>;
+export declare const Stat: Component<StatProps>;
+export declare const Split: Component<SplitProps>;
+export declare const Card: Component<CardProps>;
+export declare const Media: Component<MediaProps>;
+export declare const Table: Component<TableProps>;
 
 export declare const THEMES: Record<ThemeName, ThemeDefinition>;
