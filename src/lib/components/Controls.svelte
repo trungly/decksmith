@@ -32,6 +32,7 @@
     <button
       class="control control-left"
       class:enabled={deck.canGoLeft}
+      disabled={!deck.canGoLeft}
       onclick={() => deck.left()}
       aria-label="Previous horizontal slide"
     >
@@ -42,6 +43,7 @@
     <button
       class="control control-right"
       class:enabled={deck.canGoRight}
+      disabled={!deck.canGoRight}
       onclick={() => deck.right()}
       aria-label="Next horizontal slide"
     >
@@ -52,6 +54,7 @@
     <button
       class="control control-up"
       class:enabled={deck.canGoUp}
+      disabled={!deck.canGoUp}
       onclick={() => deck.up()}
       aria-label="Previous vertical slide"
     >
@@ -62,6 +65,7 @@
     <button
       class="control control-down"
       class:enabled={deck.canGoDown}
+      disabled={!deck.canGoDown}
       onclick={() => deck.down()}
       aria-label="Next vertical slide"
     >

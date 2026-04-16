@@ -8,16 +8,17 @@
     text?: string;
   }
 
-  const { slideH = 0, slideV = 0, text = "" }: Props = $props();
+  const { slideH, slideV, text = "" }: Props = $props();
 
   const deck = getContext<DeckState>("deck");
+  const slide = getContext<{ h: number; v: number }>("slide");
 
   onMount(async () => {
     if (text) {
       // Wait for the parent Slide to finish its own onMount (registerSlide)
       // before updating notes, since children mount before parents in Svelte.
       await tick();
-      deck.updateNotes(slideH, slideV, text);
+      deck.updateNotes(slideH ?? slide?.h ?? 0, slideV ?? slide?.v ?? 0, text);
     }
   });
 </script>

@@ -106,8 +106,8 @@
   class="slide"
   class:current={position === "current"}
   class:auto-animate={autoAnimate}
-  data-h={h}
-  data-v={v}
+  data-h={slideH}
+  data-v={slideV}
   data-id={id}
   style="{transitionStyle} {bgStyle}"
 >

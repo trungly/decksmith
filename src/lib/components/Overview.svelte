@@ -1,24 +1,79 @@
 <script lang="ts">
-  import { getContext, tick } from "svelte";
+  import { getContext, onDestroy, tick } from "svelte";
   import { fade } from "svelte/transition";
   import type { DeckState } from "../state/deck-state.svelte.ts";
 
   const deck = getContext<DeckState>("deck");
+  let previouslyFocused: HTMLElement | null = null;
+  let overviewElement = $state<HTMLElement>(undefined!);
 
   function selectSlide(h: number, v: number) {
     deck.goTo(h, v);
-    deck.isOverview = false;
+    closeOverview();
   }
 
-  // Auto-focus current slide button when overview opens
-  function autoFocus(node: HTMLElement) {
+  function restoreFocus() {
+    if (
+      previouslyFocused &&
+      document.contains(previouslyFocused) &&
+      typeof previouslyFocused.focus === "function"
+    ) {
+      previouslyFocused.focus();
+    }
+    previouslyFocused = null;
+  }
+
+  function closeOverview() {
+    deck.isOverview = false;
+    tick().then(restoreFocus);
+  }
+
+  function trapFocus(event: KeyboardEvent) {
+    if (event.key !== "Tab" || !overviewElement) return;
+    const focusable = Array.from(
+      overviewElement.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      ),
+    ).filter(
+      (el) =>
+        !el.hasAttribute("disabled") && el.getAttribute("aria-hidden") !== "true",
+    );
+    if (focusable.length === 0) {
+      event.preventDefault();
+      overviewElement.focus();
+      return;
+    }
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const active = document.activeElement;
+    if (event.shiftKey) {
+      if (active === first || active === overviewElement) {
+        event.preventDefault();
+        last.focus();
+      }
+      return;
+    }
+    if (active === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  $effect(() => {
+    if (!deck.isOverview || !overviewElement) return;
+    const active = document.activeElement;
+    previouslyFocused = active instanceof HTMLElement ? active : null;
     tick().then(() => {
-      const current = node.querySelector<HTMLElement>(
+      const current = overviewElement.querySelector<HTMLElement>(
         "button[aria-current='step']",
       );
       current?.focus();
     });
-  }
+  });
+
+  onDestroy(() => {
+    restoreFocus();
+  });
 
   const THUMB_W = 192;
   const thumbH = $derived(
@@ -28,9 +83,8 @@
 
   function slidePreview(node: HTMLElement, params: { h: number; v: number }) {
     function populate({ h, v }: { h: number; v: number }) {
-      const domH = h + 1;
       const slideEl = document.querySelector<HTMLElement>(
-        `.deck-slides .slide[data-h="${domH}"][data-v="${v}"]`,
+        `.deck-slides .slide[data-h="${h}"][data-v="${v}"]`,
       );
       if (!slideEl) return;
       node.innerHTML = slideEl.innerHTML;
@@ -51,15 +105,18 @@
   <div
     class="deck-overview"
     role="dialog"
+    aria-modal="true"
     aria-label="Slide overview"
     tabindex="-1"
-    use:autoFocus
-    onclick={() => (deck.isOverview = false)}
+    bind:this={overviewElement}
+    onclick={closeOverview}
     onkeydown={(e) => {
       if (e.key === "Escape") {
         e.preventDefault();
-        deck.isOverview = false;
+        closeOverview();
+        return;
       }
+      trapFocus(e);
     }}
     transition:fade={{ duration: 180 }}
   >
