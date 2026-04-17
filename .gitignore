@@ -30,3 +30,4 @@ Thumbs.db
 # Playwright transient output
 test-results/
 playwright-report/
+.worktrees/
