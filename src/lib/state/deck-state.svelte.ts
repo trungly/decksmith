@@ -58,6 +58,19 @@ export class DeckState {
     this.getSlideAt(this.currentH, this.currentV)?.fragmentCount ?? 0,
   );
 
+  canGoPrev = $derived(
+    this.currentFragment >= 0 ||
+      this.canGoUp ||
+      this.canGoLeft ||
+      (this.config.loop && (this.totalSlides > 1 || this.currentFragmentCount > 0)),
+  );
+  canGoNext = $derived(
+    this.currentFragment < this.currentFragmentCount - 1 ||
+      this.canGoDown ||
+      this.canGoRight ||
+      (this.config.loop && (this.totalSlides > 1 || this.currentFragmentCount > 0)),
+  );
+
   getSlideAt(h: number, v: number): SlideInfo | undefined {
     return this.slides[h]?.[v];
   }

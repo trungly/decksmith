@@ -18,7 +18,13 @@ test.describe("theme layout regression", () => {
     }) => {
       await page.goto("/");
 
-      const select = page.locator("select");
+      await page
+        .getByRole("button", { name: "Choose presentation deck" })
+        .click();
+
+      const select = page.getByRole("combobox", {
+        name: "Select presentation deck",
+      });
       await select.selectOption(key);
 
       const currentSlide = page.locator(".slide.current");
