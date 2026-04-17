@@ -13,6 +13,13 @@
   --ds-selection-bg: #1f6feb;
   --ds-selection-fg: #fff;
 
+  --ds-slide-padding: 40px;
+  --ds-slide-text-align: center;
+  --ds-slide-align-items: center;
+  --ds-slide-justify-content: center;
+  --ds-slide-stack-gap: 0.95rem;
+  --ds-content-max-width: 54ch;
+
   background: var(--ds-bg);
   color: var(--ds-fg);
 }

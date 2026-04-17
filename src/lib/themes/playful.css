@@ -18,6 +18,8 @@
   --ds-slide-text-align: center;
   --ds-slide-align-items: center;
   --ds-slide-justify-content: center;
+  --ds-slide-stack-gap: 1rem;
+  --ds-content-max-width: 56ch;
 
   /* Typography */
   --ds-heading-font: "Comic Sans MS", "Quicksand", system-ui, sans-serif;

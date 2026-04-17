@@ -45,6 +45,9 @@
 
 <style>
   .ds-card {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: min(100%, var(--ds-content-max-width, 52ch));
     text-align: left;
     border: 1px solid var(--ds-border, rgba(255, 255, 255, 0.18));
     border-radius: 12px;

@@ -36,6 +36,14 @@ Each theme defines CSS custom properties you can use in your slides:
 --ds-pre-bg          /* Code block background */
 --ds-selection-bg    /* Text selection background */
 --ds-selection-fg    /* Text selection text color */
+
+/* Slide layout (set per theme; overridable on :global(.theme-…)) */
+--ds-slide-padding           /* Inner padding of each slide */
+--ds-slide-stack-gap         /* Vertical gap between direct children of <Slide> */
+--ds-slide-text-align        /* Default text alignment inside slides */
+--ds-slide-align-items       /* Flex cross-axis alignment for slide content */
+--ds-slide-justify-content   /* Flex main-axis alignment for slide content */
+--ds-content-max-width       /* Max line length for headings / body blocks on slides */
 ```
 
 ### Using Variables in Slides

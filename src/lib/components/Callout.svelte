@@ -41,6 +41,9 @@
 
 <style>
   .ds-callout {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: min(100%, var(--ds-content-max-width, 52ch));
     text-align: left;
     border-radius: 10px;
     padding: 0.9rem 1rem;

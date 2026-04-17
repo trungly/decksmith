@@ -18,6 +18,8 @@
   --ds-slide-text-align: center;
   --ds-slide-align-items: center;
   --ds-slide-justify-content: center;
+  --ds-slide-stack-gap: 0.55rem;
+  --ds-content-max-width: 50ch;
 
   /* Typography */
   --ds-heading-font: "Inter", system-ui, sans-serif;
@@ -45,7 +47,6 @@
   line-height: 0.95;
   letter-spacing: var(--ds-heading-letter-spacing);
   text-transform: uppercase;
-  margin-bottom: 0.2em;
 }
 
 .theme-cinematic h1 { font-size: 2.8em; background: linear-gradient(to bottom, #fff 0%, #888 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }

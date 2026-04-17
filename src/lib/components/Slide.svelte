@@ -128,9 +128,11 @@
     align-items: var(--ds-slide-align-items, center);
     justify-content: var(--ds-slide-justify-content, center);
     padding: var(--ds-slide-padding, 40px);
+    gap: var(--ds-slide-stack-gap, 0.95rem);
     perspective: 800px;
     overflow: hidden;
     text-align: var(--ds-slide-text-align, center);
+    box-sizing: border-box;
   }
 
   /* Keep first/last child margins from visually shifting slide centering. */
@@ -142,8 +144,38 @@
     margin-bottom: 0;
   }
 
+  /*
+   * Vertical rhythm: flex `gap` separates direct children. Reset block margins on
+   * typographic nodes so browser defaults do not stack with `gap`.
+   */
+  .slide :global(> :where(h1, h2, h3, h4, h5, h6, p, ul, ol, pre)) {
+    margin-block: 0;
+  }
+
   /* Constrain plain text blocks so centered slides don't feel edge-heavy. */
   .slide :global(> :where(h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol)) {
-    width: min(100%, var(--ds-content-max-width, 45ch));
+    width: min(100%, var(--ds-content-max-width, 52ch));
+  }
+
+  /*
+   * Full-bleed layout primitives on slides that center items (default).
+   * Without this, some blocks shrink to content width and look misaligned.
+   */
+  .slide
+    :global(
+      > :where(
+        .ds-split,
+        .ds-callout,
+        .ds-card,
+        .ds-diagram,
+        .ds-chart,
+        .ds-table-wrap,
+        .markdown-content,
+        .code-block
+      )
+    ) {
+    align-self: stretch;
+    width: 100%;
+    box-sizing: border-box;
   }
 </style>

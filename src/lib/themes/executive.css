@@ -18,6 +18,8 @@
   --ds-slide-text-align: left;
   --ds-slide-align-items: flex-start;
   --ds-slide-justify-content: center;
+  --ds-slide-stack-gap: 1.05rem;
+  --ds-content-max-width: 62ch;
 
   /* Typography */
   --ds-heading-font: "Inter", system-ui, sans-serif;
