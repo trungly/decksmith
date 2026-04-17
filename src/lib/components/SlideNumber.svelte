@@ -6,9 +6,9 @@
 
   const display = $derived.by(() => {
     const h = deck.currentH + 1;
-    const v = deck.currentV;
+    const v = deck.currentV + 1;
     const total = deck.totalHorizontal;
-    return v > 0 ? `${h}.${v} / ${total}` : `${h} / ${total}`;
+    return deck.currentV > 0 ? `${h}.${v} / ${total}` : `${h} / ${total}`;
   });
 
   const fragmentTotal = $derived(deck.currentFragmentCount);

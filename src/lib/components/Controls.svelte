@@ -1,40 +1,18 @@
 <script lang="ts">
-  import { getContext, onMount } from "svelte";
+  import { getContext } from "svelte";
   import type { DeckState } from "../state/deck-state.svelte.ts";
 
   const deck = getContext<DeckState>("deck");
-
-  let visible = $state(true);
-  let hideTimer: ReturnType<typeof setTimeout>;
-
-  function show() {
-    visible = true;
-    clearTimeout(hideTimer);
-    hideTimer = setTimeout(() => {
-      visible = false;
-    }, 3000);
-  }
-
-  onMount(() => {
-    show();
-    window.addEventListener("mousemove", show);
-    window.addEventListener("touchstart", show);
-    return () => {
-      window.removeEventListener("mousemove", show);
-      window.removeEventListener("touchstart", show);
-      clearTimeout(hideTimer);
-    };
-  });
 </script>
 
 {#if deck.config.controls && !deck.isOverview}
-  <div class="deck-controls" class:hidden={!visible}>
+  <div class="deck-controls">
     <button
       class="control control-left"
-      class:enabled={deck.canGoLeft}
-      disabled={!deck.canGoLeft}
-      onclick={() => deck.left()}
-      aria-label="Previous horizontal slide"
+      class:enabled={deck.canGoPrev}
+      disabled={!deck.canGoPrev}
+      onclick={() => deck.prev()}
+      aria-label="Previous slide or fragment"
     >
       <svg viewBox="0 0 24 24"
         ><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" /></svg
@@ -42,10 +20,10 @@
     </button>
     <button
       class="control control-right"
-      class:enabled={deck.canGoRight}
-      disabled={!deck.canGoRight}
-      onclick={() => deck.right()}
-      aria-label="Next horizontal slide"
+      class:enabled={deck.canGoNext}
+      disabled={!deck.canGoNext}
+      onclick={() => deck.next()}
+      aria-label="Next slide or fragment"
     >
       <svg viewBox="0 0 24 24"
         ><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" /></svg
@@ -53,10 +31,10 @@
     </button>
     <button
       class="control control-up"
-      class:enabled={deck.canGoUp}
-      disabled={!deck.canGoUp}
-      onclick={() => deck.up()}
-      aria-label="Previous vertical slide"
+      class:enabled={deck.canGoPrev}
+      disabled={!deck.canGoPrev}
+      onclick={() => deck.prev()}
+      aria-label="Previous slide or fragment"
     >
       <svg viewBox="0 0 24 24"
         ><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" /></svg
@@ -64,10 +42,10 @@
     </button>
     <button
       class="control control-down"
-      class:enabled={deck.canGoDown}
-      disabled={!deck.canGoDown}
-      onclick={() => deck.down()}
-      aria-label="Next vertical slide"
+      class:enabled={deck.canGoNext}
+      disabled={!deck.canGoNext}
+      onclick={() => deck.next()}
+      aria-label="Next slide or fragment"
     >
       <svg viewBox="0 0 24 24"
         ><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" /></svg
@@ -90,11 +68,6 @@
     gap: 4px;
     opacity: 1;
     transition: opacity 0.4s ease;
-  }
-
-  .deck-controls.hidden {
-    opacity: 0;
-    pointer-events: none;
   }
 
   .control {
