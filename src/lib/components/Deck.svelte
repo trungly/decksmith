@@ -1,7 +1,13 @@
 <script lang="ts">
   import { setContext, onMount, type Snippet } from "svelte";
   import { DeckState } from "../state/deck-state.svelte.ts";
-  import type { TransitionType, ThemeName, ScrollLayout } from "../types.ts";
+  import type {
+    TransitionType,
+    ThemeName,
+    ScrollLayout,
+    ContentSize,
+    AspectRatio,
+  } from "../types.ts";
   import { setupKeyboard } from "../utils/keyboard.ts";
   import { setupTouch } from "../utils/touch.ts";
   import { setupHashRouting, updateHash } from "../utils/hash.ts";
@@ -29,8 +35,8 @@
     theme?: ThemeName;
     transition?: TransitionType;
     transitionSpeed?: "default" | "fast" | "slow";
-    width?: number;
-    height?: number;
+    contentSize?: ContentSize;
+    aspectRatio?: AspectRatio;
     controls?: boolean;
     progress?: boolean;
     slideNumber?: boolean;
@@ -49,8 +55,8 @@
     theme = "obsidian",
     transition = "slide",
     transitionSpeed = "default",
-    width = 960,
-    height = 540,
+    contentSize = "M",
+    aspectRatio = "16:9",
     controls = true,
     progress = true,
     slideNumber = true,
@@ -64,6 +70,48 @@
     scrollSnap = true,
     children,
   }: Props = $props();
+
+  // Content-size presets map to a dimensionless multiplier. Themes read
+  // `--ds-content-size-scale` and multiply it into their own base sizes (font-size,
+  // padding, stack-gap), so each theme keeps its typographic identity while
+  // contentSize scales everything proportionally.
+  const CONTENT_SIZE_SCALE: Record<ContentSize, number> = {
+    S: 0.8,
+    M: 1.0,
+    L: 1.25,
+    XL: 1.5,
+  };
+
+  // Canonical virtual canvas anchored on 1080p height — matches modern screens
+  // and PDF-export conventions. Width follows from aspect ratio.
+  const BASE_HEIGHT = 1080;
+  const RATIOS: Record<AspectRatio, number> = {
+    "16:9": 16 / 9,
+    "4:3": 4 / 3,
+    "1:1": 1,
+    "9:16": 9 / 16,
+    "21:9": 21 / 9,
+  };
+
+  const ratio = $derived(RATIOS[aspectRatio] ?? RATIOS["16:9"]);
+  const height = $derived(BASE_HEIGHT);
+  const width = $derived(Math.round(BASE_HEIGHT * ratio));
+  const contentSizeScale = $derived(
+    CONTENT_SIZE_SCALE[contentSize] ?? CONTENT_SIZE_SCALE.M,
+  );
+  const contentSizeVarsStyle = $derived(
+    `--ds-content-size-scale: ${contentSizeScale};`,
+  );
+
+  // aspectRatio has no effect in scroll view; warn so misuse is visible.
+  $effect(() => {
+    if (scrollView && aspectRatio !== "16:9") {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `[decksmith] aspectRatio="${aspectRatio}" is ignored when scrollView is enabled`,
+      );
+    }
+  });
 
   const deck = new DeckState();
   setContext("deck", deck);
@@ -130,8 +178,13 @@
   });
 
   function updateScale() {
-    scale = computeScale(deck.config);
+    scale = computeScale({ ...deck.config, width, height });
   }
+
+  $effect(() => {
+    if (scrollView || !deckElement) return;
+    updateScale();
+  });
 
   // Hash sync
   $effect(() => {
@@ -247,6 +300,7 @@
     class:scroll-full={scrollLayout === "full"}
     class:scroll-compact={scrollLayout === "compact"}
     class:print-pdf={printMode}
+    style={contentSizeVarsStyle}
     bind:this={deckElement}
   >
     <div class="deck-scroll-slides" bind:this={slidesElement}>
@@ -266,6 +320,7 @@
     class="deck theme-{theme}"
     class:paused={deck.isPaused}
     class:print-pdf={printMode}
+    style={contentSizeVarsStyle}
     bind:this={deckElement}
   >
     <div

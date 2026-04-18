@@ -35,6 +35,11 @@ export type ThemeName =
   | "playful"
   | "cinematic";
 
+/** Preset for how large slide body text and spacing feel (see `<Deck contentSize>`). */
+export type ContentSize = "S" | "M" | "L" | "XL";
+
+export type AspectRatio = "16:9" | "4:3" | "1:1" | "9:16" | "21:9";
+
 export interface SlideInfo {
   h: number;
   v: number;
@@ -70,8 +75,8 @@ export interface DeckConfig {
 }
 
 export const DEFAULT_CONFIG: DeckConfig = {
-  width: 960,
-  height: 540,
+  width: 1920,
+  height: 1080,
   transition: "slide",
   transitionSpeed: "default",
   controls: true,

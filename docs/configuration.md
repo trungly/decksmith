@@ -9,8 +9,8 @@ All configuration is set as props on the `<Deck>` component.
 | `theme` | `ThemeName` | `"obsidian"` | Visual theme: `"obsidian"`, `"air"`, `"executive"`, `"startup"`, `"editorial"`, `"technical"`, `"playful"`, `"cinematic"` |
 | `transition` | `TransitionType` | `"slide"` | Default transition: `"none"`, `"fade"`, `"slide"`, `"convex"`, `"concave"`, `"zoom"` |
 | `transitionSpeed` | `string` | `"default"` | Speed: `"fast"` (400ms), `"default"` (800ms), `"slow"` (1200ms) |
-| `width` | `number` | `960` | Base slide width in pixels |
-| `height` | `number` | `700` | Base slide height in pixels |
+| `contentSize` | `ContentSize` | `"M"` | How large slide body content feels: `"S"` (smallest), `"M"` (baseline), `"L"`, `"XL"` (largest). Themes scale typography and slide padding via `--ds-content-size-scale`. |
+| `aspectRatio` | `AspectRatio` | `"16:9"` | Slide shape: `"16:9"`, `"4:3"`, `"1:1"`, `"9:16"`, `"21:9"`. Internal canvas is 1080px tall; width is derived from the ratio. |
 | `controls` | `boolean` | `true` | Show navigation arrow buttons |
 | `progress` | `boolean` | `true` | Show progress bar at bottom |
 | `slideNumber` | `boolean` | `true` | Show slide number |
@@ -30,8 +30,8 @@ All configuration is set as props on the `<Deck>` component.
   theme="technical"
   transition="fade"
   transitionSpeed="fast"
-  width={1280}
-  height={720}
+  contentSize="L"
+  aspectRatio="16:9"
   controls={false}
   progress={true}
   slideNumber={true}
@@ -44,10 +44,4 @@ All configuration is set as props on the `<Deck>` component.
 
 ## Auto-Scaling
 
-Slides automatically scale to fit the browser viewport while maintaining the configured aspect ratio. The base dimensions (`width` and `height`) define the coordinate space for slide content. Common presets:
-
-| Aspect Ratio | Width | Height |
-|--------------|-------|--------|
-| 4:3 | 960 | 700 |
-| 16:9 | 1280 | 720 |
-| 16:10 | 1280 | 800 |
+Slides automatically scale to fit the browser viewport while preserving `aspectRatio`. The library uses a fixed internal canvas height of **1080px** and derives width from the chosen ratio (for example, `16:9` → 1920×1080). `contentSize` adjusts how large content feels by setting a CSS variable (`--ds-content-size-scale`) that themes multiply into font-size, padding, and stack gap.

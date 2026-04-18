@@ -39,6 +39,10 @@ export type ThemeName =
 
 export type ScrollLayout = "full" | "compact";
 
+export type ContentSize = "S" | "M" | "L" | "XL";
+
+export type AspectRatio = "16:9" | "4:3" | "1:1" | "9:16" | "21:9";
+
 export type NavigationDirection = "left" | "right" | "up" | "down";
 
 export interface SlideInfo {
@@ -85,8 +89,8 @@ export interface DeckProps {
   theme?: ThemeName;
   transition?: TransitionType;
   transitionSpeed?: "default" | "fast" | "slow";
-  width?: number;
-  height?: number;
+  contentSize?: ContentSize;
+  aspectRatio?: AspectRatio;
   controls?: boolean;
   progress?: boolean;
   slideNumber?: boolean;

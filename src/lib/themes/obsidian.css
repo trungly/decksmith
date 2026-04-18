@@ -13,11 +13,11 @@
   --ds-selection-bg: #1f6feb;
   --ds-selection-fg: #fff;
 
-  --ds-slide-padding: 40px;
+  --ds-slide-padding: calc(80px * var(--ds-content-size-scale, 1));
   --ds-slide-text-align: center;
   --ds-slide-align-items: center;
   --ds-slide-justify-content: center;
-  --ds-slide-stack-gap: 0.95rem;
+  --ds-slide-stack-gap: calc(1.9rem * var(--ds-content-size-scale, 1));
   --ds-content-max-width: 54ch;
 
   background: var(--ds-bg);
@@ -86,6 +86,6 @@
 }
 
 .theme-obsidian .slide {
-  font-size: 24px;
+  font-size: calc(48px * var(--ds-content-size-scale, 1));
   line-height: 1.5;
 }
