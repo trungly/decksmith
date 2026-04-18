@@ -92,10 +92,12 @@
     "21:9": 21 / 9,
   };
 
-  const ratio = $derived(RATIOS[aspectRatio]);
+  const ratio = $derived(RATIOS[aspectRatio] ?? RATIOS["16:9"]);
   const height = $derived(BASE_HEIGHT);
   const width = $derived(Math.round(BASE_HEIGHT * ratio));
-  const contentSizeScale = $derived(CONTENT_SIZE_SCALE[contentSize]);
+  const contentSizeScale = $derived(
+    CONTENT_SIZE_SCALE[contentSize] ?? CONTENT_SIZE_SCALE.comfortable,
+  );
   const contentSizeVarsStyle = $derived(
     `--ds-content-size-scale: ${contentSizeScale};`,
   );
@@ -175,8 +177,13 @@
   });
 
   function updateScale() {
-    scale = computeScale(deck.config);
+    scale = computeScale({ ...deck.config, width, height });
   }
+
+  $effect(() => {
+    if (scrollView || !deckElement) return;
+    updateScale();
+  });
 
   // Hash sync
   $effect(() => {

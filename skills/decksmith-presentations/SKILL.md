@@ -20,13 +20,13 @@ Create presentations by generating a single Svelte component (`src/App.svelte`) 
 </script>
 
 <Deck theme="obsidian" transition="slide">
-  <Slide h={0} v={0}>
+  <Slide h={1} v={0}>
     <h1>Title</h1>
     <p>Subtitle</p>
     <Notes text="Speaker notes for this slide." />
   </Slide>
 
-  <Slide h={1} v={0}>
+  <Slide h={2} v={0}>
     <h2>Second Slide</h2>
     <Fragment index={0} style="fade-up">
       <p>First point</p>
@@ -38,12 +38,12 @@ Create presentations by generating a single Svelte component (`src/App.svelte`) 
 </Deck>
 ```
 
-Run with `npm install && npm start`, then open http://localhost:5173.
+Run with `bun install && bun run dev`, then open http://localhost:5173.
 
 ## Rules for Code Generation
 
-1. **Every `<Slide>` must have `h` and `v` props.** The first slide is always `h={0} v={0}`.
-2. **`h` values must be sequential** starting from 0. No gaps allowed.
+1. **Every `<Slide>` must have `h` and `v` props.** The first slide is always `h={1} v={0}`.
+2. **`h` values must be sequential** starting from 1. No gaps allowed.
 3. **`v` values must start at 0** for each `h` column and increment: `v={0}`, `v={1}`, `v={2}`.
 4. **Fragment `index` values start at 0** and increment sequentially within a slide.
 5. **One `<Deck>` per presentation.** All `<Slide>` components must be direct children of `<Deck>`.
@@ -58,11 +58,11 @@ Run with `npm install && npm start`, then open http://localhost:5173.
 Slides are arranged in a 2D grid:
 
 ```
-h=0,v=0  →  h=1,v=0  →  h=2,v=0  →  h=3,v=0
+h=1,v=0  →  h=2,v=0  →  h=3,v=0  →  h=4,v=0
                          ↓
-                         h=2,v=1
+                         h=3,v=1
                          ↓
-                         h=2,v=2
+                         h=3,v=2
 ```
 
 - `h` increments left-to-right for the main sequence.
@@ -120,8 +120,8 @@ h=0,v=0  →  h=1,v=0  →  h=2,v=0  →  h=3,v=0
 | Prop      | Type     | Default | Description                                                                 |
 | --------- | -------- | ------- | --------------------------------------------------------------------------- |
 | `text`    | `string` | `""`    | Speaker notes content                                                       |
-| `slideH`  | `number` | `0`     | Horizontal slide index (must match the slide's `h` when attaching notes)    |
-| `slideV`  | `number` | `0`     | Vertical slide index (must match the slide's `v` when attaching notes)      |
+| `slideH`  | `number` | _(parent slide's `h`)_ | Horizontal slide index (must match the slide's `h` when attaching notes)    |
+| `slideV`  | `number` | _(parent slide's `v`)_ | Vertical slide index (must match the slide's `v` when attaching notes)      |
 
 When generating notes for a slide, always set `slideH` and `slideV` to that slide's `h`/`v` coordinates so the notes attach to the correct slide.
 ### `<Markdown>` — Markdown Content
@@ -144,13 +144,13 @@ When generating notes for a slide, always set `slideH` and `slideV` to that slid
 
 ## Theme Selection
 
-| Audience / Context   | Recommended Theme    |
-| -------------------- | -------------------- |
-| Tech conference      | `obsidian` or `dusk` |
-| Business / corporate | `parchment` or `air` |
-| Academic / research  | `air` or `parchment` |
-| Creative / bold      | `ember`              |
-| General purpose      | `obsidian`           |
+| Audience / Context   | Recommended Theme           |
+| -------------------- | --------------------------- |
+| Tech conference      | `obsidian` or `technical`   |
+| Business / corporate | `executive` or `air`        |
+| Academic / research  | `air` or `editorial`        |
+| Creative / bold      | `playful` or `cinematic`    |
+| General purpose      | `obsidian`                  |
 
 ## Transition Selection
 
@@ -167,7 +167,7 @@ When generating notes for a slide, always set `slideH` and `slideV` to that slid
 Given a user prompt like "Create a 5-slide presentation about microservices":
 
 1. **Plan the structure**: Title, 3 content slides, closing
-2. **Assign coordinates**: h=0 through h=4, all v=0
+2. **Assign coordinates**: h=1 through h=5, all v=0
 3. **Choose theme**: Match the audience/context
 4. **Choose transition**: Match the content type
 5. **Generate each slide** using patterns below
@@ -180,7 +180,7 @@ Given a user prompt like "Create a 5-slide presentation about microservices":
 ### Title Slide
 
 ```svelte
-<Slide h={0} v={0}>
+<Slide h={1} v={0}>
   <h1>Presentation Title</h1>
   <p>Subtitle or author name</p>
   <Notes text="Speaker notes here." />

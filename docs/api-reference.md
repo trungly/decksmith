@@ -12,7 +12,7 @@ Root container for a presentation. One per presentation.
 
 ```svelte
 <Deck theme="obsidian" transition="slide" contentSize="comfortable" aspectRatio="16:9">
-  <Slide>...</Slide>
+  <Slide h={1} v={0}>...</Slide>
 </Deck>
 ```
 
