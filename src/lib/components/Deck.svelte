@@ -76,10 +76,10 @@
   // padding, stack-gap), so each theme keeps its typographic identity while
   // contentSize scales everything proportionally.
   const CONTENT_SIZE_SCALE: Record<ContentSize, number> = {
-    S: 0.8,
-    M: 1.0,
-    L: 1.25,
-    XL: 1.5,
+    XS: 0.52,
+    S: 0.64,
+    M: 0.8,
+    L: 1.0,
   };
 
   // Canonical virtual canvas anchored on 1080p height — matches modern screens

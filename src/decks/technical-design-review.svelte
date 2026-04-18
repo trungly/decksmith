@@ -1,8 +1,9 @@
 <script lang="ts">
   import { Deck, Slide, Code, Callout, Split, Card } from "decksmith";
+  import { playgroundDeck } from "../playground/content-size.svelte.ts";
 </script>
 
-<Deck theme="technical" transition="fade">
+<Deck theme="technical" transition="fade" contentSize={playgroundDeck.contentSize}>
   <!-- Slide 1: Title -->
   <Slide h={1} v={0}>
     <h1>Modular Prompt Pipeline</h1>

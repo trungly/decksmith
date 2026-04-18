@@ -1,8 +1,9 @@
 <script lang="ts">
   import { Deck, Slide, Notes, Fragment, Split, Card, Callout, Media } from "decksmith";
+  import { playgroundDeck } from "../playground/content-size.svelte.ts";
 </script>
 
-<Deck theme="cinematic" transition="slide">
+<Deck theme="cinematic" transition="slide" contentSize={playgroundDeck.contentSize}>
   <!-- Slide 1: Title -->
   <Slide h={1} v={0}>
     <h1 style="font-size: 4em; letter-spacing: -0.05em; font-weight: 800;">

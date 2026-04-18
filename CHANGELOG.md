@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.3
+
+- **Breaking (presets):** `ContentSize` is now `"XS" | "S" | "M" | "L"` with updated `--ds-content-size-scale` multipliers (see `Deck.svelte`).
+- Playground: optional **Size** control and `?size=` query param; legacy `?size=XL` maps to `L`.
+- Docs and sample decks updated for the new presets; theme layout snapshots refreshed.
+
 ## 1.0.2
 
 - Overhaul theme system with 8 professional theme families (Executive, Startup, Editorial, Technical, Playful, Cinematic, Air, Obsidian).

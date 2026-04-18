@@ -1,8 +1,9 @@
 <script lang="ts">
   import { Deck, Slide, Code, Fragment, Callout, Split, Card } from "decksmith";
+  import { playgroundDeck } from "../playground/content-size.svelte.ts";
 </script>
 
-<Deck theme="playful" transition="slide">
+<Deck theme="playful" transition="slide" contentSize={playgroundDeck.contentSize}>
   <!-- Slide 1: Title -->
   <Slide h={1} v={0}>
     <h1 style="font-size: 3em; transform: rotate(-1deg);">Building with Prompts! 🏗️</h1>

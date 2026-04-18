@@ -21,7 +21,7 @@ Root container for a presentation. One per presentation.
 | `theme` | `"obsidian" \| "air" \| "executive" \| "startup" \| "editorial" \| "technical" \| "playful" \| "cinematic"` | `"obsidian"` |
 | `transition` | `"none" \| "fade" \| "slide" \| "convex" \| "concave" \| "zoom"` | `"slide"` |
 | `transitionSpeed` | `"default" \| "fast" \| "slow"` | `"default"` |
-| `contentSize` | `"S" \| "M" \| "L" \| "XL"` | `"M"` |
+| `contentSize` | `"XS" \| "S" \| "M" \| "L"` | `"M"` |
 | `aspectRatio` | `"16:9" \| "4:3" \| "1:1" \| "9:16" \| "21:9"` | `"16:9"` |
 | `controls` | `boolean` | `true` |
 | `progress` | `boolean` | `true` |
@@ -161,7 +161,7 @@ type ScrollLayout = "full" | "compact"
 ### `ContentSize`
 
 ```typescript
-type ContentSize = "S" | "M" | "L" | "XL"
+type ContentSize = "XS" | "S" | "M" | "L"
 ```
 
 ### `AspectRatio`

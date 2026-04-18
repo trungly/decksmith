@@ -10,9 +10,10 @@
     Media,
     Table,
   } from "decksmith";
+  import { playgroundDeck } from "../playground/content-size.svelte.ts";
 </script>
 
-<Deck theme="startup" transition="slide">
+<Deck theme="startup" transition="slide" contentSize={playgroundDeck.contentSize}>
   <!-- Slide 1: Title -->
   <Slide h={1} v={0}>
     <h1 style="font-size: 3em;">Decksmith AI</h1>

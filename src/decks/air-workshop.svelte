@@ -1,11 +1,12 @@
 <script lang="ts">
   import { Deck, Slide, Code, Fragment, Callout, Split, Stat, Table } from "decksmith";
+  import { playgroundDeck } from "../playground/content-size.svelte.ts";
 
   const chainOfThoughtExample =
     '"Think step by step before generating the final implementation."';
 </script>
 
-<Deck theme="air" transition="slide">
+<Deck theme="air" transition="slide" contentSize={playgroundDeck.contentSize}>
   <!-- Slide 1: Title -->
   <Slide h={1} v={0}>
     <h1 style="font-size: 3.5em; font-weight: 200;">Mastering AI Prompts</h1>

@@ -9,7 +9,7 @@ All configuration is set as props on the `<Deck>` component.
 | `theme` | `ThemeName` | `"obsidian"` | Visual theme: `"obsidian"`, `"air"`, `"executive"`, `"startup"`, `"editorial"`, `"technical"`, `"playful"`, `"cinematic"` |
 | `transition` | `TransitionType` | `"slide"` | Default transition: `"none"`, `"fade"`, `"slide"`, `"convex"`, `"concave"`, `"zoom"` |
 | `transitionSpeed` | `string` | `"default"` | Speed: `"fast"` (400ms), `"default"` (800ms), `"slow"` (1200ms) |
-| `contentSize` | `ContentSize` | `"M"` | How large slide body content feels: `"S"` (smallest), `"M"` (baseline), `"L"`, `"XL"` (largest). Themes scale typography and slide padding via `--ds-content-size-scale`. |
+| `contentSize` | `ContentSize` | `"M"` | How large slide body content feels: `"XS"` (smallest), `"S"`, `"M"` (default; same multiplier as the old `"S"`), `"L"` (same multiplier as the old `"M"`). Themes scale typography and slide padding via `--ds-content-size-scale`. |
 | `aspectRatio` | `AspectRatio` | `"16:9"` | Slide shape: `"16:9"`, `"4:3"`, `"1:1"`, `"9:16"`, `"21:9"`. Internal canvas is 1080px tall; width is derived from the ratio. |
 | `controls` | `boolean` | `true` | Show navigation arrow buttons |
 | `progress` | `boolean` | `true` | Show progress bar at bottom |

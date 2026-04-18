@@ -39,7 +39,7 @@ export type ThemeName =
 
 export type ScrollLayout = "full" | "compact";
 
-export type ContentSize = "S" | "M" | "L" | "XL";
+export type ContentSize = "XS" | "S" | "M" | "L";
 
 export type AspectRatio = "16:9" | "4:3" | "1:1" | "9:16" | "21:9";
 

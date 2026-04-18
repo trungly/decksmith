@@ -1,5 +1,7 @@
 <script lang="ts">
   import { onMount, tick } from "svelte";
+  import type { ContentSize } from "./lib/types.ts";
+  import { playgroundDeck } from "./playground/content-size.svelte.ts";
   import StartupInvestorPitch from "./decks/startup-investor-pitch.svelte";
   import ExecutiveEnterpriseRoadmap from "./decks/executive-enterprise-roadmap.svelte";
   import TechnicalDesignReview from "./decks/technical-design-review.svelte";
@@ -35,6 +37,19 @@
     return isDeckKey(deck) ? deck : undefined;
   }
 
+  function getContentSizeFromSearch(search: string): ContentSize | undefined {
+    const raw = new URLSearchParams(search).get("size");
+    if (!raw) return undefined;
+    if (raw === "XL") return "L";
+    if (raw === "XS" || raw === "S" || raw === "M" || raw === "L") return raw;
+    return undefined;
+  }
+
+  if (typeof window !== "undefined") {
+    const initialSize = getContentSizeFromSearch(window.location.search);
+    if (initialSize) playgroundDeck.contentSize = initialSize;
+  }
+
   let selectedDeck = $state<DeckKey>(
     typeof window === "undefined" ? defaultDeck : getDeckFromSearch(window.location.search) ?? defaultDeck,
   );
@@ -42,11 +57,10 @@
 
   const DeckComponent = $derived(deckRegistry.find((d) => d.key === selectedDeck)?.component ?? deckRegistry[0].component);
 
-  function syncDeckInUrl(deck: DeckKey) {
+  function syncUrlParams() {
     const url = new URL(window.location.href);
-    if (url.searchParams.get("deck") === deck) return;
-
-    url.searchParams.set("deck", deck);
+    url.searchParams.set("deck", selectedDeck);
+    url.searchParams.set("size", playgroundDeck.contentSize);
     window.history.replaceState(window.history.state, "", `${url.pathname}${url.search}${url.hash}`);
   }
 
@@ -84,7 +98,7 @@
     if (!isDeckKey(nextDeck)) return;
 
     selectedDeck = nextDeck;
-    syncDeckInUrl(nextDeck);
+    syncUrlParams();
     await closeDeckPicker(true);
   }
 
@@ -96,7 +110,7 @@
   }
 
   onMount(() => {
-    syncDeckInUrl(selectedDeck);
+    syncUrlParams();
   });
 </script>
 
@@ -105,6 +119,20 @@
 </svelte:head>
 
 <div class="deck-selector">
+  <label class="deck-selector-field">
+    <span class="deck-selector-label">Size</span>
+    <select
+      aria-label="Content size (typography and spacing)"
+      bind:value={playgroundDeck.contentSize}
+      onchange={syncUrlParams}
+    >
+      <option value="XS">XS</option>
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+    </select>
+  </label>
+
   <button
     id={deckPickerButtonId}
     type="button"
@@ -146,7 +174,19 @@
     border-radius: 4px;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+  }
+  .deck-selector-field {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 0;
+    font-size: 12px;
+    color: #fff;
+  }
+  .deck-selector-label {
+    opacity: 0.85;
+    white-space: nowrap;
   }
   .deck-selector button,
   .deck-selector select {

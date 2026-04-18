@@ -10,9 +10,10 @@
     Stat,
     Callout,
   } from "decksmith";
+  import { playgroundDeck } from "../playground/content-size.svelte.ts";
 </script>
 
-<Deck theme="obsidian" transition="fade">
+<Deck theme="obsidian" transition="fade" contentSize={playgroundDeck.contentSize}>
   <!-- Slide 1: Title -->
   <Slide h={1} v={0}>
     <h1 style="color: #fff; font-size: 3.5em; letter-spacing: -0.03em;">Zero-Trust Infra</h1>

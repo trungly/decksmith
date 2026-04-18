@@ -102,7 +102,7 @@ Wraps all slides. One per presentation.
 | `theme` | `"obsidian" \| "air" \| "executive" \| "startup" \| "editorial" \| "technical" \| "playful" \| "cinematic"` | `"obsidian"` | Visual theme |
 | `transition` | `"none" \| "fade" \| "slide" \| "convex" \| "concave" \| "zoom"` | `"slide"` | Default slide transition |
 | `transitionSpeed` | `"default" \| "fast" \| "slow"` | `"default"` | Transition duration (400ms / 800ms / 1200ms) |
-| `contentSize` | `"S" \| "M" \| "L" \| "XL"` | `"M"` | How large slide body content feels (typography and slide padding scale together) |
+| `contentSize` | `"XS" \| "S" \| "M" \| "L"` | `"M"` | How large slide body content feels (typography and slide padding scale together) |
 | `aspectRatio` | `"16:9" \| "4:3" \| "1:1" \| "9:16" \| "21:9"` | `"16:9"` | Slide aspect ratio (internal canvas is 1080px tall) |
 | `controls` | `boolean` | `true` | Show navigation arrows |
 | `progress` | `boolean` | `true` | Show progress bar |

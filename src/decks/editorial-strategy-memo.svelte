@@ -1,8 +1,9 @@
 <script lang="ts">
   import { Deck, Slide, Fragment, Split, Card, Callout, Table } from "decksmith";
+  import { playgroundDeck } from "../playground/content-size.svelte.ts";
 </script>
 
-<Deck theme="editorial" transition="fade">
+<Deck theme="editorial" transition="fade" contentSize={playgroundDeck.contentSize}>
   <!-- Slide 1: Title -->
   <Slide h={1} v={0}>
     <h1 style="font-size: 3em; font-weight: 300; font-family: serif;">Strategic Pivot</h1>

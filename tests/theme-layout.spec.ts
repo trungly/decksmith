@@ -16,7 +16,7 @@ test.describe("theme layout regression", () => {
     test(`${key}: first slide stays in-bounds and visually balanced`, async ({
       page,
     }) => {
-      await page.goto("/");
+      await page.goto("/?size=L");
 
       await page
         .getByRole("button", { name: "Choose presentation deck" })

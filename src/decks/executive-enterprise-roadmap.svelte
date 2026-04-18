@@ -8,9 +8,10 @@
     Table,
     Stat,
   } from "decksmith";
+  import { playgroundDeck } from "../playground/content-size.svelte.ts";
 </script>
 
-<Deck theme="executive" transition="fade">
+<Deck theme="executive" transition="fade" contentSize={playgroundDeck.contentSize}>
   <!-- Slide 1: Title -->
   <Slide h={1} v={0}>
     <h1 style="font-size: 2.5em; letter-spacing: -0.02em;">Modernization Roadmap 2026</h1>
