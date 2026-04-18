@@ -35,6 +35,8 @@ Root container for a presentation. One per presentation.
 | `scrollLayout` | `"full" \| "compact"` | `"full"` |
 | `scrollSnap` | `boolean` | `true` |
 
+In normal slide mode, `aspectRatio` controls the virtual slide shape. When `scrollView={true}`, `aspectRatio` is ignored (Decksmith logs a warning if you pass a value other than `"16:9"`).
+
 ---
 
 ### `<Slide>`

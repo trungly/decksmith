@@ -120,10 +120,11 @@ h=1,v=0  →  h=2,v=0  →  h=3,v=0  →  h=4,v=0
 | Prop      | Type     | Default | Description                                                                 |
 | --------- | -------- | ------- | --------------------------------------------------------------------------- |
 | `text`    | `string` | `""`    | Speaker notes content                                                       |
-| `slideH`  | `number` | _(parent slide's `h`)_ | Horizontal slide index (must match the slide's `h` when attaching notes)    |
-| `slideV`  | `number` | _(parent slide's `v`)_ | Vertical slide index (must match the slide's `v` when attaching notes)      |
+| `slideH`  | `number` | —       | Optional. Target slide `h` when `<Notes>` is not nested under that `<Slide>`. |
+| `slideV`  | `number` | —       | Optional. Target slide `v` in the same situation. |
 
-When generating notes for a slide, always set `slideH` and `slideV` to that slide's `h`/`v` coordinates so the notes attach to the correct slide.
+When `<Notes>` is a child of `<Slide>`, use `<Notes text="..." />` only — the parent slide coordinates are inferred. Pass `slideH` and `slideV` only when notes cannot be nested (they must match the target slide's `h` / `v`).
+
 ### `<Markdown>` — Markdown Content
 
 | Prop      | Type     | Default | Description               |
