@@ -14,11 +14,11 @@
   --ds-selection-fg: #ffffff;
 
   /* Layout and Density */
-  --ds-slide-padding: 60px;
+  --ds-slide-padding: calc(120px * var(--ds-content-size-scale, 1));
   --ds-slide-text-align: left;
   --ds-slide-align-items: flex-start;
   --ds-slide-justify-content: center;
-  --ds-slide-stack-gap: 1.05rem;
+  --ds-slide-stack-gap: calc(2.1rem * var(--ds-content-size-scale, 1));
   --ds-content-max-width: 62ch;
 
   /* Typography */
@@ -68,7 +68,7 @@
 
 .theme-executive .slide {
   font-family: var(--ds-body-font);
-  font-size: 24px;
+  font-size: calc(48px * var(--ds-content-size-scale, 1));
   line-height: 1.4;
 }
 

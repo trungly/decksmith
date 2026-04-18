@@ -37,6 +37,9 @@ Each theme defines CSS custom properties you can use in your slides:
 --ds-selection-bg    /* Text selection background */
 --ds-selection-fg    /* Text selection text color */
 
+/* Set by <Deck> from the contentSize prop (dimensionless multiplier) */
+--ds-content-size-scale
+
 /* Slide layout (set per theme; overridable on :global(.theme-…)) */
 --ds-slide-padding           /* Inner padding of each slide */
 --ds-slide-stack-gap         /* Vertical gap between direct children of <Slide> */
@@ -49,7 +52,7 @@ Each theme defines CSS custom properties you can use in your slides:
 ### Using Variables in Slides
 
 ```svelte
-<Slide h={0} v={0}>
+<Slide h={1} v={0}>
   <div style="border: 2px solid var(--ds-accent); padding: 1em; border-radius: 8px;">
     <p>Themed border</p>
   </div>
@@ -63,7 +66,7 @@ Override theme variables with inline styles or a `<style>` block:
 
 ```svelte
 <Deck theme="obsidian">
-  <Slide h={0} v={0}>
+  <Slide h={1} v={0}>
     <h1 style="color: coral;">Custom Color</h1>
   </Slide>
 </Deck>

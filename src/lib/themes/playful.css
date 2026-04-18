@@ -14,11 +14,11 @@
   --ds-selection-fg: #ffffff;
 
   /* Layout and Density */
-  --ds-slide-padding: 50px;
+  --ds-slide-padding: calc(100px * var(--ds-content-size-scale, 1));
   --ds-slide-text-align: center;
   --ds-slide-align-items: center;
   --ds-slide-justify-content: center;
-  --ds-slide-stack-gap: 1rem;
+  --ds-slide-stack-gap: calc(2rem * var(--ds-content-size-scale, 1));
   --ds-content-max-width: 56ch;
 
   /* Typography */
@@ -71,7 +71,7 @@
 
 .theme-playful .slide {
   font-family: var(--ds-body-font);
-  font-size: 22px;
+  font-size: calc(44px * var(--ds-content-size-scale, 1));
   line-height: 1.4;
 }
 

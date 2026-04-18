@@ -14,11 +14,11 @@
   --ds-selection-fg: #ffffff;
 
   /* Layout and Density */
-  --ds-slide-padding: 50px;
+  --ds-slide-padding: calc(100px * var(--ds-content-size-scale, 1));
   --ds-slide-text-align: center;
   --ds-slide-align-items: center;
   --ds-slide-justify-content: center;
-  --ds-slide-stack-gap: 0.55rem;
+  --ds-slide-stack-gap: calc(1.1rem * var(--ds-content-size-scale, 1));
   --ds-content-max-width: 50ch;
 
   /* Typography */
@@ -75,7 +75,7 @@
 
 .theme-cinematic .slide {
   font-family: var(--ds-body-font);
-  font-size: 22px;
+  font-size: calc(44px * var(--ds-content-size-scale, 1));
   line-height: 1.3;
   letter-spacing: -0.02em;
 }

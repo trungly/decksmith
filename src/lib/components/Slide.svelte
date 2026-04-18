@@ -127,8 +127,8 @@
     flex-direction: var(--ds-slide-flex-direction, column);
     align-items: var(--ds-slide-align-items, center);
     justify-content: var(--ds-slide-justify-content, center);
-    padding: var(--ds-slide-padding, 40px);
-    gap: var(--ds-slide-stack-gap, 0.95rem);
+    padding: var(--ds-slide-padding, 80px);
+    gap: var(--ds-slide-stack-gap, 1.9rem);
     perspective: 800px;
     overflow: hidden;
     text-align: var(--ds-slide-text-align, center);

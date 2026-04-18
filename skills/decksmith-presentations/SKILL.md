@@ -75,11 +75,11 @@ h=0,v=0  →  h=1,v=0  →  h=2,v=0  →  h=3,v=0
 
 | Prop              | Type                                                             | Default      | Description                    |
 | ----------------- | ---------------------------------------------------------------- | ------------ | ------------------------------ |
-| `theme`           | `"obsidian" \| "air" \| "dusk" \| "parchment" \| "ember"`        | `"obsidian"` | Visual theme                   |
+| `theme`           | `"obsidian" \| "air" \| "executive" \| "startup" \| "editorial" \| "technical" \| "playful" \| "cinematic"` | `"obsidian"` | Visual theme                   |
 | `transition`      | `"none" \| "fade" \| "slide" \| "convex" \| "concave" \| "zoom"` | `"slide"`    | Default slide transition       |
 | `transitionSpeed` | `"default" \| "fast" \| "slow"`                                  | `"default"`  | Transition duration            |
-| `width`           | `number`                                                         | `960`        | Base slide width in px         |
-| `height`          | `number`                                                         | `700`        | Base slide height in px        |
+| `contentSize`     | `"comfortable" \| "cozy" \| "compact"`                           | `"comfortable"` | How large slide body content feels |
+| `aspectRatio`     | `"16:9" \| "4:3" \| "1:1" \| "9:16" \| "21:9"`                   | `"16:9"`    | Slide aspect ratio             |
 | `controls`        | `boolean`                                                        | `true`       | Show navigation arrows         |
 | `progress`        | `boolean`                                                        | `true`       | Show progress bar              |
 | `slideNumber`     | `boolean`                                                        | `true`       | Show slide number              |
@@ -96,7 +96,7 @@ h=0,v=0  →  h=1,v=0  →  h=2,v=0  →  h=3,v=0
 
 | Prop                 | Type             | Default      | Description                      |
 | -------------------- | ---------------- | ------------ | -------------------------------- |
-| `h`                  | `number`         | `0`          | Horizontal position              |
+| `h`                  | `number`         | `1`          | Horizontal position              |
 | `v`                  | `number`         | `0`          | Vertical position                |
 | `transition`         | `TransitionType` | _(inherits)_ | Override transition              |
 | `background`         | `string`         | `""`         | CSS background (color, gradient) |

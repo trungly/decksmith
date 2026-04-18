@@ -11,7 +11,7 @@ When authoring a deck in this repo, import the API from `decksmith` inside `src/
 Root container for a presentation. One per presentation.
 
 ```svelte
-<Deck theme="obsidian" transition="slide" width={960} height={700}>
+<Deck theme="obsidian" transition="slide" contentSize="comfortable" aspectRatio="16:9">
   <Slide>...</Slide>
 </Deck>
 ```
@@ -21,8 +21,8 @@ Root container for a presentation. One per presentation.
 | `theme` | `"obsidian" \| "air" \| "executive" \| "startup" \| "editorial" \| "technical" \| "playful" \| "cinematic"` | `"obsidian"` |
 | `transition` | `"none" \| "fade" \| "slide" \| "convex" \| "concave" \| "zoom"` | `"slide"` |
 | `transitionSpeed` | `"default" \| "fast" \| "slow"` | `"default"` |
-| `width` | `number` | `960` |
-| `height` | `number` | `700` |
+| `contentSize` | `"comfortable" \| "cozy" \| "compact"` | `"comfortable"` |
+| `aspectRatio` | `"16:9" \| "4:3" \| "1:1" \| "9:16" \| "21:9"` | `"16:9"` |
 | `controls` | `boolean` | `true` |
 | `progress` | `boolean` | `true` |
 | `slideNumber` | `boolean` | `true` |
@@ -42,14 +42,14 @@ Root container for a presentation. One per presentation.
 Individual slide.
 
 ```svelte
-<Slide h={0} v={0} background="#1a1a2e" transition="fade" autoAnimate>
+<Slide h={1} v={0} background="#1a1a2e" transition="fade" autoAnimate>
   <h1>Content</h1>
 </Slide>
 ```
 
 | Prop | Type | Default |
 |------|------|---------|
-| `h` | `number` | `0` |
+| `h` | `number` | `1` |
 | `v` | `number` | `0` |
 | `transition` | `TransitionType` | _(from Deck)_ |
 | `background` | `string` | `""` |
@@ -156,7 +156,21 @@ type ThemeName = "obsidian" | "air" | "executive" | "startup" | "editorial" | "t
 type ScrollLayout = "full" | "compact"
 ```
 
+### `ContentSize`
+
+```typescript
+type ContentSize = "comfortable" | "cozy" | "compact"
+```
+
+### `AspectRatio`
+
+```typescript
+type AspectRatio = "16:9" | "4:3" | "1:1" | "9:16" | "21:9"
+```
+
 ### `DeckConfig`
+
+Runtime state on `DeckState.config`. `width` and `height` are derived from `aspectRatio` (1080px-tall internal canvas); they are not `<Deck>` props.
 
 ```typescript
 interface DeckConfig {

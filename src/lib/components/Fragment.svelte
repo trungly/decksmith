@@ -66,7 +66,7 @@
 
   .fragment.fade-up {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(1.67em);
     transition:
       opacity 0.4s ease,
       transform 0.4s ease;
@@ -78,7 +78,7 @@
 
   .fragment.fade-down {
     opacity: 0;
-    transform: translateY(-40px);
+    transform: translateY(-1.67em);
     transition:
       opacity 0.4s ease,
       transform 0.4s ease;
@@ -90,7 +90,7 @@
 
   .fragment.fade-left {
     opacity: 0;
-    transform: translateX(40px);
+    transform: translateX(1.67em);
     transition:
       opacity 0.4s ease,
       transform 0.4s ease;
@@ -102,7 +102,7 @@
 
   .fragment.fade-right {
     opacity: 0;
-    transform: translateX(-40px);
+    transform: translateX(-1.67em);
     transition:
       opacity 0.4s ease,
       transform 0.4s ease;
