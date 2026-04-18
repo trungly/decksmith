@@ -11,7 +11,7 @@ When authoring a deck in this repo, import the API from `decksmith` inside `src/
 Root container for a presentation. One per presentation.
 
 ```svelte
-<Deck theme="obsidian" transition="slide" contentSize="comfortable" aspectRatio="16:9">
+<Deck theme="obsidian" transition="slide" contentSize="M" aspectRatio="16:9">
   <Slide h={1} v={0}>...</Slide>
 </Deck>
 ```
@@ -21,7 +21,7 @@ Root container for a presentation. One per presentation.
 | `theme` | `"obsidian" \| "air" \| "executive" \| "startup" \| "editorial" \| "technical" \| "playful" \| "cinematic"` | `"obsidian"` |
 | `transition` | `"none" \| "fade" \| "slide" \| "convex" \| "concave" \| "zoom"` | `"slide"` |
 | `transitionSpeed` | `"default" \| "fast" \| "slow"` | `"default"` |
-| `contentSize` | `"comfortable" \| "cozy" \| "compact"` | `"comfortable"` |
+| `contentSize` | `"S" \| "M" \| "L" \| "XL"` | `"M"` |
 | `aspectRatio` | `"16:9" \| "4:3" \| "1:1" \| "9:16" \| "21:9"` | `"16:9"` |
 | `controls` | `boolean` | `true` |
 | `progress` | `boolean` | `true` |
@@ -159,7 +159,7 @@ type ScrollLayout = "full" | "compact"
 ### `ContentSize`
 
 ```typescript
-type ContentSize = "comfortable" | "cozy" | "compact"
+type ContentSize = "S" | "M" | "L" | "XL"
 ```
 
 ### `AspectRatio`

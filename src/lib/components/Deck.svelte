@@ -55,7 +55,7 @@
     theme = "obsidian",
     transition = "slide",
     transitionSpeed = "default",
-    contentSize = "comfortable",
+    contentSize = "M",
     aspectRatio = "16:9",
     controls = true,
     progress = true,
@@ -76,9 +76,10 @@
   // padding, stack-gap), so each theme keeps its typographic identity while
   // contentSize scales everything proportionally.
   const CONTENT_SIZE_SCALE: Record<ContentSize, number> = {
-    comfortable: 1.0,
-    cozy: 0.85,
-    compact: 0.7,
+    S: 0.8,
+    M: 1.0,
+    L: 1.25,
+    XL: 1.5,
   };
 
   // Canonical virtual canvas anchored on 1080p height — matches modern screens
@@ -96,7 +97,7 @@
   const height = $derived(BASE_HEIGHT);
   const width = $derived(Math.round(BASE_HEIGHT * ratio));
   const contentSizeScale = $derived(
-    CONTENT_SIZE_SCALE[contentSize] ?? CONTENT_SIZE_SCALE.comfortable,
+    CONTENT_SIZE_SCALE[contentSize] ?? CONTENT_SIZE_SCALE.M,
   );
   const contentSizeVarsStyle = $derived(
     `--ds-content-size-scale: ${contentSizeScale};`,

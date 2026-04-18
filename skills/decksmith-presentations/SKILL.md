@@ -78,7 +78,7 @@ h=1,v=0  →  h=2,v=0  →  h=3,v=0  →  h=4,v=0
 | `theme`           | `"obsidian" \| "air" \| "executive" \| "startup" \| "editorial" \| "technical" \| "playful" \| "cinematic"` | `"obsidian"` | Visual theme                   |
 | `transition`      | `"none" \| "fade" \| "slide" \| "convex" \| "concave" \| "zoom"` | `"slide"`    | Default slide transition       |
 | `transitionSpeed` | `"default" \| "fast" \| "slow"`                                  | `"default"`  | Transition duration            |
-| `contentSize`     | `"comfortable" \| "cozy" \| "compact"`                           | `"comfortable"` | How large slide body content feels |
+| `contentSize`     | `"S" \| "M" \| "L" \| "XL"`                                      | `"M"`        | How large slide body content feels |
 | `aspectRatio`     | `"16:9" \| "4:3" \| "1:1" \| "9:16" \| "21:9"`                   | `"16:9"`    | Slide aspect ratio             |
 | `controls`        | `boolean`                                                        | `true`       | Show navigation arrows         |
 | `progress`        | `boolean`                                                        | `true`       | Show progress bar              |

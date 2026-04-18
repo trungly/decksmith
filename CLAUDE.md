@@ -71,7 +71,7 @@ Wraps all slides. One per presentation.
 | `theme` | `"obsidian" \| "air" \| "executive" \| "startup" \| "editorial" \| "technical" \| "playful" \| "cinematic"` | `"obsidian"` | Visual theme |
 | `transition` | `"none" \| "fade" \| "slide" \| "convex" \| "concave" \| "zoom"` | `"slide"` | Default slide transition |
 | `transitionSpeed` | `"default" \| "fast" \| "slow"` | `"default"` | Transition duration (400ms / 800ms / 1200ms) |
-| `contentSize` | `"comfortable" \| "cozy" \| "compact"` | `"comfortable"` | How large slide body content feels. `comfortable` = biggest text / most breathing room (baseline); `compact` = smallest text / tightest spacing. Scales slide font-size, padding, and stack gap together; themes keep their individual typographic identities. |
+| `contentSize` | `"S" \| "M" \| "L" \| "XL"` | `"M"` | How large slide body content feels. `S` = smallest text / tightest spacing; `XL` = largest. Scales slide font-size, padding, and stack gap together; themes keep their individual typographic identities. |
 | `aspectRatio` | `"16:9" \| "4:3" \| "1:1" \| "9:16" \| "21:9"` | `"16:9"` | Slide aspect ratio. |
 | `controls` | `boolean` | `true` | Show navigation arrows |
 | `progress` | `boolean` | `true` | Show progress bar |
